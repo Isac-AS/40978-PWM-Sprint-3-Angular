@@ -98,6 +98,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "40978-PWM-Sprint-3-Angular:build:production",
+            "firebaseProject": "pwm-sprint3-angular",
+            "firebaseHostingSite": "pwm-sprint3-angular"
+          }
         }
       }
     }

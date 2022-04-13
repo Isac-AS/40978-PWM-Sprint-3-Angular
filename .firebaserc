@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pwm-sprint3-angular": {
+      "hosting": {
+        "40978-PWM-Sprint-3-Angular": [
+          "pwm-sprint3-angular"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pwm-sprint3-angular"
+  }
+}
