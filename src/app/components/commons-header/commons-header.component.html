@@ -1,6 +1,6 @@
 <nav>
   <img id="multipleChoiceButton" alt="MultipleChoiceButton" [src]=multipleChoiceButtonUrl >
-  <a routerLink="/" target="_parent">
+  <a routerLink="/">
     <img alt="Logo" id="logo" [src]=logoUrl>
   </a>
   <input class="searchBar" placeholder="Search..." type="search">
@@ -14,8 +14,8 @@
   <a href="Cart.html" target="_parent">
     <img alt="Cart" class="buttonWithIcon" [src]=cartUrl>
   </a>
-  <a class="logInButton" routerLink="/login" target="_parent">Log in</a>
-  <a class="signUpButton" href="signUp.html" target="_parent">Sign up</a>
-  <a class="signUpButton" routerLink="/addNewProduct">New Product</a>
+  <a class="logInButton" routerLink="/login">Log in</a>
+  <a class="signUpButton" href="signUp.html">Sign up</a>
+  <a class="signUpButton" routerLink="/addProduct">New Product</a>
 </nav>
 <router-outlet></router-outlet>

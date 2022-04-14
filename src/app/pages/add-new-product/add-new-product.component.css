@@ -1,0 +1,42 @@
+h1 {
+  text-align: center;
+  color: #FFFFFF;
+  margin: 1em 0;
+}
+form {
+  display: flex;
+  flex-flow: column;
+
+}
+form .formPair {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+form .formPair p{
+  width: 50%;
+  margin-left: 25%;
+  align-self: center;
+  color: #FFFFFF;
+  font-size: 1.5em;
+}
+
+form .formPair input {
+  width: 50%;
+  font-size: 1.5em;
+  margin: 0.3em 20% 0.3em 0;
+}
+
+form .validationMessage {
+  color: #d93f3f;
+  font-size: 1.5em;
+  margin-left: 25%;
+  margin-bottom: 0.4em;
+}
+
+button {
+  width: 25%;
+  align-self: center;
+  margin: 1em 0;
+  font-size: 1.5em;
+}

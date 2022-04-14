@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from "@angular/router";
+import {FormsModule} from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { CommonsHeaderComponent } from './components/commons-header/commons-header.component';
@@ -22,6 +24,9 @@ import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { AddNewProductComponent } from './pages/add-new-product/add-new-product.component';
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 
 @NgModule({
   declarations: [
@@ -37,6 +42,9 @@ import { AddNewProductComponent } from './pages/add-new-product/add-new-product.
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
@@ -49,9 +57,11 @@ import { AddNewProductComponent } from './pages/add-new-product/add-new-product.
     provideStorage(() => getStorage()),
     RouterModule.forRoot([
       {path: '', component: HomePageComponent},
-      {path: 'addNewProduct', component: AddNewProductComponent},
+      {path: 'addProduct', component: AddNewProductComponent},
       {path: 'login', component: UserLoginComponent}
-    ])
+    ]),
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     ScreenTrackingService,UserTrackingService
