@@ -1,0 +1,67 @@
+#collectionHolder {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 2em 0;
+  background-color: #45454545;
+}
+
+#collectionHolder h1 {
+  color: #FFFFFF;
+  margin-left: 2em;
+}
+
+#collectionSelectionButtonHolder {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  flex-grow: 2;
+}
+
+#collectionHolder .collectionSelectionButton {
+  font-size: 1.5em;
+  background-color: #EEA10C;
+  border-radius: 5px;
+  padding: 0.4em;
+}
+
+#elementContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+#elementContainer .element {
+  width: 80%;
+  background-color: #C4C4C4;
+  margin: 1em 0;
+  border-radius: 5px;
+  padding: 1em;
+  font-size: 1.3em;
+  font-weight: bolder;
+
+  display: flex;
+  flex-flow: row;
+}
+
+#elementContainer .element .elementInfo{
+  display: flex;
+  flex-flow: column nowrap;
+}
+#elementContainer .element .elementInfo p{
+  margin: 5px;
+}
+
+#elementContainer .element .elementButtonHolder {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  flex-grow: 2;
+}
+
+#elementContainer .element .elementButtonHolder .elementActionButton {
+  font-size: 1.3em;
+  background-color: #EEA10C;
+  border-radius: 5px;
+  padding: 0.4em;
+  margin: 0 2em;
+}

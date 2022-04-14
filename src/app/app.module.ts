@@ -27,7 +27,10 @@ import { AddNewProductComponent } from './pages/add-new-product/add-new-product.
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
+import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { RudCollectionComponent } from './pages/rud-collection/rud-collection.component';
 
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +41,9 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
     HomePageTrendingCategoriesComponent,
     ProductLoaderComponent,
     UserLoginComponent,
-    AddNewProductComponent
+    AddNewProductComponent,
+    CategoryPageComponent,
+    RudCollectionComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,9 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
     provideStorage(() => getStorage()),
     RouterModule.forRoot([
       {path: '', component: HomePageComponent},
+      {path: 'category', component: CategoryPageComponent},
       {path: 'addProduct', component: AddNewProductComponent},
+      {path: 'collections', component: RudCollectionComponent},
       {path: 'login', component: UserLoginComponent}
     ]),
     FormsModule,
@@ -69,3 +76,4 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

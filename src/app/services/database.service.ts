@@ -11,25 +11,28 @@ export class databaseService {
   }
 
   createDocument<Product>(data: any, path: string, id: string) {
-    const ref = this.db.collection<any>(path);
-    return ref.doc(id).set(data);
+    const collection = this.db.collection(path);
+    return collection.doc(id).set(data);
   }
 
-  readDocument() {
-
+  readDocument(path: string, id: string) {
+    const collection = this.db.collection(path);
+    return collection.doc(id).valueChanges();
   }
 
-  updateDocument() {
-
+  updateDocument(data:any, path: string, id: string) {
+    const collection = this.db.collection(path);
+    return collection.doc(id).update(data);
   }
 
-  deleteDocument() {
-
+  deleteDocument(path: string, id: string) {
+    const collection = this.db.collection(path);
+    return collection.doc(id).delete();
   }
 
   readCollection(path: string) {
-    const ref = this.db.collection(path);
-    return ref.valueChanges();
+    const collection = this.db.collection(path);
+    return collection.valueChanges();
   }
 
   createId() {

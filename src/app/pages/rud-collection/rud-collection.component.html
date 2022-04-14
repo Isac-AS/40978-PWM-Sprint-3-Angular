@@ -1,0 +1,27 @@
+<div id="collectionHolder">
+  <h1>Seleccione la colección a mostrar:</h1>
+  <div id="collectionSelectionButtonHolder"
+       *ngFor="let coll of collections">
+    <button class="collectionSelectionButton"
+            (click)="collectionButtonHandler(coll)">
+      {{coll}}</button>
+  </div>
+</div>
+
+<div id="elementContainer"
+     *ngFor="let element of collection">
+  <div class="element">
+    <div class="elementInfo">
+      <p>Nombre: {{element.name}}</p>
+      <p>Identificador: {{element.id}}</p>
+    </div>
+    <div class="elementButtonHolder">
+      <button class="elementActionButton"
+              (click)="modifyElement(currentCollection, element.id)">
+        Editar</button>
+      <button class="elementActionButton"
+              (click)="deleteElement(currentCollection, element.id)">
+        Eliminar</button>
+    </div>
+  </div>
+</div>

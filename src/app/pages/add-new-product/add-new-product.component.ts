@@ -36,8 +36,8 @@ export class AddNewProductComponent implements OnInit {
       data.id = this.database.createId();
       const path = 'products';
       console.log(data);
-      this.database.createDocument<Product>(data, path, data.id).then((_) => {
-        console.log('Element saved successfully!');
+      this.database.createDocument<Product>(data, path, data.id).then(async (_) => {
+        await alert("Producto guardado correctamente");
       });
       this.clearItem();
     }
