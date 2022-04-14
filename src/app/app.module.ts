@@ -48,6 +48,7 @@ import { AddNewProductComponent } from './pages/add-new-product/add-new-product.
     provideRemoteConfig(() => getRemoteConfig()),
     provideStorage(() => getStorage()),
     RouterModule.forRoot([
+      {path: '', component: HomePageComponent},
       {path: 'addNewProduct', component: AddNewProductComponent},
       {path: 'login', component: UserLoginComponent}
     ])
