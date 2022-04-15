@@ -16,7 +16,8 @@ export class UserRegisterComponent implements OnInit {
     email: '',
     uid: '',
     password: '',
-    profile: "regular"
+    profile: "regular",
+    shoppingCart: ['']
   };
 
   path: string = 'users';

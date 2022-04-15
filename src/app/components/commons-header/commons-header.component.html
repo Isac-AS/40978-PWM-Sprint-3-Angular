@@ -1,22 +1,43 @@
-<nav>
-  <img id="multipleChoiceButton" alt="MultipleChoiceButton" [src]=multipleChoiceButtonUrl >
-  <a routerLink="/">
-    <img alt="Logo" id="logo" [src]=logoUrl>
-  </a>
-  <input class="searchBar" placeholder="Search..." type="search">
+<header>
+  <nav id="regularNav">
+    <button id="listButton" (click)="openDialog()">
+      <span class="material-icons">list</span>
+    </button>
+    <input type="image" id="logo" alt="logo"
+           [src]="logoUrl" routerLink="/home" >
+    <div id="buttonsContainer">
+      <button routerLink="/home" id="cartButton">
+        <span class="material-icons">shopping_cart</span>
+        <u class="loggedInButtons">Ver carrito</u>
+      </button>
 
-  <a href="" id="glass">
-    <img alt="MagnifyingGlass" class="buttonWithIcon" [src]=magnifyingGlassUrl>
-  </a>
-  <a href="">
-    <img alt="User" class="buttonWithIcon" [src]=userIconUrl>
-  </a>
-  <a href="" target="_parent">
-    <img alt="Cart" class="buttonWithIcon" [src]=cartUrl>
-  </a>
-  <a class="logInButton" routerLink="/login">Log in</a>
-  <a class="signUpButton" routerLink="/register">Sign up</a>
-  <a class="signUpButton" routerLink="/addProduct">New Product</a>
-  <a class="signUpButton" routerLink="/collections">RUD Collection</a>
-  <button (click)="logOut()">Logout</button>
-</nav>
+      <button *ngIf="isLoggedIn" routerLink="/home">
+        <span class="material-icons">person</span>
+        <u class="loggedInButtons">Mi perfil</u>
+      </button>
+
+      <button *ngIf="!isLoggedIn" routerLink="/login">
+        <span class="material-icons">login</span>
+        <u>Iniciar Sesión</u>
+      </button>
+
+      <button *ngIf="!isLoggedIn" routerLink="/register">
+        <span class="material-icons">accessibility_new</span>
+        <u>Registrarse</u>
+      </button>
+
+      <button (click)="logOut()" *ngIf="isLoggedIn">
+        <span class="material-icons">logout</span>
+        <u class="loggedInButtons">Cerrar Sesión</u>
+      </button>
+    </div>
+  </nav>
+  <hr>
+  <nav id="adminNav" *ngIf="isAdmin">
+    <h1>Opciones de administrador:</h1>
+    <div id="adminActionsContainer">
+      <button routerLink="/addProduct">Agregar un nuevo producto</button>
+      <button routerLink="/collections">Ver colecciones</button>
+    </div>
+  </nav>
+</header>

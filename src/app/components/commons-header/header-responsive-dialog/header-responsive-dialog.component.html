@@ -1,0 +1,43 @@
+<aside>
+  <button id="listButton" (click)="closeDialog()">
+    <span class="material-icons">list</span>
+  </button>
+  <hr>
+  <button routerLink="/home" id="cartButton" (click)="closeDialog()">
+    <span class="material-icons">shopping_cart</span>
+    <u class="loggedInButtons">Ver carrito</u>
+  </button>
+  <hr *ngIf="isLoggedIn">
+  <button *ngIf="isLoggedIn" routerLink="/home" (click)="closeDialog()">
+    <span class="material-icons">person</span>
+    <u class="loggedInButtons">Mi perfil</u>
+  </button>
+  <hr *ngIf="!isLoggedIn">
+  <button *ngIf="!isLoggedIn" routerLink="/login" (click)="closeDialog()">
+    <span class="material-icons">login</span>
+    <u>Iniciar Sesión</u>
+  </button>
+  <hr *ngIf="!isLoggedIn">
+  <button *ngIf="!isLoggedIn" routerLink="/register" (click)="closeDialog()">
+    <span class="material-icons">accessibility_new</span>
+    <u>Registrarse</u>
+  </button>
+  <hr *ngIf="isLoggedIn">
+  <button (click)="logOut()" *ngIf="isLoggedIn">
+    <span class="material-icons">logout</span>
+    <u class="loggedInButtons">Cerrar Sesión</u>
+  </button>
+  <hr>
+  <div *ngIf="isAdmin">
+    <button routerLink="/addProduct" (click)="closeDialog()">
+      <span class="material-icons">settings</span>
+      Agregar un nuevo producto
+    </button>
+    <hr>
+    <button routerLink="/collections" (click)="closeDialog()">
+      <span class="material-icons">settings</span>
+      Ver colecciones
+    </button>
+    <hr>
+  </div>
+</aside>

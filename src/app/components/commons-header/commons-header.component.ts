@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../services/auth.service";
 import { Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {AuthService} from "../../services/auth.service";
+import {ModifyElementModalViewComponent} from "../modify-element-modal-view/modify-element-modal-view.component";
+import {HeaderResponsiveDialogComponent} from "./header-responsive-dialog/header-responsive-dialog.component";
 
 @Component({
   selector: 'app-commons-header',
@@ -9,29 +12,22 @@ import { Router} from "@angular/router";
 })
 export class CommonsHeaderComponent implements OnInit {
 
-  isLoggedIn: boolean = false;
+  public isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
 
-  logoUrl: string | undefined;
-  multipleChoiceButtonUrl: string | undefined;
-  magnifyingGlassUrl: string | undefined;
-  userIconUrl: string | undefined;
-  cartUrl: string | undefined;
+  logoUrl: string = "https://github.com/Isac-AS/40978-PWM-RWD/blob/master/images/Logo.PNG?raw=true";
+  multipleChoiceButtonUrl: string = "https://github.com/Isac-AS/40978-PWM-RWD/blob/master/images/multipleChoiceButton.png?raw=true";
 
   constructor(private auth: AuthService,
+              public dialog: MatDialog,
               private router: Router) {
     this.auth.userState().subscribe( res => {
       this.isLoggedIn = !!res;
+      this.isAdminCall();
     })
-
-    this.logoUrl = "https://github.com/Isac-AS/40978-PWM-RWD/blob/master/images/Logo.PNG?raw=true";
-    this.multipleChoiceButtonUrl = "https://github.com/Isac-AS/40978-PWM-RWD/blob/master/images/multipleChoiceButton.png?raw=true";
-    this.magnifyingGlassUrl = "https://api.iconify.design/cil/magnifying-glass.svg";
-    this.userIconUrl = "https://api.iconify.design/ant-design/user-outlined.svg";
-    this.cartUrl = "https://api.iconify.design/ant-design/shopping-cart-outlined.svg";
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   logOut() {
     const res = this.auth.logout().catch( async error => {
@@ -40,4 +36,24 @@ export class CommonsHeaderComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  isAdminCall() {
+    this.auth.isAdmin().then(r => {
+      this.isAdmin = r;
+    })
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(HeaderResponsiveDialogComponent, {
+      data: { login: this.isLoggedIn,
+              admin: this.isAdmin
+            },
+      width: '40%',
+      height: '100%',
+      position: {
+        left: '0px'
+      }
+    });
+    dialogRef.afterClosed().subscribe(res => {
+    });
+  }
 }

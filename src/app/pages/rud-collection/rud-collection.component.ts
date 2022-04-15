@@ -59,7 +59,6 @@ export class RudCollectionComponent implements OnInit {
       width: '70%',
     });
     dialogRef.afterClosed().subscribe(res => {
-      console.log(res);
     });
   }
 }

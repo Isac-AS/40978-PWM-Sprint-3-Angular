@@ -45,6 +45,7 @@ import { ProductLoaderComponent } from './components/product-loader/product-load
 import { ModifyElementModalViewComponent } from './components/modify-element-modal-view/modify-element-modal-view.component';
 import { HomePageWelcomingButtonsComponent } from './components/home-page-welcoming-buttons/home-page-welcoming-buttons.component';
 import { HomePageTrendingCategoriesComponent } from './components/home-page-trending-categories/home-page-trending-categories.component';
+import { HeaderResponsiveDialogComponent } from './components/commons-header/header-responsive-dialog/header-responsive-dialog.component';
 
 
 
@@ -63,7 +64,8 @@ import { HomePageTrendingCategoriesComponent } from './components/home-page-tren
     CategoryPageComponent,
     RudCollectionComponent,
     ModifyElementModalViewComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    HeaderResponsiveDialogComponent
   ],
   imports: [
     BrowserModule,

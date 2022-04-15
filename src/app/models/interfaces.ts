@@ -17,10 +17,16 @@ export interface idPair {
   path: string;
 }
 
+export interface headerDialogPair {
+  login: boolean;
+  admin: boolean;
+}
+
 export interface User {
   name: string;
   email: string;
   uid: string;
   password: string;
   profile: 'admin' | 'regular';
+  shoppingCart: string[];
 }
