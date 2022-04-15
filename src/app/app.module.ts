@@ -1,11 +1,11 @@
 // Basic imports
 import { NgModule } from '@angular/core';
 import { FormsModule} from "@angular/forms";
-import { RouterModule } from "@angular/router";
+import { AppRoutingModule} from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Angular Fire imports
 import { AngularFireModule} from "@angular/fire/compat";
 import { provideAuth,getAuth } from '@angular/fire/auth';
@@ -23,13 +23,18 @@ import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config
 import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 
 // Angular Material imports
-import { MaterialModule } from './material.module';
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 // Component imports
 import { AppComponent } from './app.component';
 // Pages
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
+import { UserRegisterComponent } from './pages/user-register/user-register.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { AddNewProductComponent } from './pages/add-new-product/add-new-product.component';
 import { RudCollectionComponent } from './pages/rud-collection/rud-collection.component';
@@ -40,6 +45,7 @@ import { ProductLoaderComponent } from './components/product-loader/product-load
 import { ModifyElementModalViewComponent } from './components/modify-element-modal-view/modify-element-modal-view.component';
 import { HomePageWelcomingButtonsComponent } from './components/home-page-welcoming-buttons/home-page-welcoming-buttons.component';
 import { HomePageTrendingCategoriesComponent } from './components/home-page-trending-categories/home-page-trending-categories.component';
+
 
 
 // @ts-ignore
@@ -56,7 +62,8 @@ import { HomePageTrendingCategoriesComponent } from './components/home-page-tren
     AddNewProductComponent,
     CategoryPageComponent,
     RudCollectionComponent,
-    ModifyElementModalViewComponent
+    ModifyElementModalViewComponent,
+    UserRegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -73,17 +80,15 @@ import { HomePageTrendingCategoriesComponent } from './components/home-page-tren
     providePerformance(() => getPerformance()),
     provideRemoteConfig(() => getRemoteConfig()),
     provideStorage(() => getStorage()),
-    RouterModule.forRoot([
-      {path: '', component: HomePageComponent},
-      {path: 'category', component: CategoryPageComponent},
-      {path: 'addProduct', component: AddNewProductComponent},
-      {path: 'collections', component: RudCollectionComponent},
-      {path: 'login', component: UserLoginComponent}
-    ]),
+    AppRoutingModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule
   ],
   providers: [
     ScreenTrackingService,UserTrackingService

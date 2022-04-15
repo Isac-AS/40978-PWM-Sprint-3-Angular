@@ -11,11 +11,12 @@
   <a href="">
     <img alt="User" class="buttonWithIcon" [src]=userIconUrl>
   </a>
-  <a href="Cart.html" target="_parent">
+  <a href="" target="_parent">
     <img alt="Cart" class="buttonWithIcon" [src]=cartUrl>
   </a>
   <a class="logInButton" routerLink="/login">Log in</a>
-  <a class="signUpButton" href="signUp.html">Sign up</a>
+  <a class="signUpButton" routerLink="/register">Sign up</a>
   <a class="signUpButton" routerLink="/addProduct">New Product</a>
   <a class="signUpButton" routerLink="/collections">RUD Collection</a>
+  <button (click)="logOut()">Logout</button>
 </nav>

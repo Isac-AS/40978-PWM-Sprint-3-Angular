@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from "../../services/auth.service";
+import { Router} from "@angular/router";
 
 @Component({
   selector: 'app-commons-header',
@@ -7,13 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommonsHeaderComponent implements OnInit {
 
+  isLoggedIn: boolean = false;
+
   logoUrl: string | undefined;
   multipleChoiceButtonUrl: string | undefined;
   magnifyingGlassUrl: string | undefined;
   userIconUrl: string | undefined;
   cartUrl: string | undefined;
 
-  constructor() {
+  constructor(private auth: AuthService,
+              private router: Router) {
+    this.auth.userState().subscribe( res => {
+      this.isLoggedIn = !!res;
+    })
+
     this.logoUrl = "https://github.com/Isac-AS/40978-PWM-RWD/blob/master/images/Logo.PNG?raw=true";
     this.multipleChoiceButtonUrl = "https://github.com/Isac-AS/40978-PWM-RWD/blob/master/images/multipleChoiceButton.png?raw=true";
     this.magnifyingGlassUrl = "https://api.iconify.design/cil/magnifying-glass.svg";
@@ -22,6 +31,13 @@ export class CommonsHeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  logOut() {
+    const res = this.auth.logout().catch( async error => {
+      await alert('Parece haber habido un problema. Inténtelo de nuevo.')
+    });
+    this.router.navigate(['/login']);
   }
 
 }

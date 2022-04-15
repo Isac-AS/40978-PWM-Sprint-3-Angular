@@ -16,3 +16,11 @@ export interface idPair {
   id: string;
   path: string;
 }
+
+export interface User {
+  name: string;
+  email: string;
+  uid: string;
+  password: string;
+  profile: 'admin' | 'regular';
+}
