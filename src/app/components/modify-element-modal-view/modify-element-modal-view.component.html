@@ -1,0 +1,125 @@
+<mat-dialog-content id="modifyElementContainer">
+<form #f="ngForm" (ngSubmit)="save(f)">
+  <div class="formPair">
+    <p class="tag">Nombre del producto:</p>
+    <input type="text"
+           name="name"
+           placeholder="Nombre"
+           [(ngModel)] = currentProduct.name
+           required
+           #name="ngModel">
+  </div>
+  <p class="validationMessage" *ngIf="!name.valid && name.touched" >
+    * ^^ Nombre incorrecto. Campo requerido tipo texto.
+  </p>
+
+  <div class="formPair">
+    <p class="tag">Nombre extendido:</p>
+    <input type="text"
+           name="extendedName"
+           placeholder="Nombre extendido"
+           [(ngModel)] = currentProduct.extendedName
+           #extendedName="ngModel">
+  </div>
+  <p class="validationMessage" *ngIf="!extendedName.valid && extendedName.touched" >
+    * ^^ Nombre incorrecto. Campo de tipo texto.
+  </p>
+
+  <div class="formPair">
+    <p class="tag">Descripción:</p>
+    <input type="text"
+           name="description"
+           placeholder="Descripción"
+           [(ngModel)] = currentProduct.description
+           #description="ngModel">
+  </div>
+  <p class="validationMessage" *ngIf="!description.valid && description.touched" >
+    * ^^ Descripción incorrecta. Campo de tipo texto.
+  </p>
+
+  <div class="formPair">
+    <p class="tag">Precio:</p>
+    <input type="number"
+           name="price"
+           placeholder="Precio"
+           [(ngModel)] = currentProduct.price
+           required
+           #price="ngModel">
+  </div>
+  <p class="validationMessage" *ngIf="!price.valid && price.touched" >
+    * ^^ Precio incorrecto. Campo requerido tipo número.
+  </p>
+
+  <div class="formPair">
+    <p class="tag">Precio sin impuestos:</p>
+    <input type="number"
+           name="priceWithoutTax"
+           placeholder="Precio Sin impuestos"
+           [(ngModel)] = currentProduct.priceWithoutTax
+           required
+           #priceWithoutTax="ngModel">
+  </div>
+  <p class="validationMessage" *ngIf="!priceWithoutTax.valid && priceWithoutTax.touched" >
+    * ^^ Precio sin impuestos incorrecto. Campo requerido tipo número.
+  </p>
+
+  <div class="formPair">
+    <p class="tag">Marca:</p>
+    <input type="text"
+           name="brand"
+           placeholder="Marca"
+           [(ngModel)] = currentProduct.brand
+           required
+           #brand="ngModel">
+  </div>
+  <p class="validationMessage" *ngIf="!brand.valid && brand.touched" >
+    * ^^ Marca incorrecto. Campo requerido tipo texto.
+  </p>
+
+  <div class="formPair">
+    <p class="tag">URL de la imagen:</p>
+    <input type="text"
+           name="imageUrl"
+           placeholder="URL Imagen"
+           [(ngModel)] = currentProduct.imageUrl
+           required
+           #imageUrl="ngModel">
+  </div>
+  <p class="validationMessage" *ngIf="!imageUrl.valid && imageUrl.touched" >
+    * ^^ URL de la imagen incorrecta. Campo requerido tipo texto.
+  </p>
+
+  <div class="formPair">
+    <p class="tag">Categoría:</p>
+    <input type="text"
+           name="category"
+           placeholder="Categoría"
+           [(ngModel)] = currentProduct.category
+           required
+           #category="ngModel">
+  </div>
+  <p class="validationMessage" *ngIf="!category.valid && category.touched" >
+    * ^^ Categoría incorrecta. Campo requerido tipo texto.
+  </p>
+
+  <div class="formPair">
+    <p class="tag">Descuento:</p>
+    <input type="number"
+           name="discount"
+           placeholder="Descuento"
+           [(ngModel)] = currentProduct.discount
+           #discount="ngModel">
+  </div>
+  <p class="validationMessage" *ngIf="!discount.valid && discount.touched" >
+    * ^^ Descuento incorrecto. Recuerda que es de tipo número.
+  </p>
+
+  <button>Guardar</button>
+  <p class="validationMessage" *ngIf="!f.valid" >
+    El formulario no está completado correctamente, el botón de guardado no hará nada.
+  </p>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+</mat-dialog-actions>

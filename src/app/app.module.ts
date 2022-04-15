@@ -1,34 +1,46 @@
+// Basic imports
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule} from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import {FormsModule} from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppComponent } from './app.component';
-import { CommonsHeaderComponent } from './components/commons-header/commons-header.component';
-import { CommonsFooterComponent } from './components/commons-footer/commons-footer.component';
-import { HomePageComponent } from './pages/home-page/home-page.component';
-import { HomePageWelcomingButtonsComponent } from './components/home-page-welcoming-buttons/home-page-welcoming-buttons.component';
-import { HomePageTrendingCategoriesComponent } from './components/home-page-trending-categories/home-page-trending-categories.component';
-import { ProductLoaderComponent } from './components/product-loader/product-loader.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
+// Angular Fire imports
+import { AngularFireModule} from "@angular/fire/compat";
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+import { AngularFireAuthModule} from "@angular/fire/compat/auth";
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
-import { provideStorage,getStorage } from '@angular/fire/storage';
+import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
+
+// Angular Material imports
+import { MaterialModule } from './material.module';
+
+// Component imports
+import { AppComponent } from './app.component';
+// Pages
+import { HomePageComponent } from './pages/home-page/home-page.component';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
-import { AddNewProductComponent } from './pages/add-new-product/add-new-product.component';
-import {AngularFireModule} from "@angular/fire/compat";
-import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
-import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { AddNewProductComponent } from './pages/add-new-product/add-new-product.component';
 import { RudCollectionComponent } from './pages/rud-collection/rud-collection.component';
+// Components
+import { CommonsHeaderComponent } from './components/commons-header/commons-header.component';
+import { CommonsFooterComponent } from './components/commons-footer/commons-footer.component';
+import { ProductLoaderComponent } from './components/product-loader/product-loader.component';
+import { ModifyElementModalViewComponent } from './components/modify-element-modal-view/modify-element-modal-view.component';
+import { HomePageWelcomingButtonsComponent } from './components/home-page-welcoming-buttons/home-page-welcoming-buttons.component';
+import { HomePageTrendingCategoriesComponent } from './components/home-page-trending-categories/home-page-trending-categories.component';
+
 
 // @ts-ignore
 @NgModule({
@@ -43,7 +55,8 @@ import { RudCollectionComponent } from './pages/rud-collection/rud-collection.co
     UserLoginComponent,
     AddNewProductComponent,
     CategoryPageComponent,
-    RudCollectionComponent
+    RudCollectionComponent,
+    ModifyElementModalViewComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +81,9 @@ import { RudCollectionComponent } from './pages/rud-collection/rud-collection.co
       {path: 'login', component: UserLoginComponent}
     ]),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     ScreenTrackingService,UserTrackingService

@@ -10,12 +10,12 @@ export class databaseService {
   constructor( public db: AngularFirestore) {
   }
 
-  createDocument<Product>(data: any, path: string, id: string) {
+  createDocument<type>(data: any, path: string, id: string) {
     const collection = this.db.collection(path);
     return collection.doc(id).set(data);
   }
 
-  readDocument(path: string, id: string) {
+  readDocument<type>(path: string, id: string) {
     const collection = this.db.collection(path);
     return collection.doc(id).valueChanges();
   }

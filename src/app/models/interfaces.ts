@@ -11,3 +11,8 @@ export interface Product {
   category: string;
   discount: number;
 }
+
+export interface idPair {
+  id: string;
+  path: string;
+}
