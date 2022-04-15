@@ -4,8 +4,6 @@ import { ModifyElementModalViewComponent } from "../../components/modify-element
 
 import { idPair } from "../../models/interfaces";
 import { MatDialog } from "@angular/material/dialog";
-import { MatDialogRef } from "@angular/material/dialog";
-import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 
 @Component({
@@ -48,21 +46,20 @@ export class RudCollectionComponent implements OnInit {
   }
 
   deleteElement(path: string, id: string) {
-    this.db.deleteDocument(path, id).then(async r =>
-      await alert("Elemento eliminado correctamente")
-    );
+    this.db.deleteDocument(path, id).then(async r => {
+      await alert("Elemento eliminado correctamente");
+    }
+  );
   }
 
   openDialog(): void {
+    const configData: idPair = {id: this.documentToModifyId, path:this.currentCollection}
     const dialogRef = this.dialog.open(ModifyElementModalViewComponent, {
-      data: {id: this.documentToModifyId, path: this.currentCollection},
-
+      data: configData,
+      width: '70%',
     });
     dialogRef.afterClosed().subscribe(res => {
       console.log(res);
     });
   }
-
-
-
 }

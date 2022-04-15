@@ -1,18 +1,18 @@
-mat-dialog-content {
-  background-color: #ffffff;
-  z-index: -1;
+#modifyElementContainer {
+  padding: 25px;
 }
 
 h1 {
   text-align: center;
-  color: #FFFFFF;
   margin: 1em 0;
+  color: black;
 }
+
 form {
   display: flex;
   flex-flow: column;
-
 }
+
 form .formPair {
   display: flex;
   flex-flow: row nowrap;
@@ -20,14 +20,15 @@ form .formPair {
 
 form .formPair p{
   width: 50%;
-  margin-left: 25%;
+  margin-left: 10%;
+  color: black;
+  font-weight: bold;
   align-self: center;
-  color: #FFFFFF;
   font-size: 1.5em;
 }
 
 form .formPair input {
-  width: 50%;
+  width: 75%;
   font-size: 1.5em;
   margin: 0.3em 20% 0.3em 0;
 }
