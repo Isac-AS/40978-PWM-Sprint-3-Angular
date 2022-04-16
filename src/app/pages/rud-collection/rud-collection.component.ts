@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { databaseService } from "../../services/database.service";
 import { ModifyElementModalViewComponent } from "../../components/modify-element-modal-view/modify-element-modal-view.component";
 
-import { idPair } from "../../models/interfaces";
+import { IdPair } from "../../models/interfaces";
 import { MatDialog } from "@angular/material/dialog";
 
 
@@ -53,7 +53,7 @@ export class RudCollectionComponent implements OnInit {
   }
 
   openDialog(): void {
-    const configData: idPair = {id: this.documentToModifyId, path:this.currentCollection}
+    const configData: IdPair = {id: this.documentToModifyId, path:this.currentCollection}
     const dialogRef = this.dialog.open(ModifyElementModalViewComponent, {
       data: configData,
       width: '70%',

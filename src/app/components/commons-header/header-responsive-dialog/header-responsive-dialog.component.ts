@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
-import {headerDialogPair} from "../../../models/interfaces";
+import {HeaderDialogPair} from "../../../models/interfaces";
 
 @Component({
   selector: 'app-header-responsive-dialog',
@@ -17,7 +17,7 @@ export class HeaderResponsiveDialogComponent implements OnInit {
   constructor(private auth: AuthService,
               public dialogRef: MatDialogRef<HeaderResponsiveDialogComponent>,
               private router: Router,
-              @Inject(MAT_DIALOG_DATA) public data:headerDialogPair){
+              @Inject(MAT_DIALOG_DATA) public data:HeaderDialogPair){
     this.isLoggedIn = data.login;
     this.isAdmin = data.admin;
   }

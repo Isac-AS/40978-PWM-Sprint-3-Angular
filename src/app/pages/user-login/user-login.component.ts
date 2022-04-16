@@ -3,6 +3,9 @@ import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
+import {MessagePopupPair} from "../../models/interfaces";
+import {InfoMessagePopupComponent} from "../../components/info-message-popup/info-message-popup.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-user-login',
@@ -16,21 +19,29 @@ export class UserLoginComponent implements OnInit {
     password : [ '', [Validators.required, Validators.minLength(6)]]
   });
 
-  constructor(private authFirebase: AuthService,
-              private fb: FormBuilder,
-              private router: Router) { }
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    public dialog: MatDialog,
+    private authFirebase: AuthService
+  ) { }
 
   ngOnInit(): void { }
 
   async onSubmit() {
     const res = await this.authFirebase.login(this.credentials.value.email,
                                               this.credentials.value.password)
-      .catch(error => {
-        alert('Error: Usuario o contraseña invalidos'
-      )}
-    );
+      .catch( error => {
+        this.openDialog( {
+          message: 'Error: Nombre de usuario o contraseña incorrectos',
+          status: false
+        })
+      });
     if (res) {
-      alert('Ha iniciado sesion correctamente');
+      await this.openDialog( {
+        message: 'Bienvenido!',
+        status: true
+      })
       await this.router.navigate(['/home']);
     }
   }
@@ -40,5 +51,13 @@ export class UserLoginComponent implements OnInit {
       email: '',
       password: '',
     })
+  }
+
+  openDialog(messagePopupPair: MessagePopupPair): void {
+    const dialogRef = this.dialog.open(InfoMessagePopupComponent, {
+      data: messagePopupPair
+    });
+    dialogRef.afterClosed().subscribe(res => {
+    });
   }
 }

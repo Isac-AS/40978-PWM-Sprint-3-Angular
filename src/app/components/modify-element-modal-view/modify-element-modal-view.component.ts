@@ -1,5 +1,5 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
-import {idPair, Product} from "../../models/interfaces";
+import {IdPair, Product} from "../../models/interfaces";
 import {databaseService} from "../../services/database.service";
 import {Observable} from "rxjs";
 
@@ -33,7 +33,7 @@ export class ModifyElementModalViewComponent implements OnInit {
   constructor(
     public database: databaseService,
     public dialogRef: MatDialogRef<ModifyElementModalViewComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: idPair
+    @Inject(MAT_DIALOG_DATA) public data: IdPair
   ) {
     this.id = data.id;
     this.path = data.path;

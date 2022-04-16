@@ -12,14 +12,19 @@ export interface Product {
   discount: number;
 }
 
-export interface idPair {
+export interface IdPair {
   id: string;
   path: string;
 }
 
-export interface headerDialogPair {
+export interface HeaderDialogPair {
   login: boolean;
   admin: boolean;
+}
+
+export interface MessagePopupPair {
+  message: string;
+  status: boolean;
 }
 
 export interface User {

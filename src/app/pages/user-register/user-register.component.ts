@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {User} from "../../models/interfaces";
-import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
-import {databaseService} from "../../services/database.service";
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
 import {FormBuilder, Validators} from "@angular/forms";
+import {AuthService} from "../../services/auth.service";
+import {MessagePopupPair, User} from "../../models/interfaces";
+import {databaseService} from "../../services/database.service";
+import {InfoMessagePopupComponent} from "../../components/info-message-popup/info-message-popup.component";
 
 @Component({
   selector: 'app-user-register',
@@ -29,10 +31,13 @@ export class UserRegisterComponent implements OnInit {
 
   path: string = 'users';
 
-  constructor(private auth: AuthService,
-              private db: databaseService,
-              private fb: FormBuilder,
-              private router: Router) { }
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    public dialog: MatDialog,
+    private auth: AuthService,
+    private db: databaseService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -43,10 +48,17 @@ export class UserRegisterComponent implements OnInit {
     this.userData.password = this.registerForm.value.password;
 
     const res = await this.auth.register(this.userData).catch( error => {
-      alert('Error: No se puedo crear la cuenta de usuario')
+      this.openDialog( {
+        message: 'Error: No se puedo crear la cuenta de usuario',
+        status: false
+        })
     });
     if (res) {
-      await alert('Exito en la creacion del usuario.')
+      await this.openDialog( {
+          message: 'Éxito en la creación de la cuenta',
+          status: true
+        })
+
       this.userData.uid = res.user!.uid;
       this.userData.password = 'null';
       await this.db.createDocument(this.userData, this.path, this.userData.uid);
@@ -60,6 +72,14 @@ export class UserRegisterComponent implements OnInit {
       email: '',
       password: '',
     })
+  }
+
+  openDialog(messagePopupPair: MessagePopupPair): void {
+    const dialogRef = this.dialog.open(InfoMessagePopupComponent, {
+      data: messagePopupPair
+    });
+    dialogRef.afterClosed().subscribe(res => {
+    });
   }
 
 }

@@ -46,6 +46,7 @@ import { ModifyElementModalViewComponent } from './components/modify-element-mod
 import { HomePageWelcomingButtonsComponent } from './components/home-page-welcoming-buttons/home-page-welcoming-buttons.component';
 import { HomePageTrendingCategoriesComponent } from './components/home-page-trending-categories/home-page-trending-categories.component';
 import { HeaderResponsiveDialogComponent } from './components/commons-header/header-responsive-dialog/header-responsive-dialog.component';
+import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 
 
 
@@ -65,7 +66,8 @@ import { HeaderResponsiveDialogComponent } from './components/commons-header/hea
     RudCollectionComponent,
     ModifyElementModalViewComponent,
     UserRegisterComponent,
-    HeaderResponsiveDialogComponent
+    HeaderResponsiveDialogComponent,
+    InfoMessagePopupComponent
   ],
   imports: [
     BrowserModule,
