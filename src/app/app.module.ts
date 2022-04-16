@@ -42,11 +42,13 @@ import { RudCollectionComponent } from './pages/rud-collection/rud-collection.co
 import { CommonsHeaderComponent } from './components/commons-header/commons-header.component';
 import { CommonsFooterComponent } from './components/commons-footer/commons-footer.component';
 import { ProductLoaderComponent } from './components/product-loader/product-loader.component';
-import { ModifyElementModalViewComponent } from './components/modify-element-modal-view/modify-element-modal-view.component';
+import { ModifyElementModalViewComponent } from './pages/rud-collection/modify-element-modal-view/modify-element-modal-view.component';
 import { HomePageWelcomingButtonsComponent } from './components/home-page-welcoming-buttons/home-page-welcoming-buttons.component';
 import { HomePageTrendingCategoriesComponent } from './components/home-page-trending-categories/home-page-trending-categories.component';
 import { HeaderResponsiveDialogComponent } from './components/commons-header/header-responsive-dialog/header-responsive-dialog.component';
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
+import { UserModificationPopupComponent } from './components/user-modification-popup/user-modification-popup.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 
 
@@ -67,7 +69,9 @@ import { InfoMessagePopupComponent } from './components/info-message-popup/info-
     ModifyElementModalViewComponent,
     UserRegisterComponent,
     HeaderResponsiveDialogComponent,
-    InfoMessagePopupComponent
+    InfoMessagePopupComponent,
+    UserModificationPopupComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

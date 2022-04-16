@@ -1,4 +1,6 @@
-
+/*
+  #################### Database elements ####################
+ */
 export interface Product {
   id: any;
   name: string;
@@ -8,10 +10,23 @@ export interface Product {
   priceWithoutTax: number;
   brand: string;
   imageUrl: string;
-  category: string;//'headphones' | 'laptops' | 'furniture' | 'sports' | 'phones' | 'games' | 'clothing';
+  category: 'headphones' | 'laptops' | 'furniture' | 'sports' | 'phones' | 'games' | 'clothing' | '';
   discount: number;
 }
 
+export interface User {
+  name: string;
+  email: string;
+  uid: string;
+  password: string;
+  profile: 'admin' | 'regular';
+  shoppingCart: string[];
+}
+
+
+/*
+  #################### Auxiliary types to pass around probably to dialogs  ####################
+ */
 export interface IdPair {
   id: string;
   path: string;
@@ -25,13 +40,4 @@ export interface HeaderDialogPair {
 export interface MessagePopupPair {
   message: string;
   status: boolean;
-}
-
-export interface User {
-  name: string;
-  email: string;
-  uid: string;
-  password: string;
-  profile: 'admin' | 'regular';
-  shoppingCart: string[];
 }

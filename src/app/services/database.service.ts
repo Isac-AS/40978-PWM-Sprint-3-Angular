@@ -1,7 +1,5 @@
 import { Injectable } from "@angular/core";
-import { AngularFirestore,
-          AngularFirestoreDocument,
-          AngularFirestoreCollection } from "@angular/fire/compat/firestore";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +18,7 @@ export class databaseService {
     return collection.doc(id).valueChanges();
   }
 
-  updateDocument(data:any, path: string, id: string) {
+  updateDocument<T>(data:any, path: string, id: string) {
     const collection = this.db.collection(path);
     return collection.doc(id).update(data);
   }

@@ -1,11 +1,10 @@
 import {Router} from "@angular/router";
+import {User} from "../../models/interfaces";
 import {Component, OnInit} from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
-import {MessagePopupPair, User} from "../../models/interfaces";
 import {databaseService} from "../../services/database.service";
-import {InfoMessagePopupComponent} from "../../components/info-message-popup/info-message-popup.component";
+import {CustomUtilsService} from "../../services/customUtils.service";
 
 @Component({
   selector: 'app-user-register',
@@ -34,9 +33,9 @@ export class UserRegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    public dialog: MatDialog,
     private auth: AuthService,
-    private db: databaseService
+    private db: databaseService,
+    private utils: CustomUtilsService
   ) { }
 
   ngOnInit(): void {
@@ -48,13 +47,13 @@ export class UserRegisterComponent implements OnInit {
     this.userData.password = this.registerForm.value.password;
 
     const res = await this.auth.register(this.userData).catch( error => {
-      this.openDialog( {
+      this.utils.openMessageDialog( {
         message: 'Error: No se puedo crear la cuenta de usuario',
         status: false
         })
     });
     if (res) {
-      await this.openDialog( {
+      await this.utils.openMessageDialog( {
           message: 'Éxito en la creación de la cuenta',
           status: true
         })
@@ -72,14 +71,6 @@ export class UserRegisterComponent implements OnInit {
       email: '',
       password: '',
     })
-  }
-
-  openDialog(messagePopupPair: MessagePopupPair): void {
-    const dialogRef = this.dialog.open(InfoMessagePopupComponent, {
-      data: messagePopupPair
-    });
-    dialogRef.afterClosed().subscribe(res => {
-    });
   }
 
 }

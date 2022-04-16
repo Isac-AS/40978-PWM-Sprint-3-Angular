@@ -6,6 +6,7 @@ import {AuthService} from "../../services/auth.service";
 import {MessagePopupPair} from "../../models/interfaces";
 import {InfoMessagePopupComponent} from "../../components/info-message-popup/info-message-popup.component";
 import {MatDialog} from "@angular/material/dialog";
+import {CustomUtilsService} from "../../services/customUtils.service";
 
 @Component({
   selector: 'app-user-login',
@@ -22,8 +23,8 @@ export class UserLoginComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    public dialog: MatDialog,
-    private authFirebase: AuthService
+    private authFirebase: AuthService,
+    private utils: CustomUtilsService
   ) { }
 
   ngOnInit(): void { }
@@ -32,13 +33,13 @@ export class UserLoginComponent implements OnInit {
     const res = await this.authFirebase.login(this.credentials.value.email,
                                               this.credentials.value.password)
       .catch( error => {
-        this.openDialog( {
+        this.utils.openMessageDialog( {
           message: 'Error: Nombre de usuario o contraseña incorrectos',
           status: false
         })
       });
     if (res) {
-      await this.openDialog( {
+      await this.utils.openMessageDialog( {
         message: 'Bienvenido!',
         status: true
       })
@@ -51,13 +52,5 @@ export class UserLoginComponent implements OnInit {
       email: '',
       password: '',
     })
-  }
-
-  openDialog(messagePopupPair: MessagePopupPair): void {
-    const dialogRef = this.dialog.open(InfoMessagePopupComponent, {
-      data: messagePopupPair
-    });
-    dialogRef.afterClosed().subscribe(res => {
-    });
   }
 }

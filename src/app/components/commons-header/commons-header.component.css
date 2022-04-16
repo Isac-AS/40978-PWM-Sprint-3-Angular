@@ -21,6 +21,7 @@ hr {
 
 #adminNav h1 {
   color: #FFFFFF;
+  margin-left: 1em;
 }
 
 #adminNav #adminActionsContainer {
@@ -57,6 +58,10 @@ hr {
 
   #buttonsContainer {
     width: 60%;
+  }
+
+  #adminNav #adminActionsContainer {
+    width: 90%;
   }
 }
 

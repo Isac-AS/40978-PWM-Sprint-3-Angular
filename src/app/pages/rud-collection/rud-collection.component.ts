@@ -1,9 +1,12 @@
+import {IdPair} from "../../models/interfaces";
 import { Component, OnInit } from '@angular/core';
-import { databaseService } from "../../services/database.service";
-import { ModifyElementModalViewComponent } from "../../components/modify-element-modal-view/modify-element-modal-view.component";
-
-import { IdPair } from "../../models/interfaces";
 import { MatDialog } from "@angular/material/dialog";
+import { databaseService } from "../../services/database.service";
+import {CustomUtilsService} from "../../services/customUtils.service";
+import { ModifyElementModalViewComponent } from "./modify-element-modal-view/modify-element-modal-view.component";
+import {
+  UserModificationPopupComponent
+} from "../../components/user-modification-popup/user-modification-popup.component";
 
 
 @Component({
@@ -14,51 +17,78 @@ import { MatDialog } from "@angular/material/dialog";
 export class RudCollectionComponent implements OnInit {
 
   collection: any[] = [];
-  collections: string[] = ['products', 'users', 'images', 'links'];
+  collections: string[] = ['Productos', 'Usuarios'];
   currentCollection: string = '';
   documentToModifyId:string = '';
 
-  constructor(public db: databaseService, public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    public db: databaseService,
+    private utils: CustomUtilsService,
+  ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   collectionButtonHandler(path: string) {
-    this.getCollection(path);
     this.setCurrentCollection(path);
+    this.getCollection();
   }
 
-  getCollection(path: string) {
-    this.db.readCollection(path).subscribe( res => {
-      console.log(res);
+  getCollection() {
+    this.db.readCollection(this.currentCollection).subscribe( res => {
       this.collection = res;
     })
   }
 
-  setCurrentCollection(collection: string) {
-    this.currentCollection = collection;
-  }
-
-  modifyElement(path: string, id: string) {
-    this.documentToModifyId = id;
-    this.currentCollection = path;
-    this.openDialog();
-  }
-
-  deleteElement(path: string, id: string) {
-    this.db.deleteDocument(path, id).then(async r => {
-      await alert("Elemento eliminado correctamente");
+  setCurrentCollection(displayedCollection: string) {
+    switch (displayedCollection) {
+      case 'Productos':
+        this.currentCollection = 'products'
+        break;
+      case 'Usuarios':
+        this.currentCollection = 'users'
+        break;
+      default:
+        this.currentCollection = 'products'
+        break;
     }
-  );
   }
 
-  openDialog(): void {
+  modifyElement(id: string) {
+    this.documentToModifyId = id;
+    switch (this.currentCollection) {
+      case 'products':
+        this.openProductModificationDialog();
+        break;
+      case 'users':
+        this.openUserModificationDialog();
+    }
+  }
+
+  deleteElement(id: string) {
+    this.db.deleteDocument(this.currentCollection, id).then(async r => {
+      await this.utils.openMessageDialog( {
+        message: 'Producto Eliminado con éxito!',
+        status: true
+      })
+    });
+  }
+
+  openProductModificationDialog(): void {
     const configData: IdPair = {id: this.documentToModifyId, path:this.currentCollection}
-    const dialogRef = this.dialog.open(ModifyElementModalViewComponent, {
+    this.dialog.open(ModifyElementModalViewComponent, {
+      data: configData,
+      width: '70%',
+      maxHeight: '90vh'
+    });
+  }
+
+  openUserModificationDialog(): void {
+    const configData: IdPair = {id: this.documentToModifyId, path:this.currentCollection}
+    this.dialog.open(UserModificationPopupComponent, {
       data: configData,
       width: '70%',
     });
-    dialogRef.afterClosed().subscribe(res => {
-    });
   }
+
 }

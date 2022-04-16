@@ -33,6 +33,7 @@ mat-dialog-container {
   padding: 0.5em;
   border-radius: 5px;
   margin: 5px;
+  width: 25%;
 }
 
 /*

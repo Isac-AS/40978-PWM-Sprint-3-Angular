@@ -1,6 +1,6 @@
 <div id="pageContainer">
-  <h1>Formulario de agregación de productos</h1>
-  <form [formGroup]="newProductForm" (ngSubmit)="onSubmit()">
+  <h1>Formulario de modificación de productos</h1>
+  <form [formGroup]="currentProductForm" (ngSubmit)="onSubmit()">
     <button type="button"
             id="clearFormButton"
             (click)="clearForm()">
@@ -13,11 +13,11 @@
            class="form-control"
            placeholder="Nombre del producto"
            formControlName="name">
-    <div *ngIf="newProductForm.get('name')!.invalid &&
-              (newProductForm.get('name')!.dirty ||
-               newProductForm.get('name')!.touched)"
+    <div *ngIf="currentProductForm.get('name')!.invalid &&
+              (currentProductForm.get('name')!.dirty ||
+               currentProductForm.get('name')!.touched)"
          class="errorMessage">
-      <p *ngIf="newProductForm.get('name')!.errors?.['required']">
+      <p *ngIf="currentProductForm.get('name')!.errors?.['required']">
         Campo Obligatorio
       </p>
     </div>
@@ -39,11 +39,11 @@
            class="form-control"
            placeholder="Precio"
            formControlName="price">
-    <div *ngIf="newProductForm.get('price')!.invalid &&
-              (newProductForm.get('price')!.dirty ||
-               newProductForm.get('price')!.touched)"
+    <div *ngIf="currentProductForm.get('price')!.invalid &&
+              (currentProductForm.get('price')!.dirty ||
+               currentProductForm.get('price')!.touched)"
          class="errorMessage">
-      <p *ngIf="newProductForm.get('price')!.errors?.['required']">
+      <p *ngIf="currentProductForm.get('price')!.errors?.['required']">
         Campo Obligatorio
       </p>
     </div>
@@ -53,11 +53,11 @@
            class="form-control"
            placeholder="Precio sin impuestos"
            formControlName="priceWithoutTax">
-    <div *ngIf="newProductForm.get('priceWithoutTax')!.invalid &&
-              (newProductForm.get('priceWithoutTax')!.dirty ||
-               newProductForm.get('priceWithoutTax')!.touched)"
+    <div *ngIf="currentProductForm.get('priceWithoutTax')!.invalid &&
+              (currentProductForm.get('priceWithoutTax')!.dirty ||
+               currentProductForm.get('priceWithoutTax')!.touched)"
          class="errorMessage">
-      <p *ngIf="newProductForm.get('priceWithoutTax')!.errors?.['required']">
+      <p *ngIf="currentProductForm.get('priceWithoutTax')!.errors?.['required']">
         Campo Obligatorio
       </p>
     </div>
@@ -67,11 +67,11 @@
            class="form-control"
            placeholder="Marca"
            formControlName="brand">
-    <div *ngIf="newProductForm.get('brand')!.invalid &&
-              (newProductForm.get('brand')!.dirty ||
-               newProductForm.get('brand')!.touched)"
+    <div *ngIf="currentProductForm.get('brand')!.invalid &&
+              (currentProductForm.get('brand')!.dirty ||
+               currentProductForm.get('brand')!.touched)"
          class="errorMessage">
-      <p *ngIf="newProductForm.get('brand')!.errors?.['required']">
+      <p *ngIf="currentProductForm.get('brand')!.errors?.['required']">
         Campo Obligatorio
       </p>
     </div>
@@ -81,11 +81,11 @@
            class="form-control"
            placeholder="Url de la Imagen"
            formControlName="imageUrl">
-    <div *ngIf="newProductForm.get('imageUrl')!.invalid &&
-              (newProductForm.get('imageUrl')!.dirty ||
-               newProductForm.get('imageUrl')!.touched)"
+    <div *ngIf="currentProductForm.get('imageUrl')!.invalid &&
+              (currentProductForm.get('imageUrl')!.dirty ||
+               currentProductForm.get('imageUrl')!.touched)"
          class="errorMessage">
-      <p *ngIf="newProductForm.get('imageUrl')!.errors?.['required']">
+      <p *ngIf="currentProductForm.get('imageUrl')!.errors?.['required']">
         Campo Obligatorio
       </p>
     </div>
@@ -100,11 +100,11 @@
       <option value="games">Juegos</option>
       <option value="clothing">Ropa</option>
     </select>
-    <div *ngIf="newProductForm.get('category')!.invalid &&
-              (newProductForm.get('category')!.dirty ||
-               newProductForm.get('category')!.touched)"
+    <div *ngIf="currentProductForm.get('category')!.invalid &&
+              (currentProductForm.get('category')!.dirty ||
+               currentProductForm.get('category')!.touched)"
          class="errorMessage">
-      <p *ngIf="newProductForm.get('category')!.errors?.['required']">
+      <p *ngIf="currentProductForm.get('category')!.errors?.['required']">
         Campo Obligatorio
       </p>
     </div>
@@ -114,17 +114,17 @@
            class="form-control"
            placeholder="Descuento"
            formControlName="discount">
-    <div *ngIf="newProductForm.get('discount')!.invalid &&
-              (newProductForm.get('discount')!.dirty ||
-               newProductForm.get('discount')!.touched)"
+    <div *ngIf="currentProductForm.get('discount')!.invalid &&
+              (currentProductForm.get('discount')!.dirty ||
+               currentProductForm.get('discount')!.touched)"
          class="errorMessage">
-      <p *ngIf="newProductForm.get('discount')!.errors?.['required']">
+      <p *ngIf="currentProductForm.get('discount')!.errors?.['required']">
         Campo Obligatorio
       </p>
     </div>
     <button type="submit"
-            [disabled]="!newProductForm.valid">
-      Agregar Producto
+            [disabled]="!currentProductForm.valid">
+      Modificar Producto
     </button>
   </form>
 </div>

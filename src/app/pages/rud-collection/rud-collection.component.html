@@ -4,24 +4,49 @@
        *ngFor="let coll of collections">
     <button class="collectionSelectionButton"
             (click)="collectionButtonHandler(coll)">
-      {{coll}}</button>
+      {{coll}}
+    </button>
   </div>
 </div>
 
 <div id="elementContainer"
-     *ngFor="let element of collection">
-  <div class="element">
+     *ngFor="let element of collection"
+     [ngSwitch]="currentCollection">
+
+  <!-- Information shown when displaying products -->
+  <div class="element" *ngSwitchCase="'products'">
     <div class="elementInfo">
       <p>Nombre: {{element.name}}</p>
       <p>Identificador: {{element.id}}</p>
     </div>
     <div class="elementButtonHolder">
       <button class="elementActionButton"
-              (click)="modifyElement(currentCollection, element.id)">
-        Editar</button>
+              (click)="modifyElement(element.id)">
+        Editar
+      </button>
       <button class="elementActionButton"
-              (click)="deleteElement(currentCollection, element.id)">
-        Eliminar</button>
+              (click)="deleteElement(element.id)">
+        Eliminar
+      </button>
+    </div>
+  </div>
+
+  <!-- Information shown when displaying users -->
+  <div class="element" *ngSwitchCase="'users'">
+    <div class="elementInfo">
+      <p>Nombre: {{element.name}}</p>
+      <p>Identificador: {{element.uid}}</p>
+    </div>
+
+    <div class="elementButtonHolder" *ngSwitchCase="'users'">
+      <button class="elementActionButton"
+              (click)="modifyElement(element.uid)">
+        Editar
+      </button>
+      <button class="elementActionButton"
+              (click)="deleteElement(element.uid)">
+        Eliminar
+      </button>
     </div>
   </div>
 </div>
