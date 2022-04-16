@@ -16,7 +16,7 @@ const adminOnly = () => map((user:any) => !!user && (user.uid === adminUid));
 const routes: Routes = [
   {path: '', component: HomePageComponent},
   {path: 'home', component: HomePageComponent},
-  {path: 'category', component: CategoryPageComponent},
+  {path: 'category', component: CategoryPageComponent,  canActivate: [AngularFireAuthGuard]},
   {path: 'addProduct', component: AddNewProductComponent, ...canActivate(adminOnly) },
   {path: 'collections', component: RudCollectionComponent, ...canActivate(adminOnly) },
   {path: 'login', component: UserLoginComponent},

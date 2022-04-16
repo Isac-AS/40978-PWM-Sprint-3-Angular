@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "@angular/fire/auth";
-import {Product} from "../../models/interfaces";
-import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import { Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-user-login',
@@ -11,19 +11,23 @@ import {Router} from "@angular/router";
 })
 export class UserLoginComponent implements OnInit {
 
-  credentials = {
-    email: '',
-    password: ''
-  }
+  credentials = this.fb.group({
+    email : ['', [Validators.required, Validators.email]],
+    password : [ '', [Validators.required, Validators.minLength(6)]]
+  });
 
-  constructor(private authFirebase: AuthService, private router: Router) { }
+  constructor(private authFirebase: AuthService,
+              private fb: FormBuilder,
+              private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  async login() {
-    const res = await this.authFirebase.login(this.credentials.email, this.credentials.password).catch(
-      error => { alert('Error: Usuario o contraseña invalidos')}
+  async onSubmit() {
+    const res = await this.authFirebase.login(this.credentials.value.email,
+                                              this.credentials.value.password)
+      .catch(error => {
+        alert('Error: Usuario o contraseña invalidos'
+      )}
     );
     if (res) {
       alert('Ha iniciado sesion correctamente');
@@ -31,4 +35,10 @@ export class UserLoginComponent implements OnInit {
     }
   }
 
+  clearForm(){
+    this.credentials.setValue({
+      email: '',
+      password: '',
+    })
+  }
 }

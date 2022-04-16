@@ -8,7 +8,7 @@ export interface Product {
   priceWithoutTax: number;
   brand: string;
   imageUrl: string;
-  category: string;
+  category: string;//'headphones' | 'laptops' | 'furniture' | 'sports' | 'phones' | 'games' | 'clothing';
   discount: number;
 }
 

@@ -2,7 +2,6 @@ import { Router} from "@angular/router";
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {AuthService} from "../../services/auth.service";
-import {ModifyElementModalViewComponent} from "../modify-element-modal-view/modify-element-modal-view.component";
 import {HeaderResponsiveDialogComponent} from "./header-responsive-dialog/header-responsive-dialog.component";
 
 @Component({
@@ -47,7 +46,7 @@ export class CommonsHeaderComponent implements OnInit {
       data: { login: this.isLoggedIn,
               admin: this.isAdmin
             },
-      width: '40%',
+      width: '70%',
       height: '100%',
       position: {
         left: '0px'

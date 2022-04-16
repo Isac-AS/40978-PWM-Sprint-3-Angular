@@ -1,6 +1,6 @@
 // Basic imports
 import { NgModule } from '@angular/core';
-import { FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AppRoutingModule} from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from '@angular/platform-browser';
@@ -90,7 +90,8 @@ import { HeaderResponsiveDialogComponent } from './components/commons-header/hea
     MatInputModule,
     MatButtonModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [
     ScreenTrackingService,UserTrackingService
