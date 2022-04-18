@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import { MessagePopupPair} from "../../models/interfaces";
+import { MessagePopupPair } from "../../models/interfaces";
 
 @Component({
   selector: 'app-info-message-popup',
