@@ -14,6 +14,14 @@ export interface Product {
   discount: number;
 }
 
+export interface Ticket {
+  id: any;
+  name: string;
+  email: string;
+  subject: string;
+  messageText: string;
+}
+
 export interface User {
   name: string;
   email: string;

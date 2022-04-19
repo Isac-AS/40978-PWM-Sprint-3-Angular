@@ -11,6 +11,7 @@ import {map} from "rxjs";
 import {canActivate} from "@angular/fire/auth-guard";
 import {ProfilePageComponent} from "./pages/profile-page/profile-page.component";
 import {AboutUsPageComponent} from "./pages/about-us-page/about-us-page.component";
+import {TicketPageComponent} from "./pages/ticket-page/ticket-page.component";
 
 const adminUid = '1QpnBzjOCYe6y4mAxU1I2yP47kl1';
 const adminOnly = () => map((user:any) => !!user && (user.uid === adminUid));
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'collections', component: RudCollectionComponent, ...canActivate(adminOnly) },
   {path: 'login', component: UserLoginComponent},
   {path: 'register', component: UserRegisterComponent},
-  {path: 'about-us', component: AboutUsPageComponent}
+  {path: 'about-us', component: AboutUsPageComponent},
+  {path: 'ticket', component: TicketPageComponent}
 ];
 
 @NgModule({

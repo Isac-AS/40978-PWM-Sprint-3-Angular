@@ -1,0 +1,83 @@
+<h1>Enviar un Ticket</h1>
+<form [formGroup]="ticket" (ngSubmit)="onSubmit()">
+  <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+  <img id="ticketPicture" src="https://api.iconify.design/icon-park-outline/ticket.svg" height="150" width="150">
+
+  <input type="text"
+         class="form-control"
+         placeholder="Nombre"
+         formControlName="name">
+  <div *ngIf="ticket.get('name')!.invalid &&
+              (ticket.get('name')!.dirty ||
+               ticket.get('name')!.touched)"
+       class="errorMessage">
+    <p *ngIf="ticket.get('name')!.errors?.['required']">
+      Campo Obligatorio
+    </p>
+  </div>
+
+  <input type="text"
+         class="form-control"
+         placeholder="Email"
+         formControlName="email">
+  <div *ngIf="ticket.get('email')!.invalid &&
+              (ticket.get('email')!.dirty ||
+               ticket.get('email')!.touched)"
+       class="errorMessage">
+    <p *ngIf="ticket.get('email')!.errors?.['required']">
+      Campo Obligatorio
+    </p>
+    <p *ngIf="ticket.get('email')!.errors?.['email']">
+      Debe introducir una dirección de correo electrónico válida
+    </p>
+  </div>
+
+  <input type="text"
+         class="form-control"
+         placeholder="Motivo de la consulta"
+         formControlName="reason">
+  <div *ngIf="ticket.get('reason')!.invalid &&
+              (ticket.get('reason')!.dirty ||
+               ticket.get('reason')!.touched)"
+       class="errorMessage">
+    <p *ngIf="ticket.get('reason')!.errors?.['required']">
+      Campo Obligatorio
+    </p>
+    <p *ngIf="ticket.get('reason')!.errors?.['minlength']">
+      Debe tener una longitud mínima de 5 caracteres
+    </p>
+    <p *ngIf="ticket.get('reason')!.errors?.['maxlength']">
+      Solo se permite como máximo 50 caracteres
+    </p>
+  </div>
+
+  <textarea
+         cdkTextareaAutosize
+         #autosize="cdkTextareaAutosize"
+         cdkAutosizeMinRows="1"
+         cdkAutosizeMaxRows="5"
+         class="form-control"
+         id="textArea"
+         placeholder="Mensaje"
+         formControlName="messageText">
+  </textarea>
+  <div *ngIf="ticket.get('messageText')!.invalid &&
+              (ticket.get('messageText')!.dirty ||
+               ticket.get('messageText')!.touched)"
+       class="errorMessage">
+    <p *ngIf="ticket.get('messageText')!.errors?.['required']">
+      Campo Obligatorio
+    </p>
+    <p *ngIf="ticket.get('messageText')!.errors?.['minlength']">
+      Debe tener una longitud mínima de 10 caracteres
+    </p>
+    <p *ngIf="ticket.get('messageText')!.errors?.['maxlength']">
+      Solo se permite como máximo 500 caracteres
+    </p>
+  </div>
+
+  <button type="submit"
+          [disabled]="!ticket.valid">
+    Enviar
+  </button>
+</form>
