@@ -3,7 +3,7 @@ import {User} from "../../models/interfaces";
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
-import {databaseService} from "../../services/database.service";
+import {DatabaseService} from "../../services/database.service";
 import {CustomUtilsService} from "../../services/customUtils.service";
 
 @Component({
@@ -34,7 +34,7 @@ export class UserRegisterComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private auth: AuthService,
-    private db: databaseService,
+    private db: DatabaseService,
     private utils: CustomUtilsService
   ) { }
 

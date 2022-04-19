@@ -1,7 +1,7 @@
 import {Observable} from "rxjs";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Component, Inject, OnInit} from '@angular/core';
-import {databaseService} from "../../../services/database.service";
+import {DatabaseService} from "../../../services/database.service";
 import {IdPair, Product} from "../../../models/interfaces";
 import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {CustomUtilsService} from "../../../services/customUtils.service";
@@ -46,7 +46,7 @@ export class ModifyElementModalViewComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    public database: databaseService,
+    public database: DatabaseService,
     private utils: CustomUtilsService,
     public dialogRef: MatDialogRef<ModifyElementModalViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IdPair

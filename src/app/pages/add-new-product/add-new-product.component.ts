@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MessagePopupPair, Product} from "../../models/interfaces";
-import {databaseService} from "../../services/database.service";
+import {DatabaseService} from "../../services/database.service";
 import {FormBuilder, NgForm, Validators} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {InfoMessagePopupComponent} from "../../components/info-message-popup/info-message-popup.component";
@@ -43,7 +43,7 @@ export class AddNewProductComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    public database: databaseService,
+    public database: DatabaseService,
     private utils: CustomUtilsService
   ) { }
 

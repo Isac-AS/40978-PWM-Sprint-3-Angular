@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
+import {getTableUnknownColumnError} from "@angular/cdk/table/table-errors";
 
 @Injectable({
   providedIn: 'root'
 })
-export class databaseService {
+export class DatabaseService {
   constructor( public db: AngularFirestore) {
   }
 
@@ -28,7 +29,7 @@ export class databaseService {
     return collection.doc(id).delete();
   }
 
-  readCollection(path: string) {
+  readCollection<T>(path: string) {
     const collection = this.db.collection(path);
     return collection.valueChanges();
   }

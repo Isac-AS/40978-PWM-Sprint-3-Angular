@@ -1,15 +1,15 @@
+import { map } from "rxjs";
 import { NgModule } from '@angular/core';
-import {RouterModule, Routes} from "@angular/router";
-import {HomePageComponent} from "./pages/home-page/home-page.component";
-import {CategoryPageComponent} from "./pages/category-page/category-page.component";
-import {AddNewProductComponent} from "./pages/add-new-product/add-new-product.component";
-import {AngularFireAuthGuard} from "@angular/fire/compat/auth-guard";
-import {RudCollectionComponent} from "./pages/rud-collection/rud-collection.component";
-import {UserLoginComponent} from "./pages/user-login/user-login.component";
-import {UserRegisterComponent} from "./pages/user-register/user-register.component";
-import {map} from "rxjs";
 import {canActivate} from "@angular/fire/auth-guard";
-import {ProfilePageComponent} from "./pages/profile-page/profile-page.component";
+import { RouterModule, Routes } from "@angular/router";
+import { AngularFireAuthGuard } from "@angular/fire/compat/auth-guard";
+import { HomePageComponent } from "./pages/home-page/home-page.component";
+import { UserLoginComponent } from "./pages/user-login/user-login.component";
+import { ProfilePageComponent } from "./pages/profile-page/profile-page.component";
+import { UserRegisterComponent } from "./pages/user-register/user-register.component";
+import { CategoryPageComponent } from "./pages/category-page/category-page.component";
+import { RudCollectionComponent } from "./pages/rud-collection/rud-collection.component";
+import { AddNewProductComponent } from "./pages/add-new-product/add-new-product.component";
 import {AboutUsPageComponent} from "./pages/about-us-page/about-us-page.component";
 
 const adminUid = '1QpnBzjOCYe6y4mAxU1I2yP47kl1';

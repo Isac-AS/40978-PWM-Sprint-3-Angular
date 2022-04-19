@@ -1,7 +1,7 @@
 import {FormBuilder, Validators} from "@angular/forms";
 import {IdPair, MessagePopupPair, Product, User} from "../../models/interfaces";
 import {Component, Inject, OnInit} from '@angular/core';
-import {databaseService} from "../../services/database.service";
+import {DatabaseService} from "../../services/database.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Observable} from "rxjs";
 import {InfoMessagePopupComponent} from "../info-message-popup/info-message-popup.component";
@@ -38,7 +38,7 @@ export class UserModificationPopupComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    public database: databaseService,
+    public database: DatabaseService,
     private utils: CustomUtilsService,
     public dialogRef: MatDialogRef<UserModificationPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IdPair

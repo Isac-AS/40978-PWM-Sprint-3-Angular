@@ -1,8 +1,6 @@
+import {User} from "../models/interfaces";
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {User} from "../models/interfaces";
-import {Observable, Observer} from "rxjs";
-import {stringify} from "querystring";
 
 @Injectable({
   providedIn: 'root'

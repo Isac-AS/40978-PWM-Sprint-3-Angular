@@ -1,7 +1,7 @@
 import {IdPair} from "../../models/interfaces";
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
-import { databaseService } from "../../services/database.service";
+import { DatabaseService } from "../../services/database.service";
 import {CustomUtilsService} from "../../services/customUtils.service";
 import { ModifyElementModalViewComponent } from "./modify-element-modal-view/modify-element-modal-view.component";
 import {
@@ -23,7 +23,7 @@ export class RudCollectionComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    public db: databaseService,
+    public db: DatabaseService,
     private utils: CustomUtilsService,
   ) { }
 

@@ -3,7 +3,7 @@ import {Observable} from "rxjs";
 import {FormBuilder, Validators} from "@angular/forms";
 import {MessagePopupPair, Product, User} from "../../models/interfaces";
 import {MatDialog} from "@angular/material/dialog";
-import {databaseService} from "../../services/database.service";
+import {DatabaseService} from "../../services/database.service";
 import {InfoMessagePopupComponent} from "../../components/info-message-popup/info-message-popup.component";
 import {AuthService} from "../../services/auth.service";
 import {CustomUtilsService} from "../../services/customUtils.service";
@@ -39,7 +39,7 @@ export class ProfilePageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    public database: databaseService,
+    public database: DatabaseService,
     private utils: CustomUtilsService
   ) {
     const promise = this.auth.getUid();

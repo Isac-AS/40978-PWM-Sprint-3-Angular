@@ -25,7 +25,7 @@ export interface User {
 
 
 /*
-  #################### Auxiliary types to pass around probably to dialogs  ####################
+  #################### Auxiliary types ####################
  */
 export interface IdPair {
   id: string;
@@ -40,4 +40,12 @@ export interface HeaderDialogPair {
 export interface MessagePopupPair {
   message: string;
   status: boolean;
+}
+
+export interface WhatToLoad {
+  elementToLoad: 'all' | 'random' |
+    'headphones' | 'laptops' |
+    'furniture' | 'sports' |
+    'phones' | 'games' |
+    'clothing' | 'discount' | 'specialOffer';
 }
