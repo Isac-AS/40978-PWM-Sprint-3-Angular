@@ -51,6 +51,9 @@ import { HeaderResponsiveDialogComponent } from './components/commons-header/hea
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { UserModificationPopupComponent } from './components/user-modification-popup/user-modification-popup.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 // @ts-ignore
 @NgModule({
@@ -72,7 +75,10 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     InfoMessagePopupComponent,
     UserModificationPopupComponent,
     ProfilePageComponent,
-    AboutUsPageComponent
+    AboutUsPageComponent,
+    WishlistComponent,
+    ShoppingCartComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
