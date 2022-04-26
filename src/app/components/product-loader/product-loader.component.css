@@ -1,7 +1,6 @@
 #productContainer {
   display: flex;
   flex-flow: row wrap;
-  background-color: #C4C4C4;
   border: 5px black;
-
+  justify-content: space-around;
 }

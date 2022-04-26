@@ -1,9 +1,7 @@
 .trendingCategories {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto;
-  column-gap: 5vw;
-  margin: 4em 4em;
-  justify-content: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 
 .trendingCategories .category {
