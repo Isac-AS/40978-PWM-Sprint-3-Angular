@@ -11,6 +11,7 @@ import { CategoryPageComponent } from "./pages/category-page/category-page.compo
 import { RudCollectionComponent } from "./pages/rud-collection/rud-collection.component";
 import { AddNewProductComponent } from "./pages/add-new-product/add-new-product.component";
 import {AboutUsPageComponent} from "./pages/about-us-page/about-us-page.component";
+import { ConcreteProductPageComponent } from "./pages/concrete-product-page/concrete-product-page.component";
 
 const adminUid = '1QpnBzjOCYe6y4mAxU1I2yP47kl1';
 const adminOnly = () => map((user:any) => !!user && (user.uid === adminUid));
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'collections', component: RudCollectionComponent, ...canActivate(adminOnly) },
   {path: 'login', component: UserLoginComponent},
   {path: 'register', component: UserRegisterComponent},
-  {path: 'about-us', component: AboutUsPageComponent}
+  {path: 'about-us', component: AboutUsPageComponent},
+  {path: 'product', component: ConcreteProductPageComponent},
 ];
 
 @NgModule({

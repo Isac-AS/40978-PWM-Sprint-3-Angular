@@ -52,6 +52,7 @@ import { HomePageTrendingCategoriesComponent } from './components/home-page-tren
 import { HeaderResponsiveDialogComponent } from './components/commons-header/header-responsive-dialog/header-responsive-dialog.component';
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { UserModificationPopupComponent } from './components/user-modification-popup/user-modification-popup.component';
+import { ConcreteProductPageComponent } from './pages/concrete-product-page/concrete-product-page.component';
 
 // @ts-ignore
 @NgModule({
@@ -74,7 +75,8 @@ import { UserModificationPopupComponent } from './components/user-modification-p
     UserModificationPopupComponent,
     ProfilePageComponent,
     AboutUsPageComponent,
-    ProductComponent
+    ProductComponent,
+    ConcreteProductPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { CustomUtilsService } from 'src/app/services/customUtils.service';
 import {Product} from "../../models/interfaces";
 import {DatabaseService} from "../../services/database.service";
 
@@ -15,6 +16,7 @@ export class ProductLoaderComponent implements OnInit {
 
   constructor(
     private db: DatabaseService,
+    private utils: CustomUtilsService
   ) { }
 
   ngOnInit(): void {
@@ -22,5 +24,9 @@ export class ProductLoaderComponent implements OnInit {
         this.products = res;
       }
     )
+  }
+
+  setId(id: string) {
+    this.utils.setId(id);
   }
 }

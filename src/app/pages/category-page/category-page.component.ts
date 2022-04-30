@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomUtilsService } from 'src/app/services/customUtils.service';
 
 @Component({
   selector: 'app-category-page',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryPageComponent implements OnInit {
 
-  constructor() { }
+  category: string;
+
+  constructor(
+    private utils: CustomUtilsService
+  ) { 
+    this.category = this.utils.getCategory();
+  }
 
   ngOnInit(): void {
   }

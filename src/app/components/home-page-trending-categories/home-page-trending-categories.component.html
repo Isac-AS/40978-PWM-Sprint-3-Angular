@@ -1,30 +1,29 @@
-<h1>Categorías más relevantes</h1>
-<div class="trendingCategories">
-  <a class="category" routerLink="/category">
+<div id="trendingCategories">
+  <a class="category" routerLink="/category" (click)="setCategory('headphones')">
     <img src="https://api.iconify.design/bi/headphones.svg">
     <u>Auriculares</u>
   </a>
-  <a class="category" href="productsOfCategory.html?url=data/laptops.json">
+  <a class="category" routerLink="/category" (click)="setCategory('laptops')">
     <img src="https://api.iconify.design/bi/laptop.svg">
     <u>Portátiles</u>
   </a>
-  <a class="category" href="productsOfCategory.html?url=data/furniture.json">
+  <a class="category" routerLink="/category" (click)="setCategory('furniture')">
     <img src="https://api.iconify.design/map/furniture-store.svg">
     <u>Muebles</u>
   </a>
-  <a class="category" href="productsOfCategory.html?url=data/sport.json">
+  <a class="category" routerLink="/category" (click)="setCategory('sports')">
     <img src="https://api.iconify.design/bx/football.svg">
     <u>Deporte</u>
   </a>
-  <a class="category" href="productsOfCategory.html?url=data/phones.json">
+  <a class="category" routerLink="/category" (click)="setCategory('phones')">
     <img src="https://api.iconify.design/bi/phone.svg">
     <u>Móviles</u>
   </a>
-  <a class="category" href="productsOfCategory.html?url=data/videoGames.json">
+  <a class="category" routerLink="/category" (click)="setCategory('games')">
     <img src="https://api.iconify.design/bi/controller.svg">
     <u>Videojuegos</u>
   </a>
-  <a class="category" href="productsOfCategory.html?url=data/clothing.json">
+  <a class="category" routerLink="/category" (click)="setCategory('clothing')">
     <img src="https://api.iconify.design/icon-park/men-jacket.svg">
     <u>Ropa</u>
   </a>

@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DatabaseService} from "../../services/database.service";
 import {Product, User} from "../../models/interfaces";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-product',
@@ -11,7 +10,6 @@ import {Observable} from "rxjs";
 export class ProductComponent implements OnInit {
 
   @Input() productId: string = '';
-  path = 'products';
   product : Product = {
     id: '',
     name: '',
@@ -25,17 +23,14 @@ export class ProductComponent implements OnInit {
     discount: 0,
   };
 
-  observable: Observable<any> | undefined;
-
   constructor(
     private db: DatabaseService,
   ) { }
 
   ngOnInit(): void {
-    this.observable = this.db.readDocument<Product>('products', this.productId);
-    this.observable.subscribe( async res => {
+    this.db.readDocument<Product>('products', this.productId).subscribe( async res => {
       if (res)
-        this.product = await res;
+        this.product = res;
     })
   }
 

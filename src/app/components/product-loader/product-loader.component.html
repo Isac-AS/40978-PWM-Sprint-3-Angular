@@ -1,10 +1,14 @@
 <div id="productContainer">
   <div *ngFor="let product of products">
     <div *ngIf="product.category === whatToLoad">
-      <app-product [productId]="product.id"></app-product>
+      <a routerLink="/product" (click)="setId(product.id)">
+        <app-product [productId]="product.id"></app-product>
+      </a>
     </div>
     <div *ngIf="whatToLoad === 'all'">
-      <app-product [productId]="product.id"></app-product>
+      <a routerLink="/product" (click)="setId(product.id)">
+        <app-product [productId]="product.id"></app-product>
+      </a>
     </div>
   </div>
 </div>
