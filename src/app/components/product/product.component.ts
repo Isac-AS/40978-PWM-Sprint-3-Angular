@@ -10,9 +10,8 @@ import {Observable} from "rxjs";
 })
 export class ProductComponent implements OnInit {
 
-  path = 'products';
-
   @Input() productId: string = '';
+  path = 'products';
   product : Product = {
     id: '',
     name: '',
