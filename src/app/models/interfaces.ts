@@ -42,10 +42,3 @@ export interface MessagePopupPair {
   status: boolean;
 }
 
-export interface WhatToLoad {
-  elementToLoad: 'all' | 'random' |
-    'headphones' | 'laptops' |
-    'furniture' | 'sports' |
-    'phones' | 'games' |
-    'clothing' | 'discount' | 'specialOffer';
-}

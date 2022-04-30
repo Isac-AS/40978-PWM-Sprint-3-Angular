@@ -1,5 +1,10 @@
 <div id="productContainer">
-  <div *ngFor="let id of productsIds">
-    <app-product [productId]="id"></app-product>
+  <div *ngFor="let product of products">
+    <div *ngIf="product.category === whatToLoad">
+      <app-product [productId]="product.id"></app-product>
+    </div>
+    <div *ngIf="whatToLoad === 'all'">
+      <app-product [productId]="product.id"></app-product>
+    </div>
   </div>
 </div>
