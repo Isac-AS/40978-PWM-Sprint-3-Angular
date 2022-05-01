@@ -25,7 +25,8 @@ export class UserRegisterComponent implements OnInit {
     uid: '',
     password: '',
     profile: "regular",
-    shoppingCart: ['']
+    shoppingCart: [''],
+    photoURL: 'gs://pwm-sprint3-angular.appspot.com/user-pic.jpg'
   };
 
   path: string = 'users';

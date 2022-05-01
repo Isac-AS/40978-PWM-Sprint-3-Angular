@@ -4,8 +4,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AppRoutingModule} from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from '@angular/platform-browser';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 // Angular Fire imports
 import { AngularFireModule} from "@angular/fire/compat";
 import { provideAuth,getAuth } from '@angular/fire/auth';
@@ -19,6 +19,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
+import { AngularFireStorageModule, BUCKET  } from '@angular/fire/compat/storage';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 
@@ -76,13 +77,14 @@ import { ConcreteProductPageComponent } from './pages/concrete-product-page/conc
     ProfilePageComponent,
     AboutUsPageComponent,
     ProductComponent,
-    ConcreteProductPageComponent
+    ConcreteProductPageComponent,
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
@@ -105,7 +107,9 @@ import { ConcreteProductPageComponent } from './pages/concrete-product-page/conc
     ReactiveFormsModule
   ],
   providers: [
-    ScreenTrackingService,UserTrackingService
+    UserTrackingService,
+    ScreenTrackingService,
+    //{ provide: BUCKET, useValue: 'default' },
   ],
   bootstrap: [AppComponent]
 })

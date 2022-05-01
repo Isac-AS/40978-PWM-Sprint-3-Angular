@@ -21,6 +21,13 @@ export interface User {
   password: string;
   profile: 'admin' | 'regular';
   shoppingCart: string[];
+  photoURL: string;
+}
+
+export interface imgFile {
+  name: string;
+  filepath: string;
+  size: number;
 }
 
 
