@@ -29,11 +29,18 @@ export interface User {
   password: string;
   profile: 'admin' | 'regular';
   shoppingCart: string[];
+  photoURL: string;
+}
+
+export interface imgFile {
+  name: string;
+  filepath: string;
+  size: number;
 }
 
 
 /*
-  #################### Auxiliary types to pass around probably to dialogs  ####################
+  #################### Auxiliary types ####################
  */
 export interface IdPair {
   id: string;
@@ -49,3 +56,4 @@ export interface MessagePopupPair {
   message: string;
   status: boolean;
 }
+

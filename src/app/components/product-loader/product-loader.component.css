@@ -1,0 +1,6 @@
+#productContainer {
+  display: flex;
+  flex-flow: row wrap;
+  border: 5px black;
+  justify-content: space-around;
+}

@@ -8,6 +8,9 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class CustomUtilsService {
 
+  currentCategory: string = '';
+  currentProductId: string = '';
+
   constructor(
     public dialog: MatDialog
   ) { }
@@ -18,6 +21,22 @@ export class CustomUtilsService {
     });
     dialogRef.afterClosed().subscribe(res => {
     });
+  }
+
+  setCategory(category: string) {
+    this.currentCategory = category;
+  }
+
+  getCategory(): string {
+    return this.currentCategory;
+  }
+
+  setId(id: string) {
+    this.currentProductId = id;
+  }
+
+  getId(): string {
+    return this.currentProductId;
   }
 
 }

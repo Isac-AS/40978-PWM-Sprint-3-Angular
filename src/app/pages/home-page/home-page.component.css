@@ -1,0 +1,17 @@
+#pageContainer {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+h1 {
+    color: #EEA10C;
+    font-weight: 400;
+    font-size: 2.7em;
+    margin-left: 5%;
+    margin-top: 1.5em;
+}
+
+app-product-loader {
+    width: 90%;
+    align-self: center;
+}

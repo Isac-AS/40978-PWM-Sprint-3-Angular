@@ -1,1 +1,14 @@
-<p>product-loader works!</p>
+<div id="productContainer">
+  <div *ngFor="let product of products">
+    <div *ngIf="product.category === whatToLoad">
+      <a routerLink="/product" (click)="setId(product.id)">
+        <app-product [productId]="product.id"></app-product>
+      </a>
+    </div>
+    <div *ngIf="whatToLoad === 'all'">
+      <a routerLink="/product" (click)="setId(product.id)">
+        <app-product [productId]="product.id"></app-product>
+      </a>
+    </div>
+  </div>
+</div>

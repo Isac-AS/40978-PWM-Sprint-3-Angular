@@ -2,8 +2,7 @@
   <h1>Formulario de modificación de usuarios</h1>
   <form [formGroup]="currentUserForm" (ngSubmit)="onSubmit()">
     <button type="button"
-            id="clearFormButton"
-            (click)="clearForm()">
+            id="clearFormButton">
       <span class="material-icons">cleaning_services</span>
       <u>Limpiar datos</u>
     </button>
@@ -56,6 +55,17 @@
       Modificar Usuario
     </button>
   </form>
+
+  <div class="form-container mat-elevation-z5 text-center">
+    <h1>Cambia tu avatar de usuario</h1>
+    <div>
+        <img width="120" height="120" [src]="profileUrl" />
+    </div>
+    <input type="file" (change)="uploadFile($event)">
+    <div>{{ uploadPercent | async }}</div>
+    <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+</div>
+
 </div>
 
 

@@ -6,6 +6,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 // Angular Fire imports
 import { AngularFireModule} from "@angular/fire/compat";
 import { provideAuth,getAuth } from '@angular/fire/auth';
@@ -19,6 +20,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
+import { AngularFireStorageModule, BUCKET  } from '@angular/fire/compat/storage';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 
@@ -34,6 +36,7 @@ import { AppComponent } from './app.component';
 // Pages
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { UserRegisterComponent } from './pages/user-register/user-register.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { AddNewProductComponent } from './pages/add-new-product/add-new-product.component';
@@ -42,6 +45,7 @@ import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.compon
 import { TicketPageComponent } from './pages/ticket-page/ticket-page.component';
 
 // Components
+import { ProductComponent } from './components/product/product.component';
 import { CommonsHeaderComponent } from './components/commons-header/commons-header.component';
 import { CommonsFooterComponent } from './components/commons-footer/commons-footer.component';
 import { ProductLoaderComponent } from './components/product-loader/product-loader.component';
@@ -51,8 +55,7 @@ import { HomePageTrendingCategoriesComponent } from './components/home-page-tren
 import { HeaderResponsiveDialogComponent } from './components/commons-header/header-responsive-dialog/header-responsive-dialog.component';
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { UserModificationPopupComponent } from './components/user-modification-popup/user-modification-popup.component';
-import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
-
+import { ConcreteProductPageComponent } from './pages/concrete-product-page/concrete-product-page.component';
 
 // @ts-ignore
 @NgModule({
@@ -75,6 +78,8 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     UserModificationPopupComponent,
     ProfilePageComponent,
     AboutUsPageComponent,
+    ProductComponent,
+    ConcreteProductPageComponent,
     TicketPageComponent
   ],
   imports: [
@@ -82,6 +87,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
@@ -104,7 +110,9 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     ReactiveFormsModule
   ],
   providers: [
-    ScreenTrackingService,UserTrackingService
+    UserTrackingService,
+    ScreenTrackingService,
+    //{ provide: BUCKET, useValue: 'default' },
   ],
   bootstrap: [AppComponent]
 })
