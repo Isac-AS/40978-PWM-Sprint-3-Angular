@@ -46,6 +46,7 @@
 #elementContainer .element .elementInfo{
   display: flex;
   flex-flow: column nowrap;
+  justify-items: center;
 }
 #elementContainer .element .elementInfo p{
   margin: 5px;
@@ -55,6 +56,7 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-end;
+  align-items: center;
   flex-grow: 2;
 }
 
@@ -65,3 +67,9 @@
   padding: 0.4em;
   margin: 0 2em;
 }
+
+
+#elementContainer .element img {
+  width: 4em;
+}
+

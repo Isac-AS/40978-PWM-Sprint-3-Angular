@@ -47,6 +47,7 @@ import { ConcreteProductPageComponent } from './pages/concrete-product-page/conc
 
 // Components
 import { ProductComponent } from './components/product/product.component';
+import { CartProductComponent } from './components/cart-product/cart-product.component';
 import { CommonsHeaderComponent } from './components/commons-header/commons-header.component';
 import { CommonsFooterComponent } from './components/commons-footer/commons-footer.component';
 import { ProductLoaderComponent } from './components/product-loader/product-loader.component';
@@ -56,7 +57,6 @@ import { HomePageWelcomingButtonsComponent } from './components/home-page-welcom
 import { ModifyElementModalViewComponent } from './pages/rud-collection/modify-element-modal-view/modify-element-modal-view.component';
 import { HomePageTrendingCategoriesComponent } from './components/home-page-trending-categories/home-page-trending-categories.component';
 import { HeaderResponsiveDialogComponent } from './components/commons-header/header-responsive-dialog/header-responsive-dialog.component';
-import { CartProductComponent } from './components/cart-product/cart-product.component';
 
 
 @NgModule({

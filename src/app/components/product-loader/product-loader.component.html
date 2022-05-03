@@ -1,5 +1,6 @@
 <div id="productContainer">
   <div *ngFor="let product of products">
+
     <div *ngIf="product.category === whatToLoad">
       <div class="product">
         <a routerLink="/product" (click)="setId(product.id)">
@@ -10,7 +11,30 @@
         </button>
       </div>
     </div>
+
     <div *ngIf="whatToLoad === 'all'">
+      <div class="product">
+        <a routerLink="/product" (click)="setId(product.id)">
+          <app-product [productId]="product.id"></app-product>
+        </a>
+        <button (click)="addToCart(product.id)">
+          Añadir al carrito
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="whatToLoad === 'discount'">
+      <div class="product">
+        <a routerLink="/product" (click)="setId(product.id)">
+          <app-product [productId]="product.id"></app-product>
+        </a>
+        <button (click)="addToCart(product.id)">
+          Añadir al carrito
+        </button>
+      </div>
+    </div>
+    
+    <div *ngIf="whatToLoad === 'promotion'">
       <div class="product">
         <a routerLink="/product" (click)="setId(product.id)">
           <app-product [productId]="product.id"></app-product>
