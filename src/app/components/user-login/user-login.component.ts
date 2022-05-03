@@ -46,6 +46,7 @@ export class UserLoginComponent implements OnInit {
         message: 'Bienvenido!',
         status: true
       })
+      this.dialogRef.close();
       await this.router.navigate(['/home']);
     }
   }
