@@ -20,7 +20,7 @@ export interface User {
   uid: string;
   password: string;
   profile: 'admin' | 'regular';
-  shoppingCart: string[];
+  shoppingCart: ShoppingCartElement[];
   photoURL: string;
 }
 
@@ -47,5 +47,10 @@ export interface HeaderDialogPair {
 export interface MessagePopupPair {
   message: string;
   status: boolean;
+}
+
+export interface ShoppingCartElement {
+  id: string;
+  count: number;
 }
 

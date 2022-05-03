@@ -1,14 +1,13 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {DatabaseService} from "../../services/database.service";
-import {Product, User} from "../../models/interfaces";
-import { CustomUtilsService } from 'src/app/services/customUtils.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/interfaces';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  selector: 'app-cart-product',
+  templateUrl: './cart-product.component.html',
+  styleUrls: ['./cart-product.component.css']
 })
-export class ProductComponent implements OnInit {
+export class CartProductComponent implements OnInit {
 
   @Input() productId: string = '';
   product : Product = {
@@ -26,7 +25,6 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private db: DatabaseService,
-    private utils: CustomUtilsService
   ) { }
 
   ngOnInit(): void {
@@ -35,5 +33,7 @@ export class ProductComponent implements OnInit {
         this.product = res;
     })
   }
+
+  
 
 }

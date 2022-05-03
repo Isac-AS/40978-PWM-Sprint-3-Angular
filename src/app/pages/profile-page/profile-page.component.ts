@@ -31,7 +31,7 @@ export class ProfilePageComponent implements OnInit {
     uid: '',
     password: '',
     profile: 'regular',
-    shoppingCart: [''],
+    shoppingCart: [],
     photoURL: ''
   }
 

@@ -34,7 +34,6 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { AppComponent } from './app.component';
 // Pages
 import { ContactComponent } from './pages/contact/contact.component';
-import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
@@ -57,6 +56,7 @@ import { HomePageWelcomingButtonsComponent } from './components/home-page-welcom
 import { ModifyElementModalViewComponent } from './pages/rud-collection/modify-element-modal-view/modify-element-modal-view.component';
 import { HomePageTrendingCategoriesComponent } from './components/home-page-trending-categories/home-page-trending-categories.component';
 import { HeaderResponsiveDialogComponent } from './components/commons-header/header-responsive-dialog/header-responsive-dialog.component';
+import { CartProductComponent } from './components/cart-product/cart-product.component';
 
 
 @NgModule({
@@ -81,9 +81,9 @@ import { HeaderResponsiveDialogComponent } from './components/commons-header/hea
     AboutUsPageComponent,
     ProductComponent,
     ConcreteProductPageComponent,
-    WishlistComponent,
     ShoppingCartComponent,
-    ContactComponent
+    ContactComponent,
+    CartProductComponent
   ],
   imports: [
     BrowserModule,

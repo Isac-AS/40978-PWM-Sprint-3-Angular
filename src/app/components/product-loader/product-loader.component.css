@@ -4,3 +4,8 @@
   border: 5px black;
   justify-content: space-around;
 }
+
+.product {
+  background-color: #C4C4C4;
+  border: solid 2px black;
+}
