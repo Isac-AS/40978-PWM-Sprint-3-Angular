@@ -33,28 +33,32 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 // Component imports
 import { AppComponent } from './app.component';
 // Pages
+import { ContactComponent } from './pages/contact/contact.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
 import { UserRegisterComponent } from './pages/user-register/user-register.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { AddNewProductComponent } from './pages/add-new-product/add-new-product.component';
 import { RudCollectionComponent } from './pages/rud-collection/rud-collection.component';
-import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
+import { ConcreteProductPageComponent } from './pages/concrete-product-page/concrete-product-page.component';
 
 // Components
 import { ProductComponent } from './components/product/product.component';
 import { CommonsHeaderComponent } from './components/commons-header/commons-header.component';
 import { CommonsFooterComponent } from './components/commons-footer/commons-footer.component';
 import { ProductLoaderComponent } from './components/product-loader/product-loader.component';
-import { ModifyElementModalViewComponent } from './pages/rud-collection/modify-element-modal-view/modify-element-modal-view.component';
-import { HomePageWelcomingButtonsComponent } from './components/home-page-welcoming-buttons/home-page-welcoming-buttons.component';
-import { HomePageTrendingCategoriesComponent } from './components/home-page-trending-categories/home-page-trending-categories.component';
-import { HeaderResponsiveDialogComponent } from './components/commons-header/header-responsive-dialog/header-responsive-dialog.component';
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { UserModificationPopupComponent } from './components/user-modification-popup/user-modification-popup.component';
-import { ConcreteProductPageComponent } from './pages/concrete-product-page/concrete-product-page.component';
-// @ts-ignore
+import { HomePageWelcomingButtonsComponent } from './components/home-page-welcoming-buttons/home-page-welcoming-buttons.component';
+import { ModifyElementModalViewComponent } from './pages/rud-collection/modify-element-modal-view/modify-element-modal-view.component';
+import { HomePageTrendingCategoriesComponent } from './components/home-page-trending-categories/home-page-trending-categories.component';
+import { HeaderResponsiveDialogComponent } from './components/commons-header/header-responsive-dialog/header-responsive-dialog.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +81,9 @@ import { ConcreteProductPageComponent } from './pages/concrete-product-page/conc
     AboutUsPageComponent,
     ProductComponent,
     ConcreteProductPageComponent,
+    WishlistComponent,
+    ShoppingCartComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

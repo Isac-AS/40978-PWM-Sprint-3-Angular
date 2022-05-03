@@ -12,6 +12,9 @@ import { RudCollectionComponent } from "./pages/rud-collection/rud-collection.co
 import { AddNewProductComponent } from "./pages/add-new-product/add-new-product.component";
 import {AboutUsPageComponent} from "./pages/about-us-page/about-us-page.component";
 import { ConcreteProductPageComponent } from "./pages/concrete-product-page/concrete-product-page.component";
+import {WishlistComponent} from "./pages/wishlist/wishlist.component";
+import {ShoppingCartComponent} from "./pages/shopping-cart/shopping-cart.component";
+import {ContactComponent} from "./pages/contact/contact.component";
 
 const adminUid = '1QpnBzjOCYe6y4mAxU1I2yP47kl1';
 const adminOnly = () => map((user:any) => !!user && (user.uid === adminUid));
@@ -60,6 +63,18 @@ const routes: Routes = [
     path: 'product', 
     component: ConcreteProductPageComponent
   },
+  {
+    path: 'wishlist',
+    component: WishlistComponent
+  },
+  {
+    path: 'shopping-cart',
+    component: ShoppingCartComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
+  }
 ];
 
 @NgModule({
