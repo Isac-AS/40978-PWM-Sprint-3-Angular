@@ -54,7 +54,6 @@ import { HeaderResponsiveDialogComponent } from './components/commons-header/hea
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { UserModificationPopupComponent } from './components/user-modification-popup/user-modification-popup.component';
 import { ConcreteProductPageComponent } from './pages/concrete-product-page/concrete-product-page.component';
-
 // @ts-ignore
 @NgModule({
   declarations: [
