@@ -1,6 +1,5 @@
 <div id="productContainer">
-  <div *ngFor="let product of products">
-
+  <div *ngFor="let product of products" class="iteratingContainer">
     <div *ngIf="product.category === whatToLoad">
       <div class="product">
         <a routerLink="/product" (click)="setId(product.id)">
