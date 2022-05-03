@@ -4,7 +4,7 @@
   justify-content: center;
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background-color: #191919;
+  background-color: #464646;
   border-radius: 10px;
 
 }
@@ -109,7 +109,7 @@ p{
   text-align: center;
   margin: 0 auto 2% auto;
   padding: 1%;
-  background-color: #FF3838;
+  background-color: #c94d4d;
 }
 
 hr {

@@ -6,7 +6,7 @@ import {AuthService} from "../../services/auth.service";
 import {DatabaseService} from "../../services/database.service";
 import {CustomUtilsService} from "../../services/customUtils.service";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {UserLoginComponent} from "../../pages/user-login/user-login.component";
+import {UserLoginComponent} from "../user-login/user-login.component";
 
 @Component({
   selector: 'app-user-register',
@@ -110,7 +110,9 @@ export class UserRegisterComponent implements OnInit {
 
     this.dialogRef.close();
     const dialogLogin = this.dialog.open(UserLoginComponent, {
-      minWidth: "40%"
+      minWidth: "30%",
+      panelClass: 'header-dialog-container',
+      autoFocus: false
     });
     dialogLogin.afterClosed().subscribe(res => {});
   }

@@ -1,14 +1,14 @@
-<div id="pageContainer">
-  <h1>Iniciar Sesión</h1>
-  <form [formGroup]="credentials" (ngSubmit)="onSubmit()">
+<div id="formContainer">
+  <form [formGroup]="credentials" (ngSubmit)="onSubmit()" id="formStyle">
 
+    <label for="email"> Correo eléctronico o nombre de usuario </label>
     <input type="text"
            class="form-control"
            placeholder="Correo Electrónico"
            formControlName="email">
     <div *ngIf="credentials.get('email')!.invalid &&
-              (credentials.get('email')!.dirty ||
-               credentials.get('email')!.touched)"
+                (credentials.get('email')!.dirty ||
+                credentials.get('email')!.touched)"
          class="errorMessage">
       <p *ngIf="credentials.get('email')!.errors?.['required']">
         Campo Obligatorio
@@ -18,19 +18,17 @@
       </p>
     </div>
 
+    <label for="password"> Contraseña </label>
     <input type="password"
            class="form-control"
            placeholder="Contraseña"
            formControlName="password">
     <div *ngIf="credentials.get('password')!.invalid &&
-              (credentials.get('password')!.dirty ||
-               credentials.get('password')!.touched)"
+                (credentials.get('password')!.dirty ||
+                credentials.get('password')!.touched)"
          class="errorMessage">
       <p *ngIf="credentials.get('password')!.errors?.['required']">
         Campo Obligatorio
-      </p>
-      <p *ngIf="credentials.get('password')!.errors?.['minlength']">
-        Debe tener una longitud mínima de 6 caracteres
       </p>
     </div>
 
@@ -40,12 +38,10 @@
     </button>
   </form>
 
-  <a routerLink="/home" id="passwordForgotten">Forgot password?</a>
-
   <hr>
   <h2>¿Eres nuevo cliente?</h2>
   <div id="buttonHolder">
-    <button routerLink="/register">
+    <button (click)="openRegisterDialog()">
       <span class="material-icons">accessibility_new</span>
       <u>Crea una cuenta!</u>
     </button>

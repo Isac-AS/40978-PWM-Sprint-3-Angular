@@ -1,0 +1,179 @@
+#formContainer {
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: #464646;
+  border-radius: 10px;
+
+}
+
+#formContainer #formStyle{
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5%;
+
+}
+
+h1 {
+  color: white;
+  font-size: 3.5em;
+  font-weight: 500;
+  font-style: italic;
+  margin: 3% auto;
+}
+
+label {
+
+  font-weight: 900;
+  font-size: large;
+  margin-bottom: 1%;
+  color: white;
+}
+
+input {
+
+  background: #F0F0F0;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  min-height: 1.75em;
+  margin-bottom: 3%;
+  font-size: 18px;
+}
+
+button {
+  padding: 0.5em;
+  font-size: 1.7em;
+  margin: 0 auto 0 auto;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+#passwordForgotten{
+  text-align: center;
+  color: #FFBB56;
+  font-size: 1.5em;
+  margin-bottom: 2%;
+}
+
+/*
+.ng-valid {
+  border-left: 5px solid #42A948; /* green */
+/* }
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442; /* red */
+/* } */
+
+
+
+p {
+
+  display: table;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 auto 2% auto;
+  padding: 1%;
+  background-color: #c94d4d;
+
+}
+
+hr {
+  width: 60%;
+  align-self: center;
+}
+
+h2 {
+  color: #FFFFFF;
+  font-size: 2em;
+  margin: 1% auto 1% auto;
+  align-self: center;
+}
+
+#buttonHolder {
+  align-self: center;
+  margin: 0 auto 5% auto;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    color: white;
+    font-size: 3.5em;
+    font-weight: 500;
+    font-style: italic;
+    margin: 3% auto;
+  }
+
+  label {
+
+    font-weight: 900;
+    font-size: large;
+    margin-bottom: 1%;
+    color: white;
+  }
+
+  input {
+
+    background: #F0F0F0;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    min-height: 1.75em;
+    margin-bottom: 3%;
+    font-size: 18px;
+  }
+
+  button {
+    padding: 0.5em;
+    font-size: 1.7em;
+    margin: 0 auto 0 auto;
+  }
+
+  button:hover{
+    cursor: pointer;
+  }
+
+  #passwordForgotten{
+    text-align: center;
+    color: #FFBB56;
+    font-size: 1.5em;
+    margin-bottom: 2%;
+  }
+
+  p {
+
+    display: table;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    margin: 0 auto 2% auto;
+    padding: 1%;
+    background-color: #c94d4d;
+
+  }
+
+  hr {
+    width: 60%;
+    align-self: center;
+  }
+
+  h2 {
+    color: #FFFFFF;
+    font-size: 2em;
+    margin: 1% auto 1% auto;
+    align-self: center;
+  }
+
+  #buttonHolder {
+    align-self: center;
+    margin: 0 auto 5% auto;
+  }
+
+}

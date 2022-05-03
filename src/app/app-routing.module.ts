@@ -4,7 +4,7 @@ import {canActivate} from "@angular/fire/auth-guard";
 import { RouterModule, Routes } from "@angular/router";
 import { AngularFireAuthGuard } from "@angular/fire/compat/auth-guard";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
-import { UserLoginComponent } from "./pages/user-login/user-login.component";
+import { UserLoginComponent } from "./components/user-login/user-login.component";
 import { ProfilePageComponent } from "./pages/profile-page/profile-page.component";
 import { UserRegisterComponent } from "./components/user-register/user-register.component";
 import { CategoryPageComponent } from "./pages/category-page/category-page.component";
@@ -44,10 +44,6 @@ const routes: Routes = [
     path: 'collections',
     component: RudCollectionComponent,
     ...canActivate(adminOnly)
-  },
-  {
-    path: 'login',
-    component: UserLoginComponent
   },
   {
     path: 'about-us',

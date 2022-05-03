@@ -16,7 +16,7 @@
         <u class="loggedInButtons">Mi perfil</u>
       </button>
 
-      <button *ngIf="!isLoggedIn" routerLink="/login">
+      <button *ngIf="!isLoggedIn" (click)="openLoginDialog()">
         <span class="material-icons">login</span>
         <u>Iniciar Sesión</u>
       </button>

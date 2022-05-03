@@ -35,7 +35,6 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { AppComponent } from './app.component';
 // Pages
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { AddNewProductComponent } from './pages/add-new-product/add-new-product.component';
@@ -56,6 +55,7 @@ import { InfoMessagePopupComponent } from './components/info-message-popup/info-
 import { UserModificationPopupComponent } from './components/user-modification-popup/user-modification-popup.component';
 import { ConcreteProductPageComponent } from './pages/concrete-product-page/concrete-product-page.component';
 import { UserRegisterComponent } from './components/user-register/user-register.component';
+import { UserLoginComponent } from './components/user-login/user-login.component';
 
 // @ts-ignore
 @NgModule({
