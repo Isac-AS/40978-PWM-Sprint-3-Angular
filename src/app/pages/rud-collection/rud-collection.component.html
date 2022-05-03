@@ -19,6 +19,7 @@
       <p>Nombre: {{element.name}}</p>
       <p>Identificador: {{element.id}}</p>
     </div>
+    <img src="{{ element.imageUrl }}">
     <div class="elementButtonHolder">
       <button class="elementActionButton"
               (click)="modifyElement(element.id)">

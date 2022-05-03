@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomUtilsService } from 'src/app/services/customUtils.service';
 
 @Component({
   selector: 'app-home-page-welcoming-buttons',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageWelcomingButtonsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private utils: CustomUtilsService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  setCategory(category: string) {
+    this.utils.setCategory(category);
+  }
 }

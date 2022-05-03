@@ -2,11 +2,13 @@ import { map } from "rxjs";
 import { NgModule } from '@angular/core';
 import {canActivate} from "@angular/fire/auth-guard";
 import { RouterModule, Routes } from "@angular/router";
+import { ContactComponent } from "./pages/contact/contact.component";
 import { AngularFireAuthGuard } from "@angular/fire/compat/auth-guard";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { UserLoginComponent } from "./components/user-login/user-login.component";
 import { ProfilePageComponent } from "./pages/profile-page/profile-page.component";
 import { UserRegisterComponent } from "./components/user-register/user-register.component";
+import { ShoppingCartComponent } from "./pages/shopping-cart/shopping-cart.component";
 import { CategoryPageComponent } from "./pages/category-page/category-page.component";
 import { RudCollectionComponent } from "./pages/rud-collection/rud-collection.component";
 import { AddNewProductComponent } from "./pages/add-new-product/add-new-product.component";
@@ -56,6 +58,14 @@ const routes: Routes = [
   {
     path: 'ticket',
     component: TicketPageComponent
+  }
+  {
+    path: 'shopping-cart',
+    component: ShoppingCartComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
   }
 ];
 

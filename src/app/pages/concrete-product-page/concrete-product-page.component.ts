@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/interfaces';
+import { Product, User } from 'src/app/models/interfaces';
+import { AuthService } from 'src/app/services/auth.service';
 import { CustomUtilsService } from 'src/app/services/customUtils.service';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -24,11 +25,34 @@ export class ConcreteProductPageComponent implements OnInit {
     discount: 0,
   };
 
+  currentUserId: string = '';
+
+  currentUser: User = {
+    name: '',
+    email: '',
+    uid: '',
+    password: '',
+    profile: 'regular',
+    shoppingCart: [],
+    photoURL: ''
+  }
+
   constructor(
+    private auth: AuthService,
     private db: DatabaseService,
     private utils: CustomUtilsService
   ) { 
     this.productId = this.utils.getId();
+    this.auth.getUid().then(async r => {
+      if (r) {
+        this.currentUserId = r;
+        this.db.readDocument<User>('users', this.currentUserId).subscribe(async res => {
+          if (res) {
+            this.currentUser = res;
+          }
+        });
+      }
+    })
   }
 
   ngOnInit(): void {
@@ -36,6 +60,10 @@ export class ConcreteProductPageComponent implements OnInit {
       if (res)
         this.product = res;
     })
+  }
+
+  addToCart(productId: string) {
+    this.utils.addOrIncrementInCart(productId, this.currentUser)
   }
 
 }

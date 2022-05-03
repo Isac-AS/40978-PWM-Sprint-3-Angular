@@ -33,7 +33,7 @@ export class UserModificationPopupComponent implements OnInit {
     uid: '',
     password: '',
     profile: 'regular',
-    shoppingCart: [''],
+    shoppingCart: [],
     photoURL: ''
   }
 
