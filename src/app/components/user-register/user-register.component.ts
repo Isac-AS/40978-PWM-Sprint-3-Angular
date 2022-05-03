@@ -1,10 +1,12 @@
 import {Router} from "@angular/router";
 import {User} from "../../models/interfaces";
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, Validators, AbstractControl} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {DatabaseService} from "../../services/database.service";
 import {CustomUtilsService} from "../../services/customUtils.service";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {UserLoginComponent} from "../../pages/user-login/user-login.component";
 
 @Component({
   selector: 'app-user-register',
@@ -18,9 +20,10 @@ export class UserRegisterComponent implements OnInit {
   path: string = 'users';
 
   registerForm = this.fb.group({
-    name : ['', [Validators.required, Validators.minLength(2)]],
     email : ['', [Validators.required, Validators.email]],
-    password : [ '', [Validators.required, Validators.minLength(6)]]
+    username : [ '', [Validators.required, Validators.minLength(6)]],
+    password : [ '', [Validators.required, Validators.minLength(6)]],
+    alt_password : ['', [Validators.required]]
   });
 
   userData: User = {
@@ -38,14 +41,16 @@ export class UserRegisterComponent implements OnInit {
     private fb: FormBuilder,
     private auth: AuthService,
     private db: DatabaseService,
-    private utils: CustomUtilsService
+    private utils: CustomUtilsService,
+    public dialog: MatDialog,
+    public dialogRef: MatDialogRef<UserRegisterComponent>
   ) { }
 
   ngOnInit(): void {
   }
 
   async register() {
-    this.userData.name = this.registerForm.value.name;
+    this.userData.name = this.registerForm.value.username;
     this.userData.email = this.registerForm.value.email;
     this.userData.password = this.registerForm.value.password;
 
@@ -76,11 +81,37 @@ export class UserRegisterComponent implements OnInit {
       this.userData.uid = res.user!.uid;
       this.userData.password = 'null';
       await this.db.createDocument(this.userData, this.path, this.userData.uid);
-      await this.router.navigate(['/home'])
+      this.dialogRef.close();
+      await this.router.navigate(['/home']);
     }
   }
 
   clearForm() {
     this.registerForm.reset();
+  }
+
+  get password(): AbstractControl {
+    return this.registerForm.controls['password'];
+  }
+
+  get confirm_password(): AbstractControl {
+    return this.registerForm.controls['alt_password'];
+  }
+
+  onPasswordChange(){
+    if (this.confirm_password.value === this.password.value) {
+      this.confirm_password.setErrors(null);
+    } else {
+      this.confirm_password.setErrors({ mismatch: true });
+    }
+  }
+
+  openLoginDialog(): void {
+
+    this.dialogRef.close();
+    const dialogLogin = this.dialog.open(UserLoginComponent, {
+      minWidth: "40%"
+    });
+    dialogLogin.afterClosed().subscribe(res => {});
   }
 }

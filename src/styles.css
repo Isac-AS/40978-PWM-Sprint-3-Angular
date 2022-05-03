@@ -20,13 +20,17 @@ body {
 .custom-dialog-container .mat-dialog-container {
   padding: 2% !important;
   background-color: dimgrey;
+}
 
+.header-dialog-container .mat-dialog-container {
+  padding: 1% !important;
+  background-color: #EEA10C;
 }
 
 /**
   #################### Form styles ####################
  */
-.errorMessage {
+/* .errorMessage {
   display: flex;
   flex-flow: column;
   background-color: lightcoral;
@@ -36,7 +40,7 @@ body {
   border-radius: 5px;
   margin: 5px;
   width: 25%;
-}
+} */
 
 /*
   #################### Generic button style ####################

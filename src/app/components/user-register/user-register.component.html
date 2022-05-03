@@ -1,0 +1,89 @@
+<div id="formContainer">
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+    <label for="email"> Correo eléctronico </label>
+    <input type="text"
+           class="form-control"
+           placeholder="Correo Electrónico"
+           formControlName="email">
+    <div *ngIf="registerForm.get('email')!.invalid &&
+              (registerForm.get('email')!.dirty ||
+              registerForm.get('email')!.touched)"
+         class="errorMessage">
+      <p *ngIf="registerForm.get('email')!.errors?.['required']">
+        Campo Obligatorio
+      </p>
+      <p *ngIf="registerForm.get('email')!.errors?.['email']">
+        Debe introducir una dirección de correo electrónico
+      </p>
+    </div>
+
+    <label for="username"> Nombre de Usuario </label>
+    <input type="text"
+           class="form-control"
+           placeholder="Nombre de usuario"
+           formControlName="username">
+    <div *ngIf="registerForm.get('username')!.invalid &&
+              (registerForm.get('username')!.dirty ||
+              registerForm.get('username')!.touched)"
+         class="errorMessage">
+      <p *ngIf="registerForm.get('username')!.errors?.['required']">
+        Campo Obligatorio
+      </p>
+    </div>
+
+    <div id="passwordFlex">
+      <div id="passwordFlex1">
+        <label for="password"> Contraseña </label>
+        <input type="password"
+               class="form-control"
+               placeholder="Contraseña"
+               formControlName="password"
+               (input) = "onPasswordChange()">
+        <div *ngIf="registerForm.get('password')!.invalid &&
+                  (registerForm.get('password')!.dirty ||
+                  registerForm.get('password')!.touched)"
+             class="errorMessage">
+          <p *ngIf="registerForm.get('password')!.errors?.['required']">
+            Campo Obligatorio
+          </p>
+          <p *ngIf="registerForm.get('password')!.errors?.['minlength']">
+            Debe tener una longitud mínima de 6 caracteres
+          </p>
+        </div>
+      </div>
+
+      <div id="passwordFlex2">
+        <label for="alt_password"> Repetir contraseña </label>
+        <input type="password"
+               class="form-control"
+               placeholder="Repetir contraseña"
+               formControlName="alt_password"
+               (input) = "onPasswordChange()">
+        <div *ngIf="registerForm.get('alt_password')!.invalid &&
+                  (registerForm.get('alt_password')!.dirty ||
+                  registerForm.get('alt_password')!.touched)"
+             class="errorMessage">
+          <p *ngIf="confirm_password.hasError('mismatch')">
+            Las contraseñas deben coincidir
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttonHolder" id="buttonRegister">
+      <button type="submit"
+              [disabled]="!registerForm.valid">
+        Registrarse
+      </button>
+    </div>
+  </form>
+  <hr>
+  <h2>¿Ya tienes una cuenta?</h2>
+  <div class="buttonHolder">
+    <button (click)="openLoginDialog()">
+      <span class="material-icons">accessibility_new</span>
+      <u>Inicia Sesión</u>
+    </button>
+</div>
+

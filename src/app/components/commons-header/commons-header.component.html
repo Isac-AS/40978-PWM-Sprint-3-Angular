@@ -21,7 +21,7 @@
         <u>Iniciar Sesión</u>
       </button>
 
-      <button *ngIf="!isLoggedIn" routerLink="/register">
+      <button *ngIf="!isLoggedIn" (click)="openRegisterDialog()">
         <span class="material-icons">accessibility_new</span>
         <u>Registrarse</u>
       </button>

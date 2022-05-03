@@ -6,7 +6,7 @@ import { AngularFireAuthGuard } from "@angular/fire/compat/auth-guard";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { UserLoginComponent } from "./pages/user-login/user-login.component";
 import { ProfilePageComponent } from "./pages/profile-page/profile-page.component";
-import { UserRegisterComponent } from "./pages/user-register/user-register.component";
+import { UserRegisterComponent } from "./components/user-register/user-register.component";
 import { CategoryPageComponent } from "./pages/category-page/category-page.component";
 import { RudCollectionComponent } from "./pages/rud-collection/rud-collection.component";
 import { AddNewProductComponent } from "./pages/add-new-product/add-new-product.component";
@@ -48,10 +48,6 @@ const routes: Routes = [
   {
     path: 'login',
     component: UserLoginComponent
-  },
-  {
-    path: 'register',
-    component: UserRegisterComponent
   },
   {
     path: 'about-us',

@@ -37,7 +37,6 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
-import { UserRegisterComponent } from './pages/user-register/user-register.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { AddNewProductComponent } from './pages/add-new-product/add-new-product.component';
 import { RudCollectionComponent } from './pages/rud-collection/rud-collection.component';
@@ -56,6 +55,7 @@ import { HeaderResponsiveDialogComponent } from './components/commons-header/hea
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { UserModificationPopupComponent } from './components/user-modification-popup/user-modification-popup.component';
 import { ConcreteProductPageComponent } from './pages/concrete-product-page/concrete-product-page.component';
+import { UserRegisterComponent } from './components/user-register/user-register.component';
 
 // @ts-ignore
 @NgModule({
