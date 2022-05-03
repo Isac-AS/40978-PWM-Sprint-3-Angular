@@ -36,6 +36,7 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
+import { TicketPageComponent } from './pages/ticket-page/ticket-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
 import { UserRegisterComponent } from './pages/user-register/user-register.component';
@@ -83,7 +84,8 @@ import { HeaderResponsiveDialogComponent } from './components/commons-header/hea
     ConcreteProductPageComponent,
     ShoppingCartComponent,
     ContactComponent,
-    CartProductComponent
+    CartProductComponent,
+    TicketPageComponent
   ],
   imports: [
     BrowserModule,

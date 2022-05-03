@@ -222,14 +222,14 @@
   .aboutUs .expect .expectText h1{
     font-size: 55px;
     line-height: 100%;
-    margin-top: 3%;
+    margin-top: 4%;
   }
 
   .aboutUs .expect .expectText p{
     font-size: 25px;
     font-weight: lighter;
     max-width: 65%;
-    margin-bottom: 5%;
+    margin-bottom: 4%;
   }
 
   .aboutUs .founders h1{

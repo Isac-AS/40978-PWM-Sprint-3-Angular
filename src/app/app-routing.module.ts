@@ -6,6 +6,7 @@ import { ContactComponent } from "./pages/contact/contact.component";
 import { AngularFireAuthGuard } from "@angular/fire/compat/auth-guard";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { UserLoginComponent } from "./pages/user-login/user-login.component";
+import {TicketPageComponent} from "./pages/ticket-page/ticket-page.component";
 import { ProfilePageComponent } from "./pages/profile-page/profile-page.component";
 import { AboutUsPageComponent } from "./pages/about-us-page/about-us-page.component";
 import { UserRegisterComponent } from "./pages/user-register/user-register.component";
@@ -69,6 +70,10 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
+  },
+  {
+    path: 'ticket', 
+    component: TicketPageComponent
   }
 ];
 
