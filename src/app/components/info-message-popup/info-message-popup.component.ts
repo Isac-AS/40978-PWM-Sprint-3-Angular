@@ -1,5 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { MessagePopupPair } from "../../models/interfaces";
 
 @Component({
@@ -12,8 +12,10 @@ export class InfoMessagePopupComponent implements OnInit {
   message : string;
   status: boolean;
 
-  constructor(public dialogRef: MatDialogRef<InfoMessagePopupComponent>,
-              @Inject(MAT_DIALOG_DATA) public data:MessagePopupPair) {
+  constructor(
+    public dialogRef: MatDialogRef<InfoMessagePopupComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:MessagePopupPair
+  ) {
     this.message = data.message;
     this.status = data.status;
   }

@@ -11,7 +11,11 @@ import {CustomUtilsService} from "../../services/customUtils.service";
   templateUrl: './user-register.component.html',
   styleUrls: ['./user-register.component.css']
 })
+
 export class UserRegisterComponent implements OnInit {
+
+  errorMessage: string = "";
+  path: string = 'users';
 
   registerForm = this.fb.group({
     name : ['', [Validators.required, Validators.minLength(2)]],
@@ -28,8 +32,6 @@ export class UserRegisterComponent implements OnInit {
     shoppingCart: [''],
     photoURL: 'gs://pwm-sprint3-angular.appspot.com/user-pic.jpg'
   };
-
-  path: string = 'users';
 
   constructor(
     private router: Router,
@@ -48,10 +50,22 @@ export class UserRegisterComponent implements OnInit {
     this.userData.password = this.registerForm.value.password;
 
     const res = await this.auth.register(this.userData).catch( error => {
-      this.utils.openMessageDialog( {
-        message: 'Error: No se puedo crear la cuenta de usuario',
-        status: false
-        })
+      switch(error.code){
+
+        case "auth/email-already-in-use":
+          this.errorMessage = "Error: El email introducido ya está en uso";
+          break;
+
+        case "auth/internal-error":
+          this.errorMessage = "Error del sistema. Inténtelo de nuevo";
+          break;
+
+        default:
+          this.errorMessage = "Error desconocido. Inténtelo de nuevo";
+      }
+
+      this.utils.openMessageDialog({
+        message: this.errorMessage, status: false})
     });
     if (res) {
       await this.utils.openMessageDialog( {
@@ -66,12 +80,7 @@ export class UserRegisterComponent implements OnInit {
     }
   }
 
-  clearForm(){
-    this.registerForm.setValue({
-      name: '',
-      email: '',
-      password: '',
-    })
+  clearForm() {
+    this.registerForm.reset();
   }
-
 }

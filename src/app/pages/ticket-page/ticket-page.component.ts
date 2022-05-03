@@ -6,7 +6,7 @@ import {MessagePopupPair, Ticket} from "../../models/interfaces";
 import { InfoMessagePopupComponent } from "../../components/info-message-popup/info-message-popup.component";
 import { MatDialog } from "@angular/material/dialog";
 import { CustomUtilsService } from "../../services/customUtils.service";
-import {databaseService} from "../../services/database.service";
+import { DatabaseService } from "../../services/database.service";
 
 @Component({
   selector: 'app-ticket-page',
@@ -37,7 +37,7 @@ export class TicketPageComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private database: databaseService,
+    private database: DatabaseService,
     private utils: CustomUtilsService
   ) { }
 
