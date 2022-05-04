@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { DatabaseService } from "./database.service";
 import { MessagePopupPair, ShoppingCartElement, User } from "../models/interfaces";
 import { InfoMessagePopupComponent } from "../components/info-message-popup/info-message-popup.component";
-import { MatDialog } from "@angular/material/dialog";
-import { AuthService } from "./auth.service";
-import { DatabaseService } from "./database.service";
 
 @Injectable({
   providedIn: 'root'

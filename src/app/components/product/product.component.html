@@ -1,8 +1,9 @@
 <div id="product">
   <img src="{{product.imageUrl}}">
   <h1>{{ product.name }}</h1>
-  <div>
-    <h2>{{product.price}}</h2>
-    <h3>{{product.discount}}%</h3>
+  <h2>{{ product.price }}€</h2>
+  <div *ngIf="product.discount > 0" id="discount">
+    <h3 id="oldPrice">{{ product.priceWithoutTax }}€</h3>
+    <h3 id="discountPercentage">{{ product.discount }}%</h3>
   </div>
 </div>

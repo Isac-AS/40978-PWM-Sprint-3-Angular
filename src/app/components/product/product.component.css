@@ -2,4 +2,43 @@
   display: flex;
   flex-flow: column nowrap;
   width: 17em;
+  color: black;
+  justify-content: center;
+  align-items: center;
 }
+
+img {
+  width: 17em;
+  box-shadow: inset 0px 0px 2px 2px #464646;
+  border-radius: 5px;
+  margin-bottom: 1em;
+}
+
+h1 {
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: 500;
+  color: #000000;
+}
+
+#discount {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+#oldPrice {
+  text-decoration: line-through;
+  margin-right: 1em;
+}
+
+#discountPercentage {
+  background-color: rgb(208, 49, 49);
+  padding: 0 0.4em;
+  border-radius: 5px;
+}
+
+

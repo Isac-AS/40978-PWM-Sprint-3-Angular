@@ -35,6 +35,7 @@ import { AppComponent } from './app.component';
 // Pages
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { TicketPageComponent } from './pages/ticket-page/ticket-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
@@ -42,7 +43,6 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
 import { AddNewProductComponent } from './pages/add-new-product/add-new-product.component';
 import { RudCollectionComponent } from './pages/rud-collection/rud-collection.component';
 import { ConcreteProductPageComponent } from './pages/concrete-product-page/concrete-product-page.component';
-import { TicketPageComponent } from './pages/ticket-page/ticket-page.component';
 
 // Components
 import { ProductComponent } from './components/product/product.component';
@@ -60,6 +60,7 @@ import { UserRegisterComponent } from './components/user-register/user-register.
 import { UserLoginComponent } from './components/user-login/user-login.component';
 
 // @ts-ignore
+
 @NgModule({
   declarations: [
     AppComponent,

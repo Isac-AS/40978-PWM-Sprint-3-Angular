@@ -1,12 +1,13 @@
 <div id="productContainer">
-  <div *ngFor="let product of products">
-
+  <ng-container *ngFor="let product of products">
+    <ng-container *ngIf="product.price >= minPrice && product.price <= maxPrice">
     <div *ngIf="product.category === whatToLoad">
       <div class="product">
         <a routerLink="/product" (click)="setId(product.id)">
           <app-product [productId]="product.id"></app-product>
         </a>
         <button (click)="addToCart(product.id)">
+          <span class="material-icons">add_shopping_cart</span>
           Añadir al carrito
         </button>
       </div>
@@ -18,31 +19,37 @@
           <app-product [productId]="product.id"></app-product>
         </a>
         <button (click)="addToCart(product.id)">
+          <span class="material-icons">add_shopping_cart</span>
           Añadir al carrito
         </button>
       </div>
     </div>
 
-    <div *ngIf="whatToLoad === 'discount'">
+    <div *ngIf="whatToLoad === 'discount' &&
+                product.discount > 10">
       <div class="product">
         <a routerLink="/product" (click)="setId(product.id)">
           <app-product [productId]="product.id"></app-product>
         </a>
         <button (click)="addToCart(product.id)">
+          <span class="material-icons">add_shopping_cart</span>
           Añadir al carrito
         </button>
       </div>
     </div>
     
-    <div *ngIf="whatToLoad === 'promotion'">
+    <div *ngIf="whatToLoad === 'promotion' &&
+                product.discount > 30">
       <div class="product">
         <a routerLink="/product" (click)="setId(product.id)">
           <app-product [productId]="product.id"></app-product>
         </a>
         <button (click)="addToCart(product.id)">
+          <span class="material-icons">add_shopping_cart</span>
           Añadir al carrito
         </button>
       </div>
     </div>
-  </div>
+  </ng-container>
+  </ng-container>
 </div>

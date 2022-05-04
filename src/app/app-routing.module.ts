@@ -6,6 +6,7 @@ import { ContactComponent } from "./pages/contact/contact.component";
 import { AngularFireAuthGuard } from "@angular/fire/compat/auth-guard";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { UserLoginComponent } from "./components/user-login/user-login.component";
+import {TicketPageComponent} from "./pages/ticket-page/ticket-page.component";
 import { ProfilePageComponent } from "./pages/profile-page/profile-page.component";
 import { UserRegisterComponent } from "./components/user-register/user-register.component";
 import { ShoppingCartComponent } from "./pages/shopping-cart/shopping-cart.component";
@@ -13,7 +14,6 @@ import { CategoryPageComponent } from "./pages/category-page/category-page.compo
 import { RudCollectionComponent } from "./pages/rud-collection/rud-collection.component";
 import { AddNewProductComponent } from "./pages/add-new-product/add-new-product.component";
 import {AboutUsPageComponent} from "./pages/about-us-page/about-us-page.component";
-import {TicketPageComponent} from "./pages/ticket-page/ticket-page.component";
 import { ConcreteProductPageComponent } from "./pages/concrete-product-page/concrete-product-page.component";
 
 const adminUid = '1QpnBzjOCYe6y4mAxU1I2yP47kl1';
