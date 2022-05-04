@@ -1,16 +1,38 @@
 <div id="pageContainer">
-  <div id="productInfo">
-    <img [src]="product.imageUrl">
-    <div id="productData">
-      <h2>{{ product.extendedName }}</h2>
-      <div>
-        <h2>{{product.price}}</h2>
-        <h3>{{product.discount}}%</h3>
+  <div id="productData">
+    <img [alt]="product.name" [src]="product.imageUrl">
+    <div id="productInfo">
+      <h2>{{product.extendedName}}</h2>
+      <div class="auxContainer">
+        <h1 class="productPrice">{{product.price}}€</h1>
+        <div *ngIf="product.discount > 0" id="discount">
+          <h3 id="oldPrice">{{ product.priceWithoutTax }}€</h3>
+          <h3 id="discountPercentage">{{ product.discount }}%</h3>
+        </div>
       </div>
-      <button (click)="
-      addToCart(productId, product.price)">
-        Añadir al carrito
-      </button>
+      <div class="auxContainer">
+        <u class="leftHandBoldTag">Marca:</u>
+        <u>{{product.brand}} - P/N: 2W1D7EA | Cod. Artículo: 350514</u>
+      </div>
+      <div class="auxContainer">
+        <u class="leftHandBoldTag">Envío:</u>
+        <u>Envío Gratis</u>
+      </div>
+      <div class="auxContainer">
+        <u class="leftHandBoldTag">Devolución:</u>
+        <u>Devolución Gratis</u>
+      </div>
+      <div class="auxContainer">
+        <u class="leftHandBoldTag">Cantidad:</u>
+        <u>1</u>
+      </div>
+      <div id="actionButtons">
+        <button (click)="addToCart(product.id, product.price)">
+          <span class="material-icons">add_shopping_cart</span>
+          Añadir al carrito
+        </button>
+      </div>
     </div>
   </div>
 </div>
+
