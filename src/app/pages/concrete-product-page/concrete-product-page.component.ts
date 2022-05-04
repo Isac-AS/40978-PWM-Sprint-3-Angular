@@ -62,8 +62,8 @@ export class ConcreteProductPageComponent implements OnInit {
     })
   }
 
-  addToCart(productId: string) {
-    this.utils.addOrIncrementInCart(productId, this.currentUser)
+  addToCart(productId: string, price: number) {
+    this.utils.addOrIncrementInCart(productId, this.currentUser, price)
   }
 
 }

@@ -7,7 +7,7 @@
   <div id="productList">
   <div *ngFor="let cartProduct of shoppingCart">
     <div id="productContainer">
-        <app-cart-product [productId]="cartProduct.id"></app-cart-product>
+        <app-cart-product [productId]="cartProduct.id" [quantity]="cartProduct.count"></app-cart-product>
         <div id="buttonSection">
           <div id="deleteSection">
         <button id="deleteProductButton" (click)="delete(cartProduct.id)">
@@ -19,7 +19,7 @@
           -
         </button>
         <h1>{{cartProduct.count}}</h1>
-        <button (click)="incrementElement(cartProduct.id)">
+        <button (click)="incrementElement(cartProduct.id, cartProduct.price)">
           +
         </button>
           </div>
@@ -30,8 +30,7 @@
 
   <div id="totalSection">
     <h1>TOTAL:</h1>
-
-
+    {{total}}
   </div>
 
 </div>

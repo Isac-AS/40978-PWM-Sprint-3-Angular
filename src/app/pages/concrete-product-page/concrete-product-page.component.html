@@ -7,7 +7,8 @@
         <h2>{{product.price}}</h2>
         <h3>{{product.discount}}%</h3>
       </div>
-      <button (click)="addToCart(productId)">
+      <button (click)="
+      addToCart(productId, product.price)">
         Añadir al carrito
       </button>
     </div>

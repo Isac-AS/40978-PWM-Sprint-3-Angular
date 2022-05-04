@@ -60,5 +60,6 @@ export interface MessagePopupPair {
 export interface ShoppingCartElement {
   id: string;
   count: number;
+  price: number;
 }
 

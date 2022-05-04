@@ -86,7 +86,7 @@ export class CustomUtilsService {
     return array;
   }
 
-  addOrIncrementInCart(productId: string, user: User) {
+  addOrIncrementInCart(productId: string, user: User, price: number) {
     let found: boolean = false;
     user.shoppingCart.forEach((value) => {
       if (value.id === productId) {
@@ -94,7 +94,7 @@ export class CustomUtilsService {
         found = true;
       }
     });
-    if (!found) user.shoppingCart.push({id: productId, count: 1})
+    if (!found) user.shoppingCart.push({id: productId, count: 1, price: price})
     this.db.updateDocument(user, 'users', user.uid)
   }
 

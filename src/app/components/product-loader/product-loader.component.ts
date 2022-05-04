@@ -56,7 +56,7 @@ export class ProductLoaderComponent implements OnInit {
     this.utils.setId(id);
   }
 
-  addToCart(productId: string) {
-    this.utils.addOrIncrementInCart(productId, this.currentUser)
+  addToCart(productId: string, price: number) {
+    this.utils.addOrIncrementInCart(productId, this.currentUser, price)
   }
 }

@@ -15,6 +15,7 @@ export class ShoppingCartComponent implements OnInit {
   path: string = 'users';
 
   shoppingCart: ShoppingCartElement[] = [];
+  total: number = 0;
 
   databaseElement: User = {
     name: '',
@@ -38,6 +39,9 @@ export class ShoppingCartComponent implements OnInit {
           if (res) {
             this.databaseElement = res;
             this.shoppingCart = this.databaseElement.shoppingCart;
+            for (let element of this.shoppingCart) {
+              this.total += element.count * element.price;
+            }
           }
         });
       }
@@ -57,8 +61,8 @@ export class ShoppingCartComponent implements OnInit {
     this.db.updateDocument<User>(this.databaseElement, this.path, this.databaseElement.uid);
   }
 
-  incrementElement(id: string) {
-    this.utils.addOrIncrementInCart(id, this.databaseElement);
+  incrementElement(id: string, price: number) {
+    this.utils.addOrIncrementInCart(id, this.databaseElement, price);
   }
 
   delete(id: string){

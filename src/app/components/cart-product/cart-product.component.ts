@@ -10,6 +10,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class CartProductComponent implements OnInit {
 
   @Input() productId: string = '';
+  @Input() quantity: number = 1;
   product : Product = {
     id: '',
     name: '',
