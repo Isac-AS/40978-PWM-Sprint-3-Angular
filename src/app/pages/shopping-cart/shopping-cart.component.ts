@@ -39,6 +39,7 @@ export class ShoppingCartComponent implements OnInit {
           if (res) {
             this.databaseElement = res;
             this.shoppingCart = this.databaseElement.shoppingCart;
+            this.total = 0;
             for (let element of this.shoppingCart) {
               this.total += element.count * element.price;
             }
