@@ -35,7 +35,7 @@ export class ProfilePageComponent implements OnInit {
     photoURL: ''
   }
 
-  uploadPercent: Observable<number | undefined> | undefined;
+  uploadPercent$: Observable<number | undefined> | undefined;
   downloadURL: Observable<string | null> | undefined;
 
   profileUrl: string = '';
@@ -103,7 +103,8 @@ export class ProfilePageComponent implements OnInit {
     const task = this.storage.upload(filePath, file);
 
     // observe percentage changes
-    this.uploadPercent = task.percentageChanges();
+    this.uploadPercent$ = task.percentageChanges();
+
     // get notified when the download URL is available
     task.snapshotChanges().pipe(
         finalize(() => this.downloadURL = fileRef.getDownloadURL() )
