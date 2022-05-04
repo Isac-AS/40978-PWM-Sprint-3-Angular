@@ -7,8 +7,10 @@
   </div>
     <div id="priceContainer">
       <h2>PVP: {{product.price}}€</h2>
-      <h3>Descuento aplicado: {{product.discount}}%</h3>
-    </div>
+      <div *ngIf="product.discount > 0">
+        <h3>Descuento aplicado: {{product.discount}}%</h3>
+      </div>
+      </div>
   </div>
   </div>
 
