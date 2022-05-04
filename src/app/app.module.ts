@@ -35,11 +35,9 @@ import { AppComponent } from './app.component';
 // Pages
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { TicketPageComponent } from './pages/ticket-page/ticket-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
-import { UserRegisterComponent } from './pages/user-register/user-register.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { AddNewProductComponent } from './pages/add-new-product/add-new-product.component';
@@ -58,7 +56,10 @@ import { HomePageWelcomingButtonsComponent } from './components/home-page-welcom
 import { ModifyElementModalViewComponent } from './pages/rud-collection/modify-element-modal-view/modify-element-modal-view.component';
 import { HomePageTrendingCategoriesComponent } from './components/home-page-trending-categories/home-page-trending-categories.component';
 import { HeaderResponsiveDialogComponent } from './components/commons-header/header-responsive-dialog/header-responsive-dialog.component';
+import { UserRegisterComponent } from './components/user-register/user-register.component';
+import { UserLoginComponent } from './components/user-login/user-login.component';
 
+// @ts-ignore
 
 @NgModule({
   declarations: [

@@ -9,6 +9,7 @@ import { InfoMessagePopupComponent } from "../components/info-message-popup/info
 })
 export class CustomUtilsService {
 
+  timeout: number = 0;
   currentCategory: string = '';
   currentProductId: string = '';
 
@@ -20,9 +21,32 @@ export class CustomUtilsService {
   }
 
   openMessageDialog(messagePopupPair: MessagePopupPair): void {
+
     const dialogRef = this.dialog.open(InfoMessagePopupComponent, {
-      data: messagePopupPair
+      data: messagePopupPair,
+      position: {top: '2%'},
+      panelClass: 'custom-dialog-container'
     });
+
+    dialogRef.afterOpened().subscribe(_ => {
+      switch (messagePopupPair.status){
+
+        case false:
+          this.timeout = 6000;
+          break;
+
+        case true:
+          this.timeout = 2500;
+          break;
+
+        default:
+          this.timeout = 3000;
+      }
+      setTimeout(() => {
+        dialogRef.close();
+      }, this.timeout)
+    });
+
     dialogRef.afterClosed().subscribe(res => {
     });
   }

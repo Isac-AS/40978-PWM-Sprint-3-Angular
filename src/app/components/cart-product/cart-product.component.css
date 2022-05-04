@@ -1,8 +1,44 @@
-#product {
-    display: flex;
-    flex-flow: column nowrap;
-    width: 17em;
-    background-color: #C4C4C4;
-    border: solid 2px black;
-  }
-  
+#productContainer{
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  text-align: center;
+
+
+}
+#priceContainer{
+  display: flex;
+  flex-flow: column;
+}
+#nameContainer{
+  display: flex;
+  flex-flow: column wrap;
+}
+
+#detailsContainer{
+  margin: 5% auto 0;
+  display: flex;
+  flex-flow: column;
+}
+
+h1{
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+h2{
+  margin-top: 7%;
+  font-size: 25px;
+}
+
+h3{
+  background-color: #EEA10C;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+
+img{
+  max-width: 35%;
+  border-radius: 10px;
+}

@@ -4,9 +4,10 @@ import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {MessagePopupPair} from "../../models/interfaces";
-import {InfoMessagePopupComponent} from "../../components/info-message-popup/info-message-popup.component";
-import {MatDialog} from "@angular/material/dialog";
+import {InfoMessagePopupComponent} from "../info-message-popup/info-message-popup.component";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {CustomUtilsService} from "../../services/customUtils.service";
+import {UserRegisterComponent} from "../user-register/user-register.component";
 
 @Component({
   selector: 'app-user-login',
@@ -24,7 +25,9 @@ export class UserLoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private authFirebase: AuthService,
-    private utils: CustomUtilsService
+    private utils: CustomUtilsService,
+    public dialog: MatDialog,
+    public dialogRef: MatDialogRef<UserLoginComponent>
   ) { }
 
   ngOnInit(): void { }
@@ -43,6 +46,7 @@ export class UserLoginComponent implements OnInit {
         message: 'Bienvenido!',
         status: true
       })
+      this.dialogRef.close();
       await this.router.navigate(['/home']);
     }
   }
@@ -52,5 +56,16 @@ export class UserLoginComponent implements OnInit {
       email: '',
       password: '',
     })
+  }
+
+  openRegisterDialog(): void {
+
+    this.dialogRef.close();
+    const dialogLogin = this.dialog.open(UserRegisterComponent, {
+      minWidth: "50%",
+      panelClass: 'header-dialog-container',
+      autoFocus: false
+    });
+    dialogLogin.afterClosed().subscribe(res => {});
   }
 }

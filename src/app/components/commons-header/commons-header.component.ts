@@ -1,8 +1,10 @@
-import { Router} from "@angular/router";
+import {Router} from "@angular/router";
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {AuthService} from "../../services/auth.service";
 import {HeaderResponsiveDialogComponent} from "./header-responsive-dialog/header-responsive-dialog.component";
+import {UserRegisterComponent} from "../user-register/user-register.component";
+import {UserLoginComponent} from "../user-login/user-login.component";
 
 @Component({
   selector: 'app-commons-header',
@@ -54,5 +56,24 @@ export class CommonsHeaderComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(res => {
     });
+  }
+
+  openRegisterDialog(): void {
+    const dialogRef = this.dialog.open(UserRegisterComponent, {
+      minWidth: "50%",
+      panelClass: 'header-dialog-container',
+      autoFocus: false
+    });
+    dialogRef.afterClosed().subscribe(res => {});
+  }
+
+  openLoginDialog(): void {
+
+    const dialogLogin = this.dialog.open(UserLoginComponent, {
+      minWidth: "30%",
+      panelClass: 'header-dialog-container',
+      autoFocus: false
+    });
+    dialogLogin.afterClosed().subscribe(res => {});
   }
 }
