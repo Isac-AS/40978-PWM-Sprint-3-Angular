@@ -1,9 +1,15 @@
-<img src="{{product.imageUrl}}">
-<h1>{{ product.name }}</h1>
-<div>
-  <h2>{{product.price}}</h2>
-  <h3>{{product.discount}}%</h3>
+<div id="pageContainer">
+  <div id="productInfo">
+    <img [src]="product.imageUrl">
+    <div id="productData">
+      <h2>{{ product.extendedName }}</h2>
+      <div>
+        <h2>{{product.price}}</h2>
+        <h3>{{product.discount}}%</h3>
+      </div>
+      <button (click)="addToCart(productId)">
+        Añadir al carrito
+      </button>
+    </div>
+  </div>
 </div>
-<button (click)="addToCart(productId)">
-  Añadir al carrito
-</button>

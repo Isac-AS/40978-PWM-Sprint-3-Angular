@@ -1,0 +1,19 @@
+#pageContainer {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#productInfo {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+#productInfo img{
+    width: 20%;
+}
+
+#productData {
+    display: flex;
+    flex-flow: column nowrap;
+}
