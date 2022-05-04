@@ -39,4 +39,5 @@ h3{
 img{
   max-width: 35%;
   border-radius: 10px;
+  box-shadow: inset 0px 0px 2px 2px #464646;
 }

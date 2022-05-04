@@ -58,6 +58,9 @@ import { HomePageTrendingCategoriesComponent } from './components/home-page-tren
 import { HeaderResponsiveDialogComponent } from './components/commons-header/header-responsive-dialog/header-responsive-dialog.component';
 import { UserRegisterComponent } from './components/user-register/user-register.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
+import { NotAvailablePageComponent } from './pages/not-available-page/not-available-page.component';
+import { BizumPageComponent } from './pages/bizum-page/bizum-page.component';
 
 // @ts-ignore
 
@@ -86,7 +89,10 @@ import { UserLoginComponent } from './components/user-login/user-login.component
     ShoppingCartComponent,
     ContactComponent,
     CartProductComponent,
-    TicketPageComponent
+    TicketPageComponent,
+    CheckoutPageComponent,
+    NotAvailablePageComponent,
+    BizumPageComponent
   ],
   imports: [
     BrowserModule,
