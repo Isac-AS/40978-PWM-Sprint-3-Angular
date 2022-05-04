@@ -58,16 +58,7 @@
 
 }
 
-
-
-
-
-.cartProductGrid .cartProduct .cartProductInfo{
-
-}
-
 .cartProductGrid .cartProduct .cartProductInfo .quantitySection{
-
   display: grid;
   justify-content: center;
   grid-template-columns: 12% 8% 15% auto auto;
