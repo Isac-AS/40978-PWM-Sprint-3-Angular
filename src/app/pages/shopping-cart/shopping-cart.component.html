@@ -1,18 +1,31 @@
-<div id="pageContiner">
+<div id="clearCart">
   <button (click)="clearCart()">
     Limpiar Carrito
   </button>
+</div>
+<div id="pageContainer">
+  <div id="productList">
   <div *ngFor="let cartProduct of shoppingCart">
-    <app-cart-product [productId]="cartProduct.id"></app-cart-product>
-    <button (click)="delete(cartProduct.id)">
-      Eliminar producto
-    </button>
-    <button (click)="decrement(cartProduct.id)">
-      -
-    </button>
-    <h1>{{cartProduct.count}}</h1>
-    <button (click)="incrementElement(cartProduct.id)">
-      +
-    </button>
+    <div id="productContainer">
+        <app-cart-product [productId]="cartProduct.id"></app-cart-product>
+        <div id="buttonSection">
+          <div id="deleteSection">
+        <button id="deleteProductButton" (click)="delete(cartProduct.id)">
+          Eliminar producto
+        </button>
+          </div>
+          <div id="quantitySection">
+        <button (click)="decrement(cartProduct.id)">
+          -
+        </button>
+        <h1>{{cartProduct.count}}</h1>
+        <button (click)="incrementElement(cartProduct.id)">
+          +
+        </button>
+          </div>
+        </div>
   </div>
+  </div>
+  </div>
+
 </div>
