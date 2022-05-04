@@ -37,7 +37,7 @@ export class ProfilePageComponent implements OnInit {
 
   uploadPercent: Observable<number | undefined> | undefined;
   downloadURL: Observable<string | null> | undefined;
-  
+
   profileUrl: string = '';
 
   constructor(
@@ -111,5 +111,5 @@ export class ProfilePageComponent implements OnInit {
     .subscribe()
   }
 
-  
+
 }

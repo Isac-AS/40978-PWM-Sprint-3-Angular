@@ -11,7 +11,8 @@
     <input type="text"
            class="form-control"
            placeholder="Nombre de usuario"
-           formControlName="name">
+           formControlName="name"
+           [readonly]="true">
     <div *ngIf="currentUserForm.get('name')!.invalid &&
               (currentUserForm.get('name')!.dirty ||
                currentUserForm.get('name')!.touched)"
@@ -25,7 +26,8 @@
     <input type="text"
            class="form-control"
            placeholder="Correo electrónico"
-           formControlName="email">
+           formControlName="email"
+           [readonly]="true">
     <div *ngIf="currentUserForm.get('email')!.invalid &&
               (currentUserForm.get('email')!.dirty ||
                currentUserForm.get('email')!.touched)"
@@ -39,7 +41,8 @@
     <input type="password"
            class="form-control"
            placeholder="Contraseña"
-           formControlName="password">
+           formControlName="password"
+           [readonly]="true">
     <div *ngIf="currentUserForm.get('password')!.invalid &&
               (currentUserForm.get('password')!.dirty ||
                currentUserForm.get('password')!.touched)"
