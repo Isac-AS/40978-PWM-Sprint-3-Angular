@@ -1,5 +1,6 @@
 <div id="productContainer">
-  <div *ngFor="let product of products" class="iteratingContainer">
+  <ng-container *ngFor="let product of products">
+    <ng-container *ngIf="product.price >= minPrice && product.price <= maxPrice">
     <div *ngIf="product.category === whatToLoad">
       <div class="product">
         <a routerLink="/product" (click)="setId(product.id)">
@@ -22,7 +23,8 @@
       </div>
     </div>
 
-    <div *ngIf="whatToLoad === 'discount'">
+    <div *ngIf="whatToLoad === 'discount' &&
+                product.discount > 10">
       <div class="product">
         <a routerLink="/product" (click)="setId(product.id)">
           <app-product [productId]="product.id"></app-product>
@@ -33,7 +35,8 @@
       </div>
     </div>
     
-    <div *ngIf="whatToLoad === 'promotion'">
+    <div *ngIf="whatToLoad === 'promotion' &&
+                product.discount > 30">
       <div class="product">
         <a routerLink="/product" (click)="setId(product.id)">
           <app-product [productId]="product.id"></app-product>
@@ -43,5 +46,6 @@
         </button>
       </div>
     </div>
-  </div>
+  </ng-container>
+  </ng-container>
 </div>

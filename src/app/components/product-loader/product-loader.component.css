@@ -2,14 +2,10 @@
   display: flex;
   flex-flow: row wrap;
   border: 5px black;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .product {
   background-color: #C4C4C4;
-  border: solid 2px black;
-}
-
-.iteratingContainer {
-  margin: 0;
+  margin: 0.5em 0.5em;
 }

@@ -1,1 +1,21 @@
-<app-product-loader [whatToLoad]="category"></app-product-loader>
+<div id="pageContainer">
+    <div id="formContainer">
+        <h1>Filtros</h1>
+        <form id="priceFilter" [formGroup]="priceBoundingForm">
+            <h1>Filtrar por precio</h1>
+            <h2>Precio mínimo</h2>
+            <input type="number" placeholder="Min" formControlName="minPrice" class="priceInput">
+            <h2>Precio máximo</h2>
+            <input type="number" placeholder="Max" formControlName="maxPrice" class="priceInput">
+        </form>
+    </div>
+    <div id="rightSide">
+        <div id="categoryInfo">
+            <h1>{{ categoryName }}</h1>
+            <p>{{ categoryDescription }}</p>
+        </div>
+        <app-product-loader [whatToLoad]="category" [minPrice]="priceBoundingForm.value.minPrice"
+            [maxPrice]="priceBoundingForm.value.maxPrice">
+        </app-product-loader>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+#pageContainer {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-top: 2em;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#formContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    background-color: #848484c4;
+    border-radius: 30px;
+    box-shadow: inset 0px 0px 3px 3px #464646;
+    flex-grow: 2;
+    margin: 1em;
+}
+
+#formContainer h1{
+    font-size: 2em;
+    color: #FFFFFF;
+    margin-top: 0.7em;
+}
+
+#priceFilter {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#priceFilter h2{
+    font-size: 1.7em;
+    color: #FFFFFF;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+
+#priceFilter input{
+    font-size: 1.7em;
+    border: none;
+    border-radius: 5px;
+    margin: 0 0 1em 0;
+}
+
+.priceInput{
+    margin: 1em;
+}
+
+#rightSide {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 75%;
+    margin-top: 2em;
+    margin-right: 4em;
+}
+
+#categoryInfo {
+    margin-bottom: 2em;
+}
+
+#categoryInfo h1 {
+    font-size: 4em;
+    color: #EEA10C;
+}
+
+#categoryInfo p {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    color: #FFFFFF;
+}
