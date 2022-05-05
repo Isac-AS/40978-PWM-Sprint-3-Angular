@@ -1,132 +1,77 @@
-<div id="pageContainer">
-  <h1>Formulario de agregación de productos</h1>
-  <form [formGroup]="newProductForm" (ngSubmit)="onSubmit()">
-    <button type="button"
-            id="clearFormButton"
-            (click)="clearForm()">
-      <span class="material-icons">cleaning_services</span>
-      <u>Limpiar datos</u>
-    </button>
+<h1> ¡Agregue su nuevo producto a la plataforma Web!</h1>
+<div id="form-style">
+  <form class="example-form" [formGroup]="newProductForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nombre del producto</mat-label>
+      <input type="text" matInput formControlName="name" placeholder="Nombre del producto">
+      <mat-error *ngIf="newProductForm.get('name')!.errors?.['required']">
+        Este campo es <strong>obligatorio</strong>
+      </mat-error>
+      <mat-error *ngIf="newProductForm.get('name')!.errors?.['minlength']">
+        Debe contener más de <strong>6 caracteres</strong>
+      </mat-error>
+    </mat-form-field>
 
-    <!-- Product Name -->
-    <input type="text"
-           class="form-control"
-           placeholder="Nombre del producto"
-           formControlName="name">
-    <div *ngIf="newProductForm.get('name')!.invalid &&
-              (newProductForm.get('name')!.dirty ||
-               newProductForm.get('name')!.touched)"
-         class="errorMessage">
-      <p *ngIf="newProductForm.get('name')!.errors?.['required']">
-        Campo Obligatorio
-      </p>
-    </div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nombre extendido</mat-label>
+      <input type="text" matInput formControlName="extendedName" placeholder="Nombre extendido">
+      <mat-error *ngIf="newProductForm.get('extendedName')!.errors?.['minlength']">
+        Debe contener más de <strong>12 caracteres</strong>
+      </mat-error>
+    </mat-form-field>
 
-    <!-- Extended Name -->
-    <input type="text"
-           class="form-control"
-           placeholder="Nombre extendido"
-           formControlName="extendedName">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Descripción</mat-label>
+      <input type="text" matInput formControlName="description" placeholder="Descripción">
+      <mat-error *ngIf="newProductForm.get('description')!.errors?.['minlength']">
+        Debe contener más de <strong>12 caracteres</strong>
+      </mat-error>
+    </mat-form-field>
 
-    <!-- Description -->
-    <input type="text"
-           class="form-control"
-           placeholder="Descripción"
-           formControlName="description">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Precio</mat-label>
+      <input type="number" matInput formControlName="price" placeholder="Precio">
+      <mat-error *ngIf="newProductForm.get('price')!.errors?.['required']">
+        Este campo es <strong>obligatorio</strong>
+      </mat-error>
+    </mat-form-field>
 
-    <!-- Price -->
-    <input type="number"
-           class="form-control"
-           placeholder="Precio"
-           formControlName="price">
-    <div *ngIf="newProductForm.get('price')!.invalid &&
-              (newProductForm.get('price')!.dirty ||
-               newProductForm.get('price')!.touched)"
-         class="errorMessage">
-      <p *ngIf="newProductForm.get('price')!.errors?.['required']">
-        Campo Obligatorio
-      </p>
-    </div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Precio sin impuestos</mat-label>
+      <input type="number" matInput formControlName="priceWithoutTax" placeholder="Precio sin impuestos">
+      <mat-error *ngIf="newProductForm.get('priceWithoutTax')!.errors?.['required']">
+        Este campo es <strong>obligatorio</strong>
+      </mat-error>
+    </mat-form-field>
 
-    <!-- PriceWithoutTax -->
-    <input type="number"
-           class="form-control"
-           placeholder="Precio sin impuestos"
-           formControlName="priceWithoutTax">
-    <div *ngIf="newProductForm.get('priceWithoutTax')!.invalid &&
-              (newProductForm.get('priceWithoutTax')!.dirty ||
-               newProductForm.get('priceWithoutTax')!.touched)"
-         class="errorMessage">
-      <p *ngIf="newProductForm.get('priceWithoutTax')!.errors?.['required']">
-        Campo Obligatorio
-      </p>
-    </div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Marca</mat-label>
+      <input type="text" matInput formControlName="brand" placeholder="Marca">
+      <mat-error *ngIf="newProductForm.get('brand')!.errors?.['required']">
+        Este campo es <strong>obligatorio</strong>
+      </mat-error>
+    </mat-form-field>
 
-    <!-- Brand -->
-    <input type="text"
-           class="form-control"
-           placeholder="Marca"
-           formControlName="brand">
-    <div *ngIf="newProductForm.get('brand')!.invalid &&
-              (newProductForm.get('brand')!.dirty ||
-               newProductForm.get('brand')!.touched)"
-         class="errorMessage">
-      <p *ngIf="newProductForm.get('brand')!.errors?.['required']">
-        Campo Obligatorio
-      </p>
-    </div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Categoría</mat-label>
+      <select matNativeControl required formControlName="category" >
+        <option label="Escoge una categoría"></option>
+        <option value="headphones">Auriculares</option>
+        <option value="laptops">Portátiles</option>
+        <option value="furniture">Muebles</option>
+        <option value="sports">Deporte</option>
+        <option value="phones">Móviles</option>
+        <option value="games">Juegos</option>
+        <option value="clothing">Ropa</option>
+      </select>
+      <mat-error *ngIf="newProductForm.get('category')!.errors?.['required']">
+        Este campo es <strong>obligatorio</strong>
+      </mat-error>
+    </mat-form-field>
 
-    <!-- imageUrl -->
-    <input type="text"
-           class="form-control"
-           placeholder="Url de la Imagen"
-           formControlName="imageUrl">
-    <div *ngIf="newProductForm.get('imageUrl')!.invalid &&
-              (newProductForm.get('imageUrl')!.dirty ||
-               newProductForm.get('imageUrl')!.touched)"
-         class="errorMessage">
-      <p *ngIf="newProductForm.get('imageUrl')!.errors?.['required']">
-        Campo Obligatorio
-      </p>
-    </div>
-
-    <!-- category -->
-    <select name="category" formControlName="category">
-      <option value="headphones">Auriculares</option>
-      <option value="laptops">Portátiles</option>
-      <option value="furniture">Muebles</option>
-      <option value="sports">Deporte</option>
-      <option value="phones">Móviles</option>
-      <option value="games">Juegos</option>
-      <option value="clothing">Ropa</option>
-    </select>
-    <div *ngIf="newProductForm.get('category')!.invalid &&
-              (newProductForm.get('category')!.dirty ||
-               newProductForm.get('category')!.touched)"
-         class="errorMessage">
-      <p *ngIf="newProductForm.get('category')!.errors?.['required']">
-        Campo Obligatorio
-      </p>
-    </div>
-
-    <!-- discount -->
-    <input type="number"
-           class="form-control"
-           placeholder="Descuento"
-           formControlName="discount">
-    <div *ngIf="newProductForm.get('discount')!.invalid &&
-              (newProductForm.get('discount')!.dirty ||
-               newProductForm.get('discount')!.touched)"
-         class="errorMessage">
-      <p *ngIf="newProductForm.get('discount')!.errors?.['required']">
-        Campo Obligatorio
-      </p>
-    </div>
-    <button type="submit"
-            [disabled]="!newProductForm.valid">
-      Agregar Producto
-    </button>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Descuento</mat-label>
+      <input type="number" matInput formControlName="discount" placeholder="Descuento">
+    </mat-form-field>
   </form>
 </div>
-
-
