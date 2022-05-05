@@ -1,10 +1,11 @@
-import {Observable} from "rxjs";
-import {FormBuilder, Validators} from "@angular/forms";
-import {Component, Inject, OnInit} from '@angular/core';
-import {DatabaseService} from "../../../services/database.service";
-import {IdPair, Product} from "../../../models/interfaces";
-import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {CustomUtilsService} from "../../../services/customUtils.service";
+import { Observable } from "rxjs";
+import { FormBuilder, Validators } from "@angular/forms";
+import { Component, Inject, OnInit } from '@angular/core';
+import { DatabaseService } from "../../../services/database.service";
+import { IdPair, Product } from "../../../models/interfaces";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { CustomUtilsService } from "../../../services/customUtils.service";
+import { StorageService } from "src/app/services/storage.service";
 
 @Component({
   selector: 'app-modify-element-modal-view',
@@ -19,16 +20,16 @@ export class ModifyElementModalViewComponent implements OnInit {
   observable: Observable<any>;
 
   currentProductForm = this.fb.group({
-      name: ['', [Validators.required]],
-      extendedName: [''],
-      description: [''],
-      price: ['', [Validators.required]],
-      priceWithoutTax: ['', [Validators.required]],
-      brand: ['', [Validators.required]],
-      imageUrl: ['', [Validators.required]],
-      category: ['', [Validators.required]],
-      discount: ['', [Validators.required]]
-    }
+    name: ['', [Validators.required]],
+    extendedName: [''],
+    description: [''],
+    price: ['', [Validators.required]],
+    priceWithoutTax: ['', [Validators.required]],
+    brand: ['', [Validators.required]],
+    imageUrl: ['', [Validators.required]],
+    category: ['', [Validators.required]],
+    discount: ['', [Validators.required]]
+  }
   );
 
   databaseElement: Product = {
@@ -48,6 +49,7 @@ export class ModifyElementModalViewComponent implements OnInit {
     private fb: FormBuilder,
     public database: DatabaseService,
     private utils: CustomUtilsService,
+    private storageService: StorageService,
     public dialogRef: MatDialogRef<ModifyElementModalViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IdPair
   ) {
@@ -55,9 +57,9 @@ export class ModifyElementModalViewComponent implements OnInit {
     this.path = data.path;
     this.observable = this.database.readDocument<Product>(this.path, this.id);
     this.observable.subscribe(async res => {
-        this.databaseElement = await res;
-        this.initializeForm(res);
-      }
+      this.databaseElement = await res;
+      this.initializeForm(res);
+    }
     );
   }
 
@@ -101,6 +103,15 @@ export class ModifyElementModalViewComponent implements OnInit {
         status: true
       })
     });
+  }
+
+  uploadProductImage(imageInput: any) {
+    this.storageService.uploadFile(imageInput, 'productsImages', this.databaseElement.id);
+    const ref = this.storageService.getRef('productsImages/' + this.databaseElement.id);
+    ref.getDownloadURL().subscribe(url => {
+      this.databaseElement.imageUrl = url;
+      this.database.updateDocument<Product>(this.databaseElement, this.path, this.databaseElement.id)
+    })
   }
 
   clearForm() {

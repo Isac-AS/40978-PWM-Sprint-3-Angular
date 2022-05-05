@@ -4,10 +4,10 @@
 
     <div id="avatar-image">
       <div>
-        <img width="160" height="160" [src]="profileUrl" />
+        <img width="160" height="160" [src]="databaseElement.photoURL" />
       </div>
       <div *ngIf="hidden">
-        <input type="file" id="files" (change)="uploadFile($event)" class="hidden">
+        <input type="file" id="files" (change)="uploadProfilePicture($event)" class="hidden">
         <label for="files">Seleccionar nueva imagen</label>
       </div>
       <!-- <a [href]="downloadURL | async" *ngIf="downloadURL | async" > Descargar Imagen</a> -->
@@ -41,10 +41,4 @@
 
     <button type="submit"> Modificar Usuario </button>
   </form>
-
-
-
 </div>
-
-
-
