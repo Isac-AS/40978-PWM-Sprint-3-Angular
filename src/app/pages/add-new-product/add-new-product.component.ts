@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MessagePopupPair, Product} from "../../models/interfaces";
 import {DatabaseService} from "../../services/database.service";
-import {FormBuilder, NgForm, Validators} from "@angular/forms";
+import {FormBuilder, FormGroupDirective, NgForm, Validators} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {InfoMessagePopupComponent} from "../../components/info-message-popup/info-message-popup.component";
 import {CustomUtilsService} from "../../services/customUtils.service";
+import {StorageService} from "../../services/storage.service";
 
 @Component({
   selector: 'app-add-new-product',
@@ -13,11 +14,15 @@ import {CustomUtilsService} from "../../services/customUtils.service";
 })
 export class AddNewProductComponent implements OnInit {
 
+  @ViewChild(FormGroupDirective) formDirective: FormGroupDirective | undefined;
+
   private path: string = 'products';
+  private uniqueId: string = '';
+  imageUploaded: boolean = false;
 
   newProductForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(8)]],
-      extendedName: ['', [Validators.minLength(12)]],
+      name: ['', [Validators.required, Validators.minLength(6)]],
+      extendedName: ['', [Validators.required, Validators.minLength(12)]],
       description: ['', [Validators.minLength(12)]],
       price: ['', [Validators.required]],
       priceWithoutTax: ['', [Validators.required]],
@@ -44,7 +49,8 @@ export class AddNewProductComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public database: DatabaseService,
-    private utils: CustomUtilsService
+    private utils: CustomUtilsService,
+    private storageService: StorageService
   ) { }
 
   ngOnInit(): void { }
@@ -56,23 +62,35 @@ export class AddNewProductComponent implements OnInit {
     this.databaseElement.price = this.newProductForm.value.price;
     this.databaseElement.priceWithoutTax = this.newProductForm.value.priceWithoutTax;
     this.databaseElement.brand = this.newProductForm.value.brand;
-    this.databaseElement.imageUrl = this.newProductForm.value.imageUrl;
     this.databaseElement.category = this.newProductForm.value.category;
     this.databaseElement.discount = this.newProductForm.value.discount;
-    this.save()
+    this.save();
+
   }
 
-  save() {
+   save() {
     const data = this.databaseElement;
-    data.id = this.database.createId();
+    data.id = this.uniqueId;
     this.database.createDocument<Product>(data, this.path, data.id).then(async (_) => {
       await this.utils.openMessageDialog( {
-        message: 'Producto Guardado con éxito!',
+        message: 'Producto guardado con éxito!',
         status: true
       })
+      this.formDirective?.resetForm();
+      this.imageUploaded = false;
     });
-    this.clearForm();
   }
+
+   async uploadProductImage(imageInput: any) {
+    this.uniqueId = this.database.createId();
+    await this.storageService.uploadFile(imageInput, 'productsImages', this.uniqueId);
+    const ref = await this.storageService.getRef('productsImages/' + this.uniqueId);
+    await ref.getDownloadURL().subscribe(url => {
+      this.databaseElement.imageUrl = url;
+      this.imageUploaded = true;
+    });
+  }
+
 
   clearForm() {
     this.newProductForm.reset();

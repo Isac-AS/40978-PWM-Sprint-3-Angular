@@ -21,5 +21,5 @@ export class StorageService {
   getRef(path: string) {
     return this.storage.ref(path)
   }
-  
+
 }

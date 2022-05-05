@@ -4,10 +4,10 @@
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Nombre del producto</mat-label>
       <input type="text" matInput formControlName="name" placeholder="Nombre del producto">
-      <mat-error *ngIf="newProductForm.get('name')!.errors?.['required']">
+      <mat-error *ngIf="newProductForm.get('name')!.errors?.['required']" class="error-text">
         Este campo es <strong>obligatorio</strong>
       </mat-error>
-      <mat-error *ngIf="newProductForm.get('name')!.errors?.['minlength']">
+      <mat-error *ngIf="newProductForm.get('name')!.errors?.['minlength']" class="error-text">
         Debe contener más de <strong>6 caracteres</strong>
       </mat-error>
     </mat-form-field>
@@ -15,7 +15,10 @@
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Nombre extendido</mat-label>
       <input type="text" matInput formControlName="extendedName" placeholder="Nombre extendido">
-      <mat-error *ngIf="newProductForm.get('extendedName')!.errors?.['minlength']">
+      <mat-error *ngIf="newProductForm.get('extendedName')!.errors?.['required']" class="error-text">
+        Este campo es <strong>obligatorio</strong>
+      </mat-error>
+      <mat-error *ngIf="newProductForm.get('extendedName')!.errors?.['minlength']" class="error-text">
         Debe contener más de <strong>12 caracteres</strong>
       </mat-error>
     </mat-form-field>
@@ -23,7 +26,7 @@
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Descripción</mat-label>
       <input type="text" matInput formControlName="description" placeholder="Descripción">
-      <mat-error *ngIf="newProductForm.get('description')!.errors?.['minlength']">
+      <mat-error *ngIf="newProductForm.get('description')!.errors?.['minlength']" class="error-text">
         Debe contener más de <strong>12 caracteres</strong>
       </mat-error>
     </mat-form-field>
@@ -31,7 +34,7 @@
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Precio</mat-label>
       <input type="number" matInput formControlName="price" placeholder="Precio">
-      <mat-error *ngIf="newProductForm.get('price')!.errors?.['required']">
+      <mat-error *ngIf="newProductForm.get('price')!.errors?.['required']" class="error-text">
         Este campo es <strong>obligatorio</strong>
       </mat-error>
     </mat-form-field>
@@ -39,7 +42,7 @@
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Precio sin impuestos</mat-label>
       <input type="number" matInput formControlName="priceWithoutTax" placeholder="Precio sin impuestos">
-      <mat-error *ngIf="newProductForm.get('priceWithoutTax')!.errors?.['required']">
+      <mat-error *ngIf="newProductForm.get('priceWithoutTax')!.errors?.['required']" class="error-text">
         Este campo es <strong>obligatorio</strong>
       </mat-error>
     </mat-form-field>
@@ -47,14 +50,14 @@
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Marca</mat-label>
       <input type="text" matInput formControlName="brand" placeholder="Marca">
-      <mat-error *ngIf="newProductForm.get('brand')!.errors?.['required']">
+      <mat-error *ngIf="newProductForm.get('brand')!.errors?.['required']" class="error-text">
         Este campo es <strong>obligatorio</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Categoría</mat-label>
-      <select matNativeControl required formControlName="category" >
+      <select matNativeControl required formControlName="category">
         <option label="Escoge una categoría"></option>
         <option value="headphones">Auriculares</option>
         <option value="laptops">Portátiles</option>
@@ -64,7 +67,7 @@
         <option value="games">Juegos</option>
         <option value="clothing">Ropa</option>
       </select>
-      <mat-error *ngIf="newProductForm.get('category')!.errors?.['required']">
+      <mat-error *ngIf="newProductForm.get('category')!.errors?.['required']" class="error-text">
         Este campo es <strong>obligatorio</strong>
       </mat-error>
     </mat-form-field>
@@ -73,5 +76,30 @@
       <mat-label>Descuento</mat-label>
       <input type="number" matInput formControlName="discount" placeholder="Descuento">
     </mat-form-field>
+
+    <label for="file">Imagen del producto</label>
+    <input type="file" id="file" formControlName="imageUrl" (change)="uploadProductImage($event)" placeholder="Imagen">
+    <div *ngIf="newProductForm.get('imageUrl')!.invalid &&
+              (newProductForm.get('imageUrl')!.dirty ||
+               newProductForm.get('imageUrl')!.touched)"
+         class="errorMessage">
+      <p *ngIf="newProductForm.get('imageUrl')!.errors?.['required']">
+        Debe subir una imagen del producto
+      </p>
+    </div>
+
+    <div id="flex-style">
+      <div>
+        <button mat-fab color="custom" type="reset" aria-label="Borrar todos los campos" (click)="clearForm()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+      <div>
+        <button mat-fab color="custom" type="submit" [disabled]="!newProductForm.valid && !imageUploaded" aria-label="Guardar producto">
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+    </div>
   </form>
 </div>
