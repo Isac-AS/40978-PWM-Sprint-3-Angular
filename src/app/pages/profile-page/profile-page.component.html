@@ -6,13 +6,15 @@
       <div>
         <img width="160" height="160" [src]="profileUrl" />
       </div>
-      <input type="file" id="files" (change)="uploadFile($event)" class="hidden">
-      <label for="files">Seleccionar nueva imagen</label>
-      <a [href]="downloadURL | async" *ngIf="downloadURL | async" > Descargar Imagen</a>
+      <div *ngIf="hidden">
+        <input type="file" id="files" (change)="uploadFile($event)" class="hidden">
+        <label for="files">Seleccionar nueva imagen</label>
+      </div>
+      <!-- <a [href]="downloadURL | async" *ngIf="downloadURL | async" > Descargar Imagen</a> -->
     </div>
 
     <div id="data">
-      <!-- Product Name -->
+      <!-- Username -->
       <label for="name"> Nombre de usuario </label>
       <input type="text"
              class="form-control"
@@ -20,19 +22,24 @@
              formControlName="name"
              [readonly]="true">
 
-      <!-- Extended Name -->
+      <!-- Email -->
       <label for="email"> Correo electrónico </label>
       <input type="text"
              class="form-control"
              placeholder="Correo electrónico"
              formControlName="email"
              [readonly]="true">
+
+      <!-- Profile Pic URL -->
+      <label for="image_url"> URL de la imagen </label>
+      <input type="text"
+             class="form-control"
+             placeholder="Imagen no disponible"
+             formControlName="image_url"
+             [readonly]="true">
     </div>
 
-    <button type="submit"
-            [disabled]="!currentUserForm.valid">
-      Modificar Usuario
-    </button>
+    <button type="submit"> Modificar Usuario </button>
   </form>
 
 
