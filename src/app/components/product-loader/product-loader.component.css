@@ -27,3 +27,8 @@ a {
   flex-flow: column nowrap;
 }
 
+@media (max-width: 768px){
+  .product {
+    height: 30em;
+  }
+}

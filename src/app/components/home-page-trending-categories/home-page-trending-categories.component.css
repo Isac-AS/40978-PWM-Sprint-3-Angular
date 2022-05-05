@@ -29,3 +29,9 @@
 .category:hover {
   filter: brightness(1.15);
 }
+
+@media (max-width: 1200px){
+  .category{
+    margin: 0.5em 0.5em;
+  }
+}

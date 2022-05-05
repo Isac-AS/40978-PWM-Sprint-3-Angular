@@ -1,11 +1,11 @@
-.welcomingButtons {
+#welcomingButtons {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   margin-top: 2em;
 }
 
-.welcomingButtons .welcomingButton {
+#welcomingButtons .welcomingButton {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -16,16 +16,43 @@
   background-color: #C4C4C4;
 }
 
-.welcomingButtons .welcomingButton img {
+#welcomingButtons .welcomingButton img {
   width: 1em;
   vertical-align: center;
 }
 
-.welcomingButtons .welcomingButton u {
+#welcomingButtons .welcomingButton u {
   font-weight: bold;
   color: black;
 }
 
-.welcomingButtons .welcomingButton:hover {
+#welcomingButtons .welcomingButton:hover {
   filter: brightness(1.15);
 }
+
+@media (max-width: 768px){
+  #welcomingButtons {
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  #welcomingButtons .welcomingButton {
+    justify-content: center;
+    width: 10em;
+    margin: 0.5em 0;
+  }
+}
+
+@media (max-width: 425px){
+  #welcomingButtons {
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  #welcomingButtons .welcomingButton {
+    justify-content: center;
+    width: 70%;
+    margin: 0.5em 0;
+  }
+}
+

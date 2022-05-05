@@ -1,13 +1,11 @@
 import { Observable } from 'rxjs';
-import { finalize, take } from 'rxjs/operators';
+import { User } from "../../models/interfaces";
 import { Component, OnInit } from '@angular/core';
-import { Product, User } from "../../models/interfaces";
 import { FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
 import { DatabaseService } from "../../services/database.service";
-import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { CustomUtilsService } from "../../services/customUtils.service";
 import { StorageService } from 'src/app/services/storage.service';
+import { CustomUtilsService } from "../../services/customUtils.service";
 
 @Component({
   selector: 'app-profile-page',

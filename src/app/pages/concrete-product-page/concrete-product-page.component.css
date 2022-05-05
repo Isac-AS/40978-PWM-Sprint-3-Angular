@@ -77,3 +77,27 @@
     margin-bottom: 0.5em;
 }
 
+@media (min-width: 768px) and (max-width: 1200px){
+    #productData {
+        flex-flow: column nowrap;
+    }
+}
+
+@media (max-width: 768px){
+    #productData img {
+        width: 20em;
+        border-radius: 50px;
+        margin-top: 3em;
+        margin-bottom: 2em;
+    }
+
+    #productData {
+        flex-flow: column nowrap;
+    }
+
+    #productInfo .auxContainer {
+        flex-flow: column nowrap;
+        justify-content: center;
+    }
+}
+

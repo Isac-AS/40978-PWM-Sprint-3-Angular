@@ -41,4 +41,16 @@ h2 {
   border-radius: 5px;
 }
 
+@media (max-width: 768px){
+  #product {
+    width: 10em;
+    margin: 1em;
+  }
+
+  img {
+    width: 10em;
+    box-shadow: none;
+  }
+}
+
 
