@@ -1,0 +1,28 @@
+#contentContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    font-size: 1.7em;
+}
+
+.infoPair {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.messagePair {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+h2 {
+    flex: 15%;
+    margin: 0.2em;
+}
+
+p {
+    flex: 85%;
+    margin: 0.2em;
+    line-height: 1.5em;
+}
+

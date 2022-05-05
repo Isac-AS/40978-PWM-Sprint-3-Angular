@@ -1,12 +1,14 @@
-import {IdPair} from "../../models/interfaces";
+import { IdPair } from "../../models/interfaces";
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { DatabaseService } from "../../services/database.service";
-import {CustomUtilsService} from "../../services/customUtils.service";
+import { CustomUtilsService } from "../../services/customUtils.service";
 import { ModifyElementModalViewComponent } from "./modify-element-modal-view/modify-element-modal-view.component";
 import {
   UserModificationPopupComponent
 } from "../../components/user-modification-popup/user-modification-popup.component";
+import { take } from "rxjs";
+import { TicketViewerPopupComponent } from "src/app/components/ticket-viewer-popup/ticket-viewer-popup.component";
 
 
 @Component({
@@ -17,9 +19,9 @@ import {
 export class RudCollectionComponent implements OnInit {
 
   collection: any[] = [];
-  collections: string[] = ['Productos', 'Usuarios'];
+  collections: string[] = ['Productos', 'Usuarios', 'Tickets'];
   currentCollection: string = '';
-  documentToModifyId:string = '';
+  documentToModifyId: string = '';
 
   constructor(
     public dialog: MatDialog,
@@ -35,7 +37,7 @@ export class RudCollectionComponent implements OnInit {
   }
 
   getCollection() {
-    this.db.readCollection(this.currentCollection).subscribe( res => {
+    this.db.readCollection(this.currentCollection).subscribe(res => {
       this.collection = res;
     })
   }
@@ -47,6 +49,9 @@ export class RudCollectionComponent implements OnInit {
         break;
       case 'Usuarios':
         this.currentCollection = 'users'
+        break;
+      case 'Tickets':
+        this.currentCollection = 'tickets'
         break;
       default:
         this.currentCollection = 'products'
@@ -67,7 +72,7 @@ export class RudCollectionComponent implements OnInit {
 
   deleteElement(id: string) {
     this.db.deleteDocument(this.currentCollection, id).then(async r => {
-      await this.utils.openMessageDialog( {
+      await this.utils.openMessageDialog({
         message: 'Producto Eliminado con éxito!',
         status: true
       })
@@ -75,7 +80,7 @@ export class RudCollectionComponent implements OnInit {
   }
 
   openProductModificationDialog(): void {
-    const configData: IdPair = {id: this.documentToModifyId, path:this.currentCollection}
+    const configData: IdPair = { id: this.documentToModifyId, path: this.currentCollection }
     this.dialog.open(ModifyElementModalViewComponent, {
       data: configData,
       width: '70%',
@@ -84,11 +89,19 @@ export class RudCollectionComponent implements OnInit {
   }
 
   openUserModificationDialog(): void {
-    const configData: IdPair = {id: this.documentToModifyId, path:this.currentCollection}
+    const configData: IdPair = { id: this.documentToModifyId, path: this.currentCollection }
     this.dialog.open(UserModificationPopupComponent, {
       data: configData,
       width: '70%',
     });
   }
 
+  openTicketViewerDialog(id: string): void{
+    this.db.readDocument('tickets', id).pipe(take(1)).subscribe( readTicket => {
+      this.dialog.open(TicketViewerPopupComponent, {
+        data: readTicket,
+        width: '70%',
+      })
+    })
+  }
 }

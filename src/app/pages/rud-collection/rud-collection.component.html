@@ -50,4 +50,23 @@
       </button>
     </div>
   </div>
+
+  <!-- Information shown when displaying users -->
+  <div class="element" *ngSwitchCase="'tickets'">
+    <div class="elementInfo">
+      <p>Nombre: {{element.name}}</p>
+      <p>Sujeto: {{element.subject}}</p>
+    </div>
+
+    <div class="elementButtonHolder" *ngSwitchCase="'tickets'">
+      <button class="elementActionButton"
+              (click)="openTicketViewerDialog(element.id)">
+        Ver
+      </button>
+      <button class="elementActionButton"
+              (click)="deleteElement(element.id)">
+        Eliminar
+      </button>
+    </div>
+  </div>
 </div>

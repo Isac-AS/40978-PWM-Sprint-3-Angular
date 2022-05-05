@@ -61,6 +61,7 @@ import { UserLoginComponent } from './components/user-login/user-login.component
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 import { NotAvailablePageComponent } from './pages/not-available-page/not-available-page.component';
 import { BizumPageComponent } from './pages/bizum-page/bizum-page.component';
+import { TicketViewerPopupComponent } from './components/ticket-viewer-popup/ticket-viewer-popup.component';
 
 // @ts-ignore
 
@@ -92,7 +93,8 @@ import { BizumPageComponent } from './pages/bizum-page/bizum-page.component';
     TicketPageComponent,
     CheckoutPageComponent,
     NotAvailablePageComponent,
-    BizumPageComponent
+    BizumPageComponent,
+    TicketViewerPopupComponent
   ],
   imports: [
     BrowserModule,
