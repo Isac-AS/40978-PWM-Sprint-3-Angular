@@ -1,84 +1,72 @@
-#pageContainer {
-  display: flex;
-  flex-flow: column nowrap;
-}
-
 h1 {
+
   color: black;
-  font-size: 2.8em;
+  font-size: 3.5em;
   font-weight: 500;
-  align-self: center;
-  margin: 1em 0 0 0;
-}
-
-form {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-}
-
-p {
   text-align: center;
+  margin: 2% auto 2% auto;
+
 }
 
-button {
-  padding: 1em 20px;
-  font-size: 1.8em;
-  margin: 1em 0;
+p{
+  display: table;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 auto 2% auto;
+  padding: 1%;
+  background-color: #c94d4d;
 }
 
-.ng-valid {
-  border-left: 5px solid #42A948; /* green */
+label {
+  margin: 0 auto 0.3% 25.3%;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-.ng-invalid:not(form) {
-  border-left: 5px solid #a94442; /* red */
+
+#form-style {
+
+  background-color: #c4c4c4;
+  padding: 2%;
+  margin-bottom: 5%;
 }
 
-input {
-  padding: 1em;
-  font-size: 1.5em;
-  border-radius: 15px;
-  border: none;
-  margin-top: 1em;
-  width: 20em;
+#file {
+
+  margin: 0 auto 2% 25.1%;
+  font-size: 16px;
 }
 
-select {
-  margin-top: 1em;
-  font-size: 1.75em;
-  border-radius: 15px;
-  width: 19em;
-  padding: 0.5em;
-}
-
-.inputWithError {
-  width: 100%;
+#flex-style {
   display: flex;
-  flex-flow: row nowrap;
+  margin: 2% 50% auto auto;
+  gap: 70%;
+}
+
+.example-form {
+
+  display: flex;
   justify-content: center;
+  flex-direction: column;
+
 }
 
-@media (min-width: 768px) and (max-width: 1200px) {
-  h1 {
-    font-size: 2em;
-  }
+.example-full-width {
+  margin: 0 auto 0.5em auto;
+  min-width: 50%;
+  background-color: #c4c4c4;
+  font-weight: bold;
+  font-size: 16px;
 }
 
+.error-text {
+  font-size: 14px;
+}
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-  }
-
-  input {
-    width: 80%;
-  }
-
-  select{
-    width: 85%;
-  }
-
+.mat-custom {
+  background-color: #cc5c00;
+  color: #fff;
 }
 
 

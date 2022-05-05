@@ -28,7 +28,7 @@ export class ModifyElementModalViewComponent implements OnInit {
     brand: ['', [Validators.required]],
     imageUrl: ['', [Validators.required]],
     category: ['', [Validators.required]],
-    discount: ['', [Validators.required]]
+    discount: ['']
   }
   );
 
@@ -91,7 +91,8 @@ export class ModifyElementModalViewComponent implements OnInit {
     this.databaseElement.imageUrl = this.currentProductForm.value.imageUrl;
     this.databaseElement.category = this.currentProductForm.value.category;
     this.databaseElement.discount = this.currentProductForm.value.discount;
-    this.update()
+    this.update();
+    this.dialogRef.close();
   }
 
   update() {

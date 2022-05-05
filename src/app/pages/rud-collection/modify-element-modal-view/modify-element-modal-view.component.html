@@ -1,133 +1,103 @@
-<div id="pageContainer">
-  <h1>Formulario de modificación de productos</h1>
-  <form [formGroup]="currentProductForm" (ngSubmit)="onSubmit()">
-    <button type="button"
-            id="clearFormButton"
-            (click)="clearForm()">
-      <span class="material-icons">cleaning_services</span>
-      <u>Limpiar datos</u>
-    </button>
+<h1> ¡Modifique su producto en la plataforma Web!</h1>
+<div id="form-style">
+  <form class="example-form" [formGroup]="currentProductForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nombre del producto</mat-label>
+      <input type="text" matInput formControlName="name" placeholder="Nombre del producto">
+      <mat-error *ngIf="currentProductForm.get('name')!.errors?.['required']" class="error-text">
+        Este campo es <strong>obligatorio</strong>
+      </mat-error>
+      <mat-error *ngIf="currentProductForm.get('name')!.errors?.['minlength']" class="error-text">
+        Debe contener más de <strong>6 caracteres</strong>
+      </mat-error>
+    </mat-form-field>
 
-    <!-- Product Name -->
-    <input type="text"
-           class="form-control"
-           placeholder="Nombre del producto"
-           formControlName="name">
-    <div *ngIf="currentProductForm.get('name')!.invalid &&
-              (currentProductForm.get('name')!.dirty ||
-               currentProductForm.get('name')!.touched)"
-         class="errorMessage">
-      <p *ngIf="currentProductForm.get('name')!.errors?.['required']">
-        Campo Obligatorio
-      </p>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nombre currentProductForm</mat-label>
+      <input type="text" matInput formControlName="extendedName" placeholder="Nombre extendido">
+      <mat-error *ngIf="currentProductForm.get('extendedName')!.errors?.['required']" class="error-text">
+        Este campo es <strong>obligatorio</strong>
+      </mat-error>
+      <mat-error *ngIf="currentProductForm.get('extendedName')!.errors?.['minlength']" class="error-text">
+        Debe contener más de <strong>12 caracteres</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Descripción</mat-label>
+      <input type="text" matInput formControlName="description" placeholder="Descripción">
+      <mat-error *ngIf="currentProductForm.get('description')!.errors?.['minlength']" class="error-text">
+        Debe contener más de <strong>12 caracteres</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Precio</mat-label>
+      <input type="number" matInput formControlName="price" placeholder="Precio">
+      <mat-error *ngIf="currentProductForm.get('price')!.errors?.['required']" class="error-text">
+        Este campo es <strong>obligatorio</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Precio sin impuestos</mat-label>
+      <input type="number" matInput formControlName="priceWithoutTax" placeholder="Precio sin impuestos">
+      <mat-error *ngIf="currentProductForm.get('priceWithoutTax')!.errors?.['required']" class="error-text">
+        Este campo es <strong>obligatorio</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Marca</mat-label>
+      <input type="text" matInput formControlName="brand" placeholder="Marca">
+      <mat-error *ngIf="currentProductForm.get('brand')!.errors?.['required']" class="error-text">
+        Este campo es <strong>obligatorio</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Categoría</mat-label>
+      <select matNativeControl required formControlName="category">
+        <option label="Escoge una categoría"></option>
+        <option value="headphones">Auriculares</option>
+        <option value="laptops">Portátiles</option>
+        <option value="furniture">Muebles</option>
+        <option value="sports">Deporte</option>
+        <option value="phones">Móviles</option>
+        <option value="games">Juegos</option>
+        <option value="clothing">Ropa</option>
+      </select>
+      <mat-error *ngIf="currentProductForm.get('category')!.errors?.['required']" class="error-text">
+        Este campo es <strong>obligatorio</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Descuento</mat-label>
+      <input type="number" matInput formControlName="discount" placeholder="Descuento">
+    </mat-form-field>
+
+    <label for="file">Imagen del producto</label>
+    <input type="file" id="file"  (change)="uploadProductImage($event)" placeholder="Imagen">
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>URL de la imagen</mat-label>
+      <input type="text" matInput formControlName="imageUrl" readonly placeholder="URL de la imagen">
+    </mat-form-field>
+
+    <div id="flex-style">
+      <div>
+        <button mat-fab color="custom" type="reset" aria-label="Borrar todos los campos" (click)="clearForm()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+      <div>
+        <button mat-fab color="custom" type="submit" [disabled]="!currentProductForm.valid" aria-label="Guardar producto">
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
     </div>
-
-    <!-- Extended Name -->
-    <input type="text"
-           class="form-control"
-           placeholder="Nombre extendido"
-           formControlName="extendedName">
-
-    <!-- Description -->
-    <input type="text"
-           class="form-control"
-           placeholder="Descripción"
-           formControlName="description">
-
-    <!-- Price -->
-    <input type="number"
-           class="form-control"
-           placeholder="Precio"
-           formControlName="price">
-    <div *ngIf="currentProductForm.get('price')!.invalid &&
-              (currentProductForm.get('price')!.dirty ||
-               currentProductForm.get('price')!.touched)"
-         class="errorMessage">
-      <p *ngIf="currentProductForm.get('price')!.errors?.['required']">
-        Campo Obligatorio
-      </p>
-    </div>
-
-    <!-- PriceWithoutTax -->
-    <input type="number"
-           class="form-control"
-           placeholder="Precio sin impuestos"
-           formControlName="priceWithoutTax">
-    <div *ngIf="currentProductForm.get('priceWithoutTax')!.invalid &&
-              (currentProductForm.get('priceWithoutTax')!.dirty ||
-               currentProductForm.get('priceWithoutTax')!.touched)"
-         class="errorMessage">
-      <p *ngIf="currentProductForm.get('priceWithoutTax')!.errors?.['required']">
-        Campo Obligatorio
-      </p>
-    </div>
-
-    <!-- Brand -->
-    <input type="text"
-           class="form-control"
-           placeholder="Marca"
-           formControlName="brand">
-    <div *ngIf="currentProductForm.get('brand')!.invalid &&
-              (currentProductForm.get('brand')!.dirty ||
-               currentProductForm.get('brand')!.touched)"
-         class="errorMessage">
-      <p *ngIf="currentProductForm.get('brand')!.errors?.['required']">
-        Campo Obligatorio
-      </p>
-    </div>
-
-    <!-- imageUrl -->
-    <input type="file" id="file" (change)="uploadProductImage($event)">
-    <input type="text"
-           class="form-control"
-           placeholder="Url de la Imagen"
-           formControlName="imageUrl">
-    <div *ngIf="currentProductForm.get('imageUrl')!.invalid &&
-              (currentProductForm.get('imageUrl')!.dirty ||
-               currentProductForm.get('imageUrl')!.touched)"
-         class="errorMessage">
-      <p *ngIf="currentProductForm.get('imageUrl')!.errors?.['required']">
-        Campo Obligatorio
-      </p>
-    </div>
-
-    <!-- category -->
-    <select name="category" formControlName="category">
-      <option value="headphones">Auriculares</option>
-      <option value="laptops">Portátiles</option>
-      <option value="furniture">Muebles</option>
-      <option value="sports">Deporte</option>
-      <option value="phones">Móviles</option>
-      <option value="games">Juegos</option>
-      <option value="clothing">Ropa</option>
-    </select>
-    <div *ngIf="currentProductForm.get('category')!.invalid &&
-              (currentProductForm.get('category')!.dirty ||
-               currentProductForm.get('category')!.touched)"
-         class="errorMessage">
-      <p *ngIf="currentProductForm.get('category')!.errors?.['required']">
-        Campo Obligatorio
-      </p>
-    </div>
-
-    <!-- discount -->
-    <input type="number"
-           class="form-control"
-           placeholder="Descuento"
-           formControlName="discount">
-    <div *ngIf="currentProductForm.get('discount')!.invalid &&
-              (currentProductForm.get('discount')!.dirty ||
-               currentProductForm.get('discount')!.touched)"
-         class="errorMessage">
-      <p *ngIf="currentProductForm.get('discount')!.errors?.['required']">
-        Campo Obligatorio
-      </p>
-    </div>
-    <button type="submit"
-            [disabled]="!currentProductForm.valid">
-      Modificar Producto
-    </button>
   </form>
 </div>
-
 
