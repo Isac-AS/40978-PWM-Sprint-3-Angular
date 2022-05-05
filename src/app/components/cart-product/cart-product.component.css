@@ -41,3 +41,52 @@ img{
   border-radius: 10px;
   box-shadow: inset 0px 0px 2px 2px #464646;
 }
+
+@media (min-width: 768px) and (max-width: 1200px){
+
+  h1{
+    font-weight: bolder;
+    font-size: 30px;
+  }
+
+  h2{
+    margin-top: 7%;
+    font-size: 20px;
+  }
+
+  h3{
+    font-size: 15px;
+  }
+
+
+  img{
+    max-width: 30%;
+  }
+
+}
+
+@media (max-width: 768px){
+  h1{
+    font-weight: bolder;
+    font-size: 20px;
+  }
+
+  h2{
+    margin-top: 7%;
+    font-size: 17px;
+  }
+
+  h3{
+    display: none;
+    font-size: 12px;
+  }
+
+
+  img{
+    display: none;
+    min-width: 30%;
+    min-height: 70%;
+  }
+}
+
+

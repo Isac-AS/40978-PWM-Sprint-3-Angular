@@ -30,3 +30,55 @@ button{
   background-color: black;
   color: white;
 }
+
+@media (min-width: 768px) and (max-width: 1200px){
+
+  #infoContainer{
+    display: flex;
+    flex-flow: column;
+    margin: 5% auto auto auto;
+  }
+
+  h1{
+    text-align: left;
+    font-size: 2em;
+  }
+  span{
+    font-size: 8em;
+  }
+
+  button{
+    margin: 5% auto auto auto;
+    justify-content: center;
+    border-radius: 20px;
+    text-align: center;
+    width: 9em;
+    font-size: 1.8em;
+  }
+
+}
+
+@media (max-width: 768px) {
+  #infoContainer{
+    display: flex;
+    flex-flow: column;
+    margin: 1% auto auto 2%;
+  }
+
+  h1{
+    text-align: left;
+    font-size: 1.2em;
+  }
+  span{
+    font-size: 6em;
+  }
+
+  button{
+    margin: 2% auto auto auto;
+    justify-content: center;
+    border-radius: 20px;
+    text-align: center;
+    width: 9em;
+    font-size: 1.2em;
+  }
+}
