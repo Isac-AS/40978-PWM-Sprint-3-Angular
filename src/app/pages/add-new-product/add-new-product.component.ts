@@ -16,15 +16,15 @@ export class AddNewProductComponent implements OnInit {
   private path: string = 'products';
 
   newProductForm = this.fb.group({
-      name: ['', [Validators.required]],
-      extendedName: [''],
-      description: [''],
+      name: ['', [Validators.required, Validators.minLength(8)]],
+      extendedName: ['', [Validators.minLength(12)]],
+      description: ['', [Validators.minLength(12)]],
       price: ['', [Validators.required]],
       priceWithoutTax: ['', [Validators.required]],
       brand: ['', [Validators.required]],
       imageUrl: ['', [Validators.required]],
       category: ['', [Validators.required]],
-      discount: ['', [Validators.required]]
+      discount: ['']
     }
   );
 
@@ -75,19 +75,8 @@ export class AddNewProductComponent implements OnInit {
   }
 
   clearForm() {
-    this.newProductForm.setValue(
-      {
-        name: '',
-        extendedName: '',
-        description: '',
-        price: '',
-        priceWithoutTax: '',
-        brand: '',
-        imageUrl: '',
-        category: '',
-        discount: '',
-      }
-    )
+    this.newProductForm.reset();
+
   }
 
 }
