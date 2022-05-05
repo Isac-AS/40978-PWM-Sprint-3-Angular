@@ -111,6 +111,12 @@ export class ModifyElementModalViewComponent implements OnInit {
     ref.getDownloadURL().subscribe(url => {
       this.databaseElement.imageUrl = url;
       this.database.updateDocument<Product>(this.databaseElement, this.path, this.databaseElement.id)
+      .then(async (_) => {
+        this.utils.openMessageDialog({
+          message: 'Imagen del producto modificada con éxito!',
+          status: true
+        })
+      });
     })
   }
 
