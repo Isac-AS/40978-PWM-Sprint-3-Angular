@@ -1,0 +1,42 @@
+#pageContainer{
+  display: flex;
+  flex-flow: row;
+  padding: 5%;
+  background-color: black;
+  text-align: center;
+  justify-content: center;
+}
+#infoContainer{
+  display: flex;
+  flex-flow: column;
+  margin: 5% auto auto auto;
+}
+
+h1{
+  color: white;
+  text-align: left;
+  font-size: 3em;
+  font-weight: bolder;
+}
+h2{
+  margin-top: 5%;
+  color: white;
+  text-align: center;
+  font-size: 3em;
+
+}
+span{
+  color: white;
+  font-size: 15em;
+}
+
+button{
+  margin: 20% auto auto auto;
+  justify-content: center;
+  border-radius: 20px;
+  text-align: center;
+  width: 10em;
+  font-size: 3em;
+  background-color: #EEA10C;
+  color: black;
+}

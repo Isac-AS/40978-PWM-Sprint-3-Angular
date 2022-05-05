@@ -1,0 +1,38 @@
+#checkoutContainer{
+  display: flex;
+  flex-flow: column nowrap;
+  text-align: center;
+  justify-content: center;
+}
+
+#buttonContainer{
+  display: flex;
+  flex-flow: row;
+  margin: 0 auto;
+  justify-content:space-around;
+  gap: 10%;
+}
+
+button{
+  min-width: 20em;
+  margin: 5% auto;
+  padding: 10%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  justify-content: center;
+  gap: 2.5%;
+
+}
+h1{
+  margin: 3% auto;
+  color: white;
+  font-weight: bolder;
+  font-size: 4em;
+}
+span{
+  font-size: 50px;
+}
+
+

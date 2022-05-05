@@ -1,0 +1,32 @@
+#pageContainer{
+  display: flex;
+  flex-flow: row;
+  padding: 5%;
+  background-color: #EEA10C;
+  text-align: center;
+  justify-content: center;
+}
+#infoContainer{
+  display: flex;
+  flex-flow: column;
+  margin: 5% auto auto auto;
+}
+
+h1{
+  text-align: left;
+  font-size: 3em;
+}
+span{
+  font-size: 15em;
+}
+
+button{
+  margin: 5% auto auto auto;
+  justify-content: center;
+  border-radius: 20px;
+  text-align: center;
+  width: 10em;
+  font-size: 3em;
+  background-color: black;
+  color: white;
+}

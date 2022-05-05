@@ -15,6 +15,9 @@ import { RudCollectionComponent } from "./pages/rud-collection/rud-collection.co
 import { AddNewProductComponent } from "./pages/add-new-product/add-new-product.component";
 import {AboutUsPageComponent} from "./pages/about-us-page/about-us-page.component";
 import { ConcreteProductPageComponent } from "./pages/concrete-product-page/concrete-product-page.component";
+import {CheckoutPageComponent} from "./pages/checkout-page/checkout-page.component";
+import {NotAvailablePageComponent} from "./pages/not-available-page/not-available-page.component";
+import {BizumPageComponent} from "./pages/bizum-page/bizum-page.component";
 
 const adminUid = '1QpnBzjOCYe6y4mAxU1I2yP47kl1';
 const adminOnly = () => map((user:any) => !!user && (user.uid === adminUid));
@@ -66,6 +69,19 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
+  },
+  {
+    path: "checkout",
+    component: CheckoutPageComponent
+  },
+  {
+    path: "not-available",
+    component: NotAvailablePageComponent
+  }
+  ,
+  {
+    path: "bizum",
+    component: BizumPageComponent
   }
 ];
 
