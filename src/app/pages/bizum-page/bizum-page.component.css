@@ -35,8 +35,58 @@ button{
   justify-content: center;
   border-radius: 20px;
   text-align: center;
-  width: 10em;
+  width: 8em;
   font-size: 3em;
   background-color: #EEA10C;
   color: black;
+}
+
+@media (min-width: 768px) and (max-width: 1200px){
+
+
+  h1{
+    color: white;
+    text-align: left;
+    font-size: 2.2em;
+    font-weight: bolder;
+  }
+  h2{
+    margin-top: 5%;
+    color: white;
+    text-align: center;
+    font-size: 2em;
+
+  }
+  span{
+    color: white;
+    font-size: 10em;
+  }
+
+  button{
+    margin: 20% auto auto auto;
+    width: 5em;
+    font-size: 2em;
+    background-color: #EEA10C;
+    color: black;
+  }
+}
+@media (max-width: 768px) {
+  h1{
+    font-size: 1em;
+  }
+  h2{
+    margin-top: 3%;
+    font-size: 1em;
+
+  }
+  span{
+    color: white;
+    font-size: 5em;
+  }
+
+  button{
+    margin: 0 auto;
+    width: 4em;
+    font-size: 1.2em;
+  }
 }

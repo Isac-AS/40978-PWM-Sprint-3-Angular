@@ -2,12 +2,12 @@
   <h1>ELIGE EL MÉTODO DE PAGO</h1>
   <div id="buttonContainer">
   <div>
-    <div id="metodoBizum">
-      <button id="bizum" routerLink="/bizum">
+    <div id="metodoTransferencia">
+      <button id="transferencia" routerLink="/not-available">
         <span class="material-icons">
-        paid
+        account_balance
         </span>
-        BIZUM
+        TRANSFERENCIA BANCARIA
       </button>
     </div>
 
@@ -21,14 +21,6 @@
     </div>
   </div>
     <div>
-    <div id="metodoTransferencia">
-      <button id="transferencia" routerLink="/not-available">
-        <span class="material-icons">
-        account_balance
-        </span>
-        TRANSFERENCIA BANCARIA
-      </button>
-    </div>
 
     <div id="metodoPaypal">
        <button id="paypal" routerLink="/not-available">
@@ -38,6 +30,16 @@
          PAYPAL
        </button>
     </div>
+
+      <div id="metodoBizum">
+        <button id="bizum" routerLink="/bizum">
+        <span class="material-icons">
+        paid
+        </span>
+          BIZUM
+        </button>
+      </div>
+
     </div>
   </div>
 </div>

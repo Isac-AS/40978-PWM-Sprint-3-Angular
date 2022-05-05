@@ -35,4 +35,65 @@ span{
   font-size: 50px;
 }
 
+@media (min-width: 768px) and (max-width: 1200px){
 
+  #buttonContainer{
+    display: flex;
+    flex-flow: column;
+    margin: 0 auto;
+    gap: 10%;
+  }
+
+  button{
+    min-width: 15em;
+    padding: 10%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    justify-content: center;
+    gap: 2.5%;
+
+  }
+  h1{
+    margin: 3% auto;
+    color: white;
+    font-weight: bolder;
+    font-size: 3em;
+  }
+  span{
+    font-size: 40px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  #buttonContainer{
+    display: flex;
+    flex-flow: column;
+    margin: 0 auto;
+    gap: 10%;
+  }
+
+  button{
+    min-width: 15em;
+    padding: 10%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    justify-content: center;
+    gap: 2.5%;
+
+  }
+  h1{
+    margin: 3% auto;
+    color: white;
+    font-weight: bolder;
+    font-size: 2.5em;
+  }
+  span{
+    font-size: 30px;
+  }
+}
