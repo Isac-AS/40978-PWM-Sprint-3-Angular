@@ -17,11 +17,19 @@ export class ProfilePageComponent implements OnInit {
 
   uid: string = '';
   path: string = 'users';
+  profileUrl: string = '';
+
+  hidden: boolean = false;
+
+  uploadPercent$: Observable<number | undefined> | undefined;
+  downloadURL: Observable<string | null> | undefined;
+
+
 
   currentUserForm = this.fb.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required]],
-    password: ['', [Validators.required]]
+    image_url: ['', [Validators.required]]
   }
   );
 
@@ -34,11 +42,6 @@ export class ProfilePageComponent implements OnInit {
     shoppingCart: [],
     photoURL: ''
   }
-
-  uploadPercent: Observable<number | undefined> | undefined;
-  downloadURL: Observable<string | null> | undefined;
-  
-  profileUrl: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -53,7 +56,8 @@ export class ProfilePageComponent implements OnInit {
         this.database.readDocument<User>(this.path, this.uid).subscribe(async res => {
           if (res) {
             this.databaseElement = res;
-            this.initializeForm(res);
+            this.profileUrl = this.databaseElement.photoURL;
+            this.initializeForm(this.databaseElement);
             let ref = this.storage.ref('profilePictures/'+ this.databaseElement.uid );
             ref.getDownloadURL().subscribe(res => {
               this.profileUrl = res;
@@ -73,27 +77,26 @@ export class ProfilePageComponent implements OnInit {
       {
         name: user.name,
         email: user.email,
-        password: user.password
+        image_url: user.photoURL
       }
     )
   }
 
   onSubmit() {
-    this.databaseElement.name = this.currentUserForm.value.name;
-    this.databaseElement.email = this.currentUserForm.value.email;
-    this.databaseElement.password = this.currentUserForm.value.password;
-    this.update()
+    this.hidden = true;
   }
 
-  update() {
+  update(url: any) {
+    this.databaseElement.photoURL = url;
     const data = this.databaseElement;
     data.uid = this.uid;
-    this.database.updateDocument<Product>(data, this.path, data.uid).then(async (_) => {
+    this.database.updateDocument<User>(data, this.path, data.uid).then(async (_) => {
         this.utils.openMessageDialog({
         message: 'Datos de usuario modificados con éxito!',
         status: true
       })
     });
+    this.hidden = false;
   }
 
   uploadFile(event: any) {
@@ -103,13 +106,12 @@ export class ProfilePageComponent implements OnInit {
     const task = this.storage.upload(filePath, file);
 
     // observe percentage changes
-    this.uploadPercent = task.percentageChanges();
+    this.uploadPercent$ = task.percentageChanges();
+
     // get notified when the download URL is available
     task.snapshotChanges().pipe(
-        finalize(() => this.downloadURL = fileRef.getDownloadURL() )
-     )
-    .subscribe()
+        finalize(() =>
+          fileRef.getDownloadURL().subscribe(url => this.update(url)))
+     ).subscribe()
   }
-
-  
 }
