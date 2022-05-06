@@ -13,6 +13,7 @@ export class ShoppingCartComponent implements OnInit {
 
   uid: string = '';
   path: string = 'users';
+  hidden: boolean = true;
 
   shoppingCart: ShoppingCartElement[] = [];
   total: number = 0;
@@ -31,7 +32,7 @@ export class ShoppingCartComponent implements OnInit {
     private auth: AuthService,
     public db: DatabaseService,
     private utils: CustomUtilsService,
-  ) { 
+  ) {
     this.auth.getUid().then(async r => {
       if (r) {
         this.uid = r;
@@ -43,6 +44,8 @@ export class ShoppingCartComponent implements OnInit {
             for (let element of this.shoppingCart) {
               this.total += element.count * element.price;
             }
+            this.total = Math.round((this.total + Number.EPSILON) * 100) / 100
+            if (this.total != 0) this.hidden = false;
           }
         });
       }
@@ -50,6 +53,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.hidden);
   }
 
   decrement(id: string){
@@ -60,6 +64,7 @@ export class ShoppingCartComponent implements OnInit {
   clearCart(){
     this.databaseElement.shoppingCart = [];
     this.db.updateDocument<User>(this.databaseElement, this.path, this.databaseElement.uid);
+    this.hidden = true;
   }
 
   incrementElement(id: string, price: number) {

@@ -27,7 +27,7 @@
   </div>
 
   </div>
-    <div id="totalSection2">
+    <div id="totalSection2" *ngIf="!hidden">
       <h1>PRECIO TOTAL</h1>
       <h2>{{total}}€</h2>
       <button routerLink="/checkout">
@@ -36,7 +36,7 @@
     </div>
   </div>
 
-  <div id="totalSection">
+  <div id="totalSection" *ngIf="!hidden">
     <h1>PRECIO TOTAL</h1>
     <h2>{{total}}€</h2>
     <button routerLink="/checkout">
