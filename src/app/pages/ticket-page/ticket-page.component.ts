@@ -18,7 +18,7 @@ export class TicketPageComponent implements OnInit {
   private path: string = 'tickets';
 
   ticket = this.fb.group({
-    name : ['', [Validators.required]],
+    name : ['', [Validators.required, Validators.minLength(2)]],
     email : ['', [Validators.required, Validators.email]],
     reason : ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
     messageText : ['', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]]

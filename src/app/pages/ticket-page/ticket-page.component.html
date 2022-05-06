@@ -3,78 +3,61 @@
   <button type="submit" disabled style="display: none" aria-hidden="true"></button>
   <img id="ticketPicture" src="https://api.iconify.design/icon-park-outline/ticket.svg" height="150" width="150">
 
-  <input type="text"
-         class="form-control"
-         placeholder="Nombre"
-         formControlName="name">
-  <div *ngIf="ticket.get('name')!.invalid &&
-              (ticket.get('name')!.dirty ||
-               ticket.get('name')!.touched)"
-       class="errorMessage">
-    <p *ngIf="ticket.get('name')!.errors?.['required']">
-      Campo Obligatorio
-    </p>
-  </div>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input type="text" matInput formControlName="name" placeholder="Nombre">
+    <mat-error *ngIf="ticket.get('name')!.errors?.['required']" class="error-text">
+      Este campo es <strong>obligatorio</strong>
+    </mat-error>
+    <mat-error *ngIf="ticket.get('name')!.errors?.['minlength']" class="error-text">
+      Debe contener más de <strong>2 caracteres</strong>
+    </mat-error>
+  </mat-form-field>
 
-  <input type="text"
-         class="form-control"
-         placeholder="Email"
-         formControlName="email">
-  <div *ngIf="ticket.get('email')!.invalid &&
-              (ticket.get('email')!.dirty ||
-               ticket.get('email')!.touched)"
-       class="errorMessage">
-    <p *ngIf="ticket.get('email')!.errors?.['required']">
-      Campo Obligatorio
-    </p>
-    <p *ngIf="ticket.get('email')!.errors?.['email']">
-      Debe introducir una dirección de correo electrónico válida
-    </p>
-  </div>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Correo electrónico</mat-label>
+    <input type="email" matInput formControlName="email" placeholder="Email">
+    <mat-error *ngIf="ticket.get('email')!.errors?.['required']" class="error-text">
+      Este campo es <strong>obligatorio</strong>
+    </mat-error>
+    <mat-error *ngIf="ticket.get('email')!.errors?.['email']" class="error-text">
+      Introduzca un email <strong>válido</strong>
+    </mat-error>
+  </mat-form-field>
 
-  <input type="text"
-         class="form-control"
-         placeholder="Motivo de la consulta"
-         formControlName="reason">
-  <div *ngIf="ticket.get('reason')!.invalid &&
-              (ticket.get('reason')!.dirty ||
-               ticket.get('reason')!.touched)"
-       class="errorMessage">
-    <p *ngIf="ticket.get('reason')!.errors?.['required']">
-      Campo Obligatorio
-    </p>
-    <p *ngIf="ticket.get('reason')!.errors?.['minlength']">
-      Debe tener una longitud mínima de 5 caracteres
-    </p>
-    <p *ngIf="ticket.get('reason')!.errors?.['maxlength']">
-      Solo se permite como máximo 50 caracteres
-    </p>
-  </div>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Motivo de la consulta</mat-label>
+    <input type="text" matInput formControlName="reason" placeholder="Asunto">
+    <mat-error *ngIf="ticket.get('reason')!.errors?.['required']" class="error-text">
+      Este campo es <strong>obligatorio</strong>
+    </mat-error>
+    <mat-error *ngIf="ticket.get('reason')!.errors?.['minlength']" class="error-text">
+      Debe contener más de <strong>5 caracteres</strong>
+    </mat-error>
+    <mat-error *ngIf="ticket.get('reason')!.errors?.['maxlength']" class="error-text">
+      No debe contener más de <strong>50 caracteres</strong>
+    </mat-error>
+  </mat-form-field>
 
-  <textarea
-         cdkTextareaAutosize
-         #autosize="cdkTextareaAutosize"
-         cdkAutosizeMinRows="1"
-         cdkAutosizeMaxRows="5"
-         class="form-control"
-         id="textArea"
-         placeholder="Mensaje"
-         formControlName="messageText">
-  </textarea>
-  <div *ngIf="ticket.get('messageText')!.invalid &&
-              (ticket.get('messageText')!.dirty ||
-               ticket.get('messageText')!.touched)"
-       class="errorMessage">
-    <p *ngIf="ticket.get('messageText')!.errors?.['required']">
-      Campo Obligatorio
-    </p>
-    <p *ngIf="ticket.get('messageText')!.errors?.['minlength']">
-      Debe tener una longitud mínima de 10 caracteres
-    </p>
-    <p *ngIf="ticket.get('messageText')!.errors?.['maxlength']">
-      Solo se permite como máximo 500 caracteres
-    </p>
-  </div>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Mensaje</mat-label>
+    <textarea matInput
+              cdkTextareaAutosize
+              formControlName="messageText"
+              placeholder="Mensaje"
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="10"></textarea>
+    <mat-error *ngIf="ticket.get('messageText')!.errors?.['required']" class="error-text">
+      Este campo es <strong>obligatorio</strong>
+    </mat-error>
+    <mat-error *ngIf="ticket.get('messageText')!.errors?.['minlength']" class="error-text">
+      Debe contener más de <strong>10 caracteres</strong>
+    </mat-error>
+    <mat-error *ngIf="ticket.get('messageText')!.errors?.['maxlength']" class="error-text">
+      No debe contener más de <strong>500 caracteres</strong>
+    </mat-error>
+  </mat-form-field>
 
   <button type="submit"
           [disabled]="!ticket.valid">

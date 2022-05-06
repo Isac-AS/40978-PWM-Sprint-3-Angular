@@ -7,16 +7,6 @@ h1 {
   font-weight: 500;
 }
 
-input, textarea {
-  background: #F0F0F0;
-  border: 1px solid #000000;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  width: 100%;
-  height: 3em;
-  margin-bottom: 2%;
-}
-
 form {
   display: flex;
   align-items: center;
@@ -44,6 +34,13 @@ button:hover{
 #ticketPicture{
   max-width: 50%;
   max-height: 50%;
+}
+
+.example-full-width {
+  background-color: #c4c4c4;
+  margin-bottom: 1%;
+  min-width: 50%;
+  font-size: 15px;
 }
 
 @media (min-width: 768px) and (max-width: 1200px){
