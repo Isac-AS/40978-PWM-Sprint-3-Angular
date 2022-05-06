@@ -3,6 +3,7 @@ h1 {
   color: black;
   font-size: 3.5em;
   font-weight: 500;
+  line-height: 100%;
   text-align: center;
   margin: 2% auto 2% auto;
 
@@ -28,6 +29,7 @@ label {
 #form-style {
 
   background-color: #c4c4c4;
+  border-radius: 5%;
   padding: 2%;
   margin-bottom: 5%;
 }
@@ -67,6 +69,38 @@ label {
 .mat-custom {
   background-color: #cc5c00;
   color: #fff;
+}
+
+@media (max-width: 768px){
+
+  h1 {
+    font-size: 2em;
+    margin-bottom: 10%;
+    margin-top: 5%;
+  }
+
+  label {
+    margin: 0 auto 0.3% 20%;
+  }
+
+
+  #file {
+    margin: 0 auto 5% 20%;
+  }
+
+  #flex-style {
+    margin: 2% 45% auto auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px){
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 5%;
+    margin-top: 5%;
+  }
+
 }
 
 

@@ -68,3 +68,49 @@ label {
   background-color: #cc5c00;
   color: #fff;
 }
+
+@media (max-width: 768px){
+
+  h1 {
+
+    font-size: 2em;
+    margin-bottom: 5%;
+    margin-top: 5%;
+
+  }
+
+  #form-style {
+
+    margin-bottom: 0;
+  }
+
+  #file {
+
+    margin-bottom: 5%;
+
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px){
+
+  h1 {
+
+    font-size: 2.5em;
+    margin-bottom: 5%;
+    margin-top: 5%;
+
+  }
+
+  #form-style {
+
+    margin-bottom: 0;
+
+  }
+
+  #file {
+
+    margin-bottom: 3%;
+
+  }
+
+}

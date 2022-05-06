@@ -20,6 +20,7 @@ body {
 .custom-dialog-container .mat-dialog-container {
   padding: 2% !important;
   background-color: dimgrey;
+  line-height: 200%;
 }
 
 .header-dialog-container .mat-dialog-container {

@@ -83,8 +83,10 @@ export class RudCollectionComponent implements OnInit {
     const configData: IdPair = { id: this.documentToModifyId, path: this.currentCollection }
     this.dialog.open(ModifyElementModalViewComponent, {
       data: configData,
-      width: '70%',
-      maxHeight: '90vh'
+      maxWidth: '70%',
+      maxHeight: '95vh',
+      panelClass: 'header-dialog-container',
+      autoFocus: false
     });
   }
 
@@ -92,7 +94,8 @@ export class RudCollectionComponent implements OnInit {
     const configData: IdPair = { id: this.documentToModifyId, path: this.currentCollection }
     this.dialog.open(UserModificationPopupComponent, {
       data: configData,
-      width: '70%',
+      maxWidth: '70%',
+      maxHeight: '95vh',
       panelClass: 'header-dialog-container',
       autoFocus: false
     });
