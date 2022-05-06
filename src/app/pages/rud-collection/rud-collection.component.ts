@@ -84,7 +84,7 @@ export class RudCollectionComponent implements OnInit {
     this.dialog.open(ModifyElementModalViewComponent, {
       data: configData,
       width: '70%',
-      maxHeight: '90vh',
+      maxHeight: '90vh'
     });
   }
 
@@ -93,6 +93,8 @@ export class RudCollectionComponent implements OnInit {
     this.dialog.open(UserModificationPopupComponent, {
       data: configData,
       width: '70%',
+      panelClass: 'header-dialog-container',
+      autoFocus: false
     });
   }
 

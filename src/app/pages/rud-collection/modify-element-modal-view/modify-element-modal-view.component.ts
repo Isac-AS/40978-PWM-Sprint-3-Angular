@@ -1,11 +1,15 @@
-import { Observable } from "rxjs";
+import {Observable, take} from "rxjs";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Component, Inject, OnInit } from '@angular/core';
 import { DatabaseService } from "../../../services/database.service";
 import { IdPair, Product } from "../../../models/interfaces";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import { CustomUtilsService } from "../../../services/customUtils.service";
 import { StorageService } from "src/app/services/storage.service";
+import {
+  UserModificationPopupComponent
+} from "../../../components/user-modification-popup/user-modification-popup.component";
+import {TicketViewerPopupComponent} from "../../../components/ticket-viewer-popup/ticket-viewer-popup.component";
 
 @Component({
   selector: 'app-modify-element-modal-view',
@@ -16,6 +20,11 @@ export class ModifyElementModalViewComponent implements OnInit {
 
   id: string = '';
   path: string = '';
+
+  collection: any[] = [];
+  collections: string[] = ['Productos', 'Usuarios', 'Tickets'];
+  currentCollection: string = '';
+  documentToModifyId: string = '';
 
   observable: Observable<any>;
 
@@ -46,6 +55,7 @@ export class ModifyElementModalViewComponent implements OnInit {
   };
 
   constructor(
+    public dialog: MatDialog,
     private fb: FormBuilder,
     public database: DatabaseService,
     private utils: CustomUtilsService,
@@ -64,6 +74,35 @@ export class ModifyElementModalViewComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
+  collectionButtonHandler(path: string) {
+    this.setCurrentCollection(path);
+    this.getCollection();
+  }
+
+  getCollection() {
+    this.database.readCollection(this.currentCollection).subscribe(res => {
+      this.collection = res;
+    })
+  }
+
+  setCurrentCollection(displayedCollection: string) {
+    switch (displayedCollection) {
+      case 'Productos':
+        this.currentCollection = 'products'
+        break;
+      case 'Usuarios':
+        this.currentCollection = 'users'
+        break;
+      case 'Tickets':
+        this.currentCollection = 'tickets'
+        break;
+      default:
+        this.currentCollection = 'products'
+        break;
+    }
+  }
+
 
   initializeForm(product: Product) {
     this.currentProductForm.setValue(
@@ -118,6 +157,52 @@ export class ModifyElementModalViewComponent implements OnInit {
           status: true
         })
       });
+    })
+  }
+
+  modifyElement(id: string) {
+    this.documentToModifyId = id;
+    switch (this.currentCollection) {
+      case 'products':
+        this.openProductModificationDialog();
+        break;
+      case 'users':
+        this.openUserModificationDialog();
+    }
+  }
+
+  deleteElement(id: string) {
+    this.database.deleteDocument(this.currentCollection, id).then(async r => {
+      await this.utils.openMessageDialog({
+        message: 'Producto Eliminado con éxito!',
+        status: true
+      })
+    });
+  }
+
+  openProductModificationDialog(): void {
+    const configData: IdPair = { id: this.documentToModifyId, path: this.currentCollection }
+    this.dialog.open(ModifyElementModalViewComponent, {
+      data: configData,
+      width: '70%',
+      maxHeight: '90vh',
+    });
+  }
+
+  openUserModificationDialog(): void {
+    const configData: IdPair = { id: this.documentToModifyId, path: this.currentCollection }
+    this.dialog.open(UserModificationPopupComponent, {
+      data: configData,
+      width: '70%',
+    });
+  }
+
+  openTicketViewerDialog(id: string): void{
+    this.database.readDocument('tickets', id).pipe(take(1)).subscribe( readTicket => {
+      this.dialog.open(TicketViewerPopupComponent, {
+        data: readTicket,
+        width: '70%',
+      })
     })
   }
 
