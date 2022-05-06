@@ -34,7 +34,7 @@ export class CommonsHeaderComponent implements OnInit {
     const res = this.auth.logout().catch( async error => {
       await alert('Parece haber habido un problema. Inténtelo de nuevo.')
     });
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
   isAdminCall() {

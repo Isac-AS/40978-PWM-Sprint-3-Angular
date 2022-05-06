@@ -18,6 +18,7 @@ export class UserModificationPopupComponent implements OnInit {
 
   uid: string = '';
   path: string = 'users';
+  img_source: string = '';
 
   hidden: boolean = false;
   write: boolean = false;
@@ -58,7 +59,7 @@ export class UserModificationPopupComponent implements OnInit {
       this.observable = this.database.readDocument<User>(this.path, this.uid);
       this.observable.subscribe(async res => {
           this.databaseElement = await res;
-          this.initializeForm(res);
+          this.initializeForm(this.databaseElement);
         }
       );
     }
@@ -77,8 +78,6 @@ export class UserModificationPopupComponent implements OnInit {
 
   onSubmit() {
     this.databaseElement.name = this.currentUserForm.value.name;
-    this.databaseElement.email = this.currentUserForm.value.email;
-    this.databaseElement.photoURL = this.currentUserForm.value.image_url;
     this.update();
     this.dialogRef.close();
   }
@@ -89,7 +88,7 @@ export class UserModificationPopupComponent implements OnInit {
     data.uid = this.uid;
     this.database.updateDocument<Product>(data, this.path, data.uid).then(async (_) => {
       await this.utils.openMessageDialog({
-        message: 'Producto Modificado con éxito!',
+        message: 'Usuario modificado con éxito!',
         status: true
       })
     });
@@ -105,11 +104,10 @@ export class UserModificationPopupComponent implements OnInit {
     const ref = this.storageService.getRef('profilePictures/' + this.databaseElement.uid);
     ref.getDownloadURL().subscribe(url => {
       this.databaseElement.photoURL = url;
-      this.currentUserForm.value.image_url = url;
       this.database.updateDocument<User>(this.databaseElement, this.path, this.databaseElement.uid)
         .then(async (_) => {
           this.utils.openMessageDialog({
-            message: 'Imagen modificada',
+            message: 'Imagen modificada con éxito',
             status: true
           })
         });
