@@ -1,10 +1,7 @@
 .contactContainer{
   background-color:#c4c4c4;
   padding: 5em;
-  margin-left: 5em;
-  margin-right: 5em;
-  margin-bottom: 5em;
-  margin-top: 5em;
+  margin: 5em 5em 5em 5em;
 }
 .contactTitle{
   text-align: center;
@@ -45,6 +42,14 @@
 .contactObject img{
   height: 5em;
   width: 5em;
+}
+
+#pointer:hover {
+  cursor: pointer;
+}
+
+a {
+  color: black;
 }
 
 @media (min-width: 768px) and (max-width: 1200px){

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Router } from "@angular/router";
-import { Validators } from '@angular/forms';
+import {FormGroupDirective, Validators} from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import {MessagePopupPair, Ticket} from "../../models/interfaces";
 import { InfoMessagePopupComponent } from "../../components/info-message-popup/info-message-popup.component";
@@ -14,6 +14,8 @@ import { DatabaseService } from "../../services/database.service";
   styleUrls: ['./ticket-page.component.css']
 })
 export class TicketPageComponent implements OnInit {
+
+  @ViewChild(FormGroupDirective) formDirective: FormGroupDirective | undefined;
 
   private path: string = 'tickets';
 
@@ -64,7 +66,11 @@ export class TicketPageComponent implements OnInit {
       })
     });
 
-    this.ticket.reset()
+    this.formDirective?.resetForm();
 
+  }
+
+  clearForm() {
+    this.ticket.reset();
   }
 }
